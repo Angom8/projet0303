@@ -1,0 +1,23 @@
+body{
+	font-family: Roboto;
+}
+.jumbotron{
+
+	background-color: #ffffff;
+	margin:0;
+}
+
+
+#footer a:hover{
+	color:black
+}
+
+#scroll
+{
+position: fixed;
+bottom : 10px;
+right: -100px;
+opacity: 0.7;
+}
+
+
