@@ -7,24 +7,7 @@ getNavBar("Accueil");
 <main>
 
 	<?php getLogoSection(); ?>
-
-		<section id="buttons">
-			<div class="container">
-			  <div class="row text-center">
-			    <div class="col">
-				<button type="button" class="btn btn-lg btn-block btn-outline-primary main-btn shadow-sm">Espace Membre</button>
-			    </div>
-
-			    <div class="col">
-				<button type="button" class="btn btn-lg btn-block btn-outline-primary main-btn shadow-sm">S'inscire</button>
-			    </div>
-
-			    <div class="col">
-				<button type="button" class="btn btn-lg btn-block btn-outline-primary  main-btn shadow-sm">Nous contacter</button>
-			    </div>
-
-			  </div>
-		</section id="buttons">
+	<?php getExtButtons(); ?>
 
 		<section id="jumbotron">
 			<div class="jumbotron">
@@ -35,9 +18,6 @@ getNavBar("Accueil");
 		</section>
 
 </main>
-
-
-
 
 <?php
 

@@ -80,7 +80,7 @@ if (! function_exists('getFooter')) {
 	function getFooter(){
 
 		echo '
-	<footer class="container-fluid text-center" id="footer" style="background-color: #f2f2f2; padding:3px">
+	<footer class="container-fluid text-center external-footer">
 		<p style="padding-top:10px">2019 - Tous droits réservés - <a href="content/about.html">Informations sur vos données et les Autorisations légales</a></p>
     </footer>';
 	}
@@ -98,6 +98,31 @@ if (! function_exists('getLogoSection')) {
 	}
 }
 
+if (! function_exists('getExtButtons')) {
+
+	function getExtButtons(){
+		echo '
+		<section id="buttons">
+			<div class="container">
+			  <div class="row text-center">
+			    <div class="col align-self-center">
+				<button type="button" class="btn btn-lg btn-block btn-outline-dark main-btn shadow-sm">Espace Membre</button>
+			    </div>
+
+			    <div class="col align-self-center">
+				<button type="button" class="btn btn-lg btn-block btn-outline-dark main-btn shadow-sm  ">S\'inscrire</button>
+			    </div>
+
+			    <div class="col align-self-center">
+				<button type="button" class="btn btn-lg btn-block btn-outline-dark main-btn shadow-sm ">Nous contacter</button>
+			    </div>
+
+			  </div>
+			</div>
+		</section>';
+
+	}
+}
 ?>
 
 
