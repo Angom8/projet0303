@@ -12,15 +12,15 @@ getNavBar("Accueil");
 			<div class="container">
 			  <div class="row text-center">
 			    <div class="col">
-				<button type="button" class="btn btn-lg btn-block btn-outline-primary main-btn shadow-sm">Sign up for free</button>
+				<button type="button" class="btn btn-lg btn-block btn-outline-primary main-btn shadow-sm">Espace Membre</button>
 			    </div>
 
 			    <div class="col">
-				<button type="button" class="btn btn-lg btn-block btn-outline-primary main-btn shadow-sm">Get started</button>
+				<button type="button" class="btn btn-lg btn-block btn-outline-primary main-btn shadow-sm">S'inscire</button>
 			    </div>
 
 			    <div class="col">
-				<button type="button" class="btn btn-lg btn-block btn-outline-primary  main-btn shadow-sm">Contact us</button>
+				<button type="button" class="btn btn-lg btn-block btn-outline-primary  main-btn shadow-sm">Nous contacter</button>
 			    </div>
 
 			  </div>
