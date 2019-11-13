@@ -6,26 +6,23 @@ getNavBar("Accueil");
 
 <main>
 
-		<section id="mainLogo">
-		</section>
+	<?php getLogoSection(); ?>
+
 		<section id="buttons">
 			<div class="container">
-			  <div class="card-deck mb-3 text-center">
-			    <div class="card mb-4 shadow-sm">
-			      <div class="card-body">
-				<button type="button" class="btn btn-lg btn-block btn-outline-primary">Sign up for free</button>
-			      </div>
+			  <div class="row text-center">
+			    <div class="col">
+				<button type="button" class="btn btn-lg btn-block btn-outline-primary main-btn shadow-sm">Sign up for free</button>
 			    </div>
-			    <div class="card mb-4 shadow-sm">
-			      <div class="card-body">
-				<button type="button" class="btn btn-lg btn-block btn-outline-primary">Get started</button>
-			      </div>
+
+			    <div class="col">
+				<button type="button" class="btn btn-lg btn-block btn-outline-primary main-btn shadow-sm">Get started</button>
 			    </div>
-			    <div class="card mb-4 shadow-sm">
-			      <div class="card-body">
-				<button type="button" class="btn btn-lg btn-block btn-outline-primary">Contact us</button>
-			      </div>
+
+			    <div class="col">
+				<button type="button" class="btn btn-lg btn-block btn-outline-primary  main-btn shadow-sm">Contact us</button>
 			    </div>
+
 			  </div>
 		</section id="buttons">
 

@@ -8,8 +8,18 @@ body{
 }
 
 
+.main-btn{
+	
+	height:100%;
+	width:100%;
+
+}
 #footer a:hover{
 	color:black
+}
+
+#mainLogo{
+	margin:1em;
 }
 
 #scroll

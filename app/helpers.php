@@ -86,6 +86,18 @@ if (! function_exists('getFooter')) {
 	}
 }
 
+if (! function_exists('getLogoSection')) {
+	function getLogoSection(){
+
+		echo '
+			<section id="mainLogo">
+				<div class="container">
+					<img src="https://placeholder.com/wp-content/uploads/2018/10/placeholder.com-logo1.png" class="img-fluid mx-auto d-block" alt="Responsive image">
+				</div>
+			</section>';
+	}
+}
+
 ?>
 
 
