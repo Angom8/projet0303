@@ -8,6 +8,7 @@
 
 <style>
 div.bord {
+	padding: 70px;
 	border-style: solid;
 	border-width: 5px;
 }
