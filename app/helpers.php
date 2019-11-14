@@ -77,10 +77,16 @@ if (! function_exists('getHTMLFooter')) {
 
 
 if (! function_exists('getFooter')) {
-	function getFooter(){
+	function getFooter($type){
 
 		echo '
-	<footer class="container-fluid text-center external-footer">
+	<footer class="container-fluid text-center ';
+
+	if($type === 'external'){
+		echo 'external-footer';
+	}
+
+	echo '">
 		<p style="padding-top:10px">2019 - Tous droits réservés - <a href="content/about.html">Informations sur vos données et les Autorisations légales</a></p>
     </footer>';
 	}
@@ -92,7 +98,7 @@ if (! function_exists('getLogoSection')) {
 		echo '
 			<section id="mainLogo">
 				<div class="container">
-					<img src="https://placeholder.com/wp-content/uploads/2018/10/placeholder.com-logo1.png" class="img-fluid mx-auto d-block" alt="Responsive image">
+					<img src="'.url('/medias/img/front/main-logo.png').'" class="img-fluid mx-auto d-block" alt="Responsive image">
 				</div>
 			</section>';
 	}

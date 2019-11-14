@@ -33,7 +33,7 @@ Route::get('logout', function () {
 /*do an auto redirection to match user-type and panel*/
 
 Route::get('mypanel', function () {
-    return view('logout');
+    return view('redirect-login');
 });
 
 /*Type Admin user pages*/

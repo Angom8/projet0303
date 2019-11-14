@@ -57,7 +57,7 @@ getNavBar("Contact");
 
 <?php
 
-getFooter();
+getFooter('external');
 
 getHTMLFooter();
 
