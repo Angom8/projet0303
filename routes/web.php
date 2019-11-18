@@ -9,36 +9,36 @@
 
 /*Non logged pages*/
 
-Route::get('/', function () {
+Route::get('/', function () {//init
     return view('home');
 });
 
-Route::get('contact', function () {
+Route::get('contact', function () {//init
     return view('contact');
 });
 
-Route::get('login', function () {
+Route::get('login', function () {//
     return view('login');
 });
 
-Route::get('signin', function () {
+Route::get('signin', function () {//
     return view('signin');
 });
 
-Route::get('logout', function () {
+Route::get('logout', function () {//
     return view('logout');
 });
 
 
 /*do an auto redirection to match user-type and panel*/
 
-Route::get('mypanel', function () {
+Route::get('mypanel', function () {//
     return view('redirect-login');
 });
 
 /*Type Admin user pages*/
 
-Route::get('admin/', function () {
+Route::get('admin/', function () {//init
     return view('user-global');
 });
 
@@ -67,7 +67,7 @@ Route::get('admin/fournisseur', function () {
 });
 
 /*Type Secretaire user pages*/
-Route::get('helper/', function () {
+Route::get('helper/', function () {//init
     return view('user-global');
 });
 
@@ -85,7 +85,7 @@ Route::get('helper/add-user', function () {
 
 /*Type Adhérent user pages*/
 
-Route::get('panel/', function () {
+Route::get('panel/', function () {//init
     return view('user-global');
 });
 
