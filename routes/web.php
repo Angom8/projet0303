@@ -39,7 +39,7 @@ Route::get('mypanel', function () {
 /*Type Admin user pages*/
 
 Route::get('admin/', function () {
-    return view('admin-global');
+    return view('user-global');
 });
 
 Route::get('admin/messages', function () {
@@ -68,7 +68,7 @@ Route::get('admin/fournisseur', function () {
 
 /*Type Secretaire user pages*/
 Route::get('helper/', function () {
-    return view('helper-global');
+    return view('user-global');
 });
 
 Route::get('helper/users', function () {

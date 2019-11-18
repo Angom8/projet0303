@@ -129,6 +129,47 @@ if (! function_exists('getExtButtons')) {
 
 	}
 }
+
+
+if (! function_exists('getAdmButtons')) {
+
+	function getAdmButtons($type_util){
+
+		echo '
+		<section id="buttons">
+			<div class="container">
+			  <div class="row text-center">';
+		if($type_util === 'admin'){
+	
+			echo '<div class="col align-self-center">
+				<button type="button" class="btn btn-lg btn-block btn-outline-dark main-btn shadow-sm ">Messages</button>';
+		}
+		if($type_util === 'secretaire' or $type_util === 'admin'){
+	
+						    
+			echo '</div>
+				<div class="col align-self-center">
+				<button type="button" class="btn btn-lg btn-block btn-outline-dark main-btn shadow-sm ">Utilisateurs</button>
+			    </div>
+				<div class="col align-self-center">
+				<button type="button" class="btn btn-lg btn-block btn-outline-dark main-btn shadow-sm ">Ajouter un utilisateur</button>
+			    </div>';
+		}
+		if($type_util !== 'secretaire'){
+			echo ' <div class="col align-self-center">
+				<button type="button" class="btn btn-lg btn-block btn-outline-dark main-btn shadow-sm  ">Bateaux</button>
+			    </div>
+
+			    <div class="col align-self-center">
+				<button type="button" class="btn btn-lg btn-block btn-outline-dark main-btn shadow-sm ">Fournisseurs</button>
+			    </div>';
+		}
+		
+		echo '			  </div>
+			</div>
+		</section>';
+	}
+}
 ?>
 
 
