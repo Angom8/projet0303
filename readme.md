@@ -5,7 +5,7 @@ Création d'un site web avec les techno PHP/Laravel/SQL
 BDD obtenue via INFO0304
 
 Contrib :
-- BOISSIER Sebastien (pas les droits, il faisait des bétises >:|)
+- BOISSIER Sebastien
 - THEBAULT Antoine
 
 Requêtes à faire (FORMAT LARAVEL + Algèbre);
