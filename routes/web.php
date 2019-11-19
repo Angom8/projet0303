@@ -87,7 +87,7 @@ Route::get('panel/contact-fournisseur', function () {
 });
 
 Route::get('panel/boats', function () {
-    return view('my-boats');
+    return view('boats');
 });
 
 Route::get('panel/boat', function () {

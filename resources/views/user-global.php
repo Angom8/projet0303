@@ -1,13 +1,13 @@
 <?php
 getHTMLHead("Panel");
 
-getAdmNavBar("Panel", "user");
+getAdmNavBar("Panel", "admin");
 ?>
 
 <main>
 
 	<?php getLogoSection(); ?>
-	<?php getAdmButtons('user'); ?>
+	<?php getAdmButtons('admin'); ?>
 
 </main>
 
