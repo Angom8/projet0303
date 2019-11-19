@@ -17,15 +17,15 @@ Route::get('contact', function () {//init
     return view('contact');
 });
 
-Route::get('login', function () {//
+Route::get('login', function () {//gen auto
     return view('login');
 });
 
-Route::get('signin', function () {//
+Route::get('signin', function () {//gen auto
     return view('signin');
 });
 
-Route::get('logout', function () {//
+Route::get('logout', function () {//gen auto
     return view('logout');
 });
 
@@ -56,7 +56,7 @@ Route::get('helper/', function () {//init
     return view('user-global');
 });
 
-Route::get('helper/users', function () {
+Route::get('helper/users', function () {//init
     return view('users');
 });
 
