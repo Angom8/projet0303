@@ -42,7 +42,7 @@ Route::get('admin/', function () {//init
     return view('user-global');
 });
 
-Route::get('admin/messages', function () {
+Route::get('admin/messages', function () {//init
     return view('messages');
 });
 
@@ -74,7 +74,7 @@ Route::get('panel/', function () {//init
     return view('user-global');
 });
 
-Route::get('panel/fournisseurs', function () {
+Route::get('panel/fournisseurs', function () {//init
     return view('fournisseurs');
 });
 
@@ -86,7 +86,7 @@ Route::get('panel/contact-fournisseur', function () {
     return view('contact-fournisseur');
 });
 
-Route::get('panel/boats', function () {
+Route::get('panel/boats', function () {//init
     return view('boats');
 });
 
