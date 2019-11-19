@@ -27,6 +27,7 @@ getNavBar("");
       </tr>
     </tbody>
   </table>
+ </div>
  </main>
 <?php
 
