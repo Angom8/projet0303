@@ -32,12 +32,9 @@ color: gray;
 	padding:0.75em;
 }
 
-.right-contact{
-
-	padding:2em;
-}
-
-.left-contact{
+.right-contact,
+.left-contact,
+.content{
 
 	padding:2em;
 }
