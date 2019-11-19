@@ -14,6 +14,7 @@ if (! function_exists('getHTMLHead')) {
 	       <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css"> 
 		<!-- Styles -->
 		<link rel="stylesheet" href="'.url('/css/design-external.css').'">
+		<link rel="shortcut icon" href="'.url('/medias/favicon.ico').'">
 	    </head>
 	    <body>';
 
@@ -25,7 +26,7 @@ if (! function_exists('getNavBar')) {
 
 		echo '<header>
 			<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Omonbato</a>
+  <a class="navbar-brand" href="#">Omonbatôô</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
