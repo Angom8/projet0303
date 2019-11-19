@@ -46,25 +46,10 @@ Route::get('admin/messages', function () {
     return view('messages');
 });
 
-Route::get('admin/users', function () {
-    return view('users');
+Route::get('admin/add-boat', function () {
+    return view('add-boat');
 });
 
-Route::get('admin/boats', function () {
-    return view('boats');
-});
-
-Route::get('admin/boat', function () {
-    return view('boat');
-});
-
-Route::get('admin/fournisseurs', function () {
-    return view('fournisseurs');
-});
-
-Route::get('admin/fournisseur', function () {
-    return view('fournisseur');
-});
 
 /*Type Secretaire user pages*/
 Route::get('helper/', function () {//init
@@ -117,10 +102,4 @@ Route::get('panel/update-boat', function () {
     return view('update-boat');
 });
 
-/*Else*/
-
-
-Route::get('/login', function () {
-    return view('login');
-});
-
+?>

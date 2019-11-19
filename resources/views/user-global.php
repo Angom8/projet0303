@@ -1,7 +1,7 @@
 <?php
 getHTMLHead("Panel");
 
-getNavBar("Panel");
+getAdmNavBar("Panel", "user");
 ?>
 
 <main>

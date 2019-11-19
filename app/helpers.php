@@ -171,6 +171,93 @@ if (! function_exists('getAdmButtons')) {
 		</section>';
 	}
 }
+
+if (! function_exists('getAdmNavBar')) {
+
+	function getAdmNavBar($title, $type_util){
+
+		echo '<header>
+			<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+			  <a class="navbar-brand" href="#">Omonbatôô</a>
+			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+			    <span class="navbar-toggler-icon"></span>
+			  </button>
+
+			  <div class="collapse navbar-collapse" id="navbarsExample04">
+			    <ul class="navbar-nav  ml-auto">
+			      <li class="nav-item';
+
+				if($title === "Panel"){echo ' active';}
+
+				echo '">
+				<a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Accéder à mon Panel" href="'.url('/panel').'">Mon panel</a>
+			      </li>
+				</li>
+				<li class="nav-item">
+				<a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Accueil du site" href="'.url('/').'">Accueil du site</a>
+			      </li>';
+
+			      if($type_util === 'admin'){
+
+					echo'<li class="nav-item';
+
+					if($title === "Messages"){echo ' active';}
+
+					echo '">
+					<a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Mes messages" href="'.url('/admin/messages').'">Messages</a>
+				      </li>';
+
+				}
+
+			     if($type_util === 'secretaire' or $type_util === 'admin'){
+
+
+					echo'<li class="nav-item';
+
+					if($title === "Utilisateurs"){echo ' active';}
+
+					echo '">
+					<a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Utilisateurs" href="'.url('/helper/users').'">Utilisateurs du site</a>
+				      </li>';
+
+					echo'<li class="nav-item';
+
+					if($title === "Ajouter Utilisateur"){echo ' active';}
+
+					echo '">
+					<a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Ajouter un Utilisateur" href="'.url('/helper/add-user').'">Ajouter un utilisateur</a>
+				      </li>';
+				}
+
+			    if($type_util !== 'secretaire'){	
+
+					echo'<li class="nav-item';
+
+					if($title === "Bateaux"){echo ' active';}
+
+					echo '">
+					<a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Mes bateaux" href="'.url('/panel/boats').'">Bateaux</a>
+				      </li>';
+
+					echo'<li class="nav-item';
+
+					if($title === "Fournisseurs"){echo ' active';}
+
+					echo '">
+					<a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Fournisseurs" href="'.url('/panel/fournisseurs').'">Fournisseurs</a>
+				      </li>';
+				}
+
+				echo '<li class="nav-item">
+				<a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Se déconnecter" href="'.url('/logout').'">Déconnexion</a>
+			      </li>
+			    </ul>
+			  </div>
+			</nav>
+
+		</header>';
+	}
+}
 ?>
 
 
