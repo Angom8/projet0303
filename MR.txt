@@ -1,32 +1,18 @@
-Entites
-Piece (id_piece, revisions_periodiques_piece, duree_vie_piece, quantite_piece, 
-piece_origine, q_piece_rechange, #id_type_piece)
+# Modèle créé le : Wed Nov 20 13:13:32 CET 2019  
 
-Bateau (id_bateau, nom_bateau, nb_mat_Bateau, surface_voilure_Bateau, 
-dimension_x_bateau, dimension_y_bateau, ancienne_cat_Bateau, 
-distance_eloignement_Bateau, volume_coque_Bateau, force_vent_max_Bateau, 
-hauteur_max_vagues_Bateau, dimension_z_bateau, consommation_Bateau, 
-niveau_reserve_Bateau, nb_places_Bateau, date_construction_Bateau, auto_videur_Bateau,
- niveau_carburant_max_Bateau, niveau_performance_Bateau, jauge_brut_Bateau,
- masse_navire_Bateau, hors_bord_Bateau, francise_Bateau, niveau_huile_Bateau, 
- niveau_liquide_refroidissement_Bateau, #immatriculation_id, 
- #moteur_id, #port_id)  
- 
-Voyage (id_voyage, d_voyage, participants_max_Voyage, participants_min_Voyage, 
-date_depart_Voyage, date_retour_Voyage, cout_voyage_Voyage, #id_utilisateur, 
-#id_port, #id_port_est_port_arrive)  
+Piece (id_piece, revisions_periodiques_piece, duree_vie_piece, quantite_piece, piece_origine, q_piece_rechange, #id_type_piece)  
 
-Utilisateur (id_utilisateur, login_utilisateur, password_utilisateur, type_utilisateur,
- nom_utilisateur, prenom_utilisateur, tel_utilisateur, mail_utilisateur, #id_adresse)
- 
-Entretien (id_entretien_Entretien, date_entretien_Entretien)  
+Bateau (id_bateau, nom_bateau, nb_mat, surface_voilure, dimension_x_bateau, dimension_y_bateau, ancienne_cat, distance_eloignement, volume_coque, force_vent_max, hauteur_max_vagues, dimension_z_bateau, consommation, niveau_reserve, nb_places, date_construction, auto_videur, niveau_carburant_max, niveau_performance, url_photo_Bateau, jauge_brut, masse_navire, hors_bord, francise, niveau_huile, niveau_liquide_refroidissement, #immatriculation_id_immatr, #moteur_id_moteur, #port_id_port)  
 
-Adresse (id_adresse, numero_adresse_Adresse, voierie_Adresse, #id_ville_Ville) 
- 
-Equipement (id_equipement, revision_periodique_equip, duree_vie_equip, 
-equip_origine, q_equip_rechange, quantite_equip, #id_type_equipement)  
+Voyage (id_voyage, d_voyage, participants_max, participants_min, date_depart, date_retour, cout_voyage, #id_utilisateur, #id_port, #id_port_est_port_arrivé)  
 
-Permis (id_permis_Permis, nom_permis)  
+Utilisateur (id_utilisateur, login, password, type_utilisateur, nom_utilisateur, prenom_utilisateur, tel_utilisateur, mail_utilisateur, #id_adresse)  Entretien (id_entretien, date_entretien) 
+
+Adresse (id_adresse, numero_adresse, voierie, #id_ville)  
+
+Equipement (id_equipement, revision_periodique_equip, duree_vie_equip, equip_origine, q_equip_rechange, quantite_equip, #id_type_equipement)  
+
+Permis (id_permis, nom_permis)  
 
 Fournisseur (id_fourni, nom_fourni, tel_fourni, mail_fourni)  
 
@@ -40,47 +26,46 @@ Type_piece (id_type_piece, nom_type_piece)
 
 Type_Equipement (id_type_equipement, nom_type_equipement)  
 
-Immatriculation (id_immatr, date_immatr, #bateau_id)  
+Immatriculation (id_immatr, date_immatr, #bateau_id_bateau)  
 
-Moteur (id_moteur, puissance_moteur, kilometrage_Moteur, horametre_compte_Moteur, #id_equipement)  
+Moteur (id_moteur, puissance_moteur, kilometrage, horametre_compte, #id_equipement)  
 
 Port (id_port, latt_port, long_port, #id_adresse)  
 
-Accident (id_accident, date_accident, nb_morts_Accident, nb_bless)  
+Accident (id_accident, date_accident, nb_morts, nb_bless)  
 
-Ville (id_ville_Ville, nom_ville_Ville, code_postal_Ville, #id_pays_Pays)  
+Ville (id_ville, nom_ville, code_postal, #id_pays) 
 
-Pays (id_pays_Pays, planete_Ville, nom_pays_Pays)  
+Pays (id_pays, planete, nom_pays)  
 
+Possède (#id_utilisateur, #id_bateau)  
 
-Possede (#id_utilisateur, #id_bateau)  
+A_passé (#id_utilisateur, #id_permis)  
 
-A_passe (#id_utilisateur, #id_permis)  
+participe (#id_utilisateur, #id_voyage)  
 
-participe (id_utilisateur, id_voyage_Voyage)  
-
-utilise_couramment (#id_utilisateur, #id_bateau)  
+utilise_couramment (#id_utilisateur, #id_bateau) 
 
 Necessite (#id_bateau, #id_permis)  
 
-est_implique (#id_bateau, #id_accident)  
+est_impliqué (id_bateau, #id_accident) 
 
 contient (#id_bateau, #id_piece)  
 
 comporte (#id_bateau, #id_equipement)  
 
-recoit (#id_bateau, #id_entretien)  
+reçoit (#id_bateau, #id_entretien)  
 
 concerne (#id_equipement, #id_piece, #id_entretien)  
 
-est_compose (#id_equipement, #id_piece)  
+est_composé (#id_equipement, #id_piece)  
 
-produit_par (#id_modele, #id_marque) 
+produit_par (#id_modele, #id_marque)  
 
-est_renseigne_sous (#id_equipement, #id_piece, #id_bateau, #id_modele)  
+est_renseigné_sous (#id_equipement, #id_piece, #id_bateau, #id_modele)  
 
 fournit (#id_fourni, #id_equipement, #id_piece)  
 
-est_localise (#id_fourni, #id_adresse)  
+est_localisé (#id_fourni, #id_adresse)  
 
-est_dans (#id_equipement, #id_piece, #id_etat)
+est_dans (#id_equipement, #id_piece, #id_etat) 
