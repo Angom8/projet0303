@@ -2,7 +2,7 @@
 
 Piece (id_piece, revisions_periodiques_piece, duree_vie_piece, quantite_piece, piece_origine, q_piece_rechange, #id_type_piece)  
 
-Bateau (id_bateau, nom_bateau, nb_mat, surface_voilure, dimension_x_bateau, dimension_y_bateau, ancienne_cat, distance_eloignement, volume_coque, force_vent_max, hauteur_max_vagues, dimension_z_bateau, consommation, niveau_reserve, nb_places, date_construction, auto_videur, niveau_carburant_max, niveau_performance, jauge_brut, masse_navire, hors_bord, francise, niveau_huile, niveau_liquide_refroidissement, #immatriculation_id_immatr, #moteur_id_moteur, #port_id_port)  
+Bateau (id_bateau, nom_bateau, nb_mat, surface_voilure, dimension_x_bateau, dimension_y_bateau, ancienne_cat, distance_eloignement, volume_coque, force_vent_max, hauteur_max_vagues, dimension_z_bateau, consommation, niveau_reserve, nb_places, date_construction, auto_videur, niveau_carburant_max, niveau_performance, url_photo_Bateau, jauge_brut, masse_navire, hors_bord, francise, niveau_huile, niveau_liquide_refroidissement, #immatriculation_id_immatr, #moteur_id_moteur, #port_id_port)  
 
 Voyage (id_voyage, d_voyage, participants_max, participants_min, date_depart, date_retour, cout_voyage, #id_utilisateur, #id_port, #id_port_est_port_arrivé)  
 
@@ -12,9 +12,17 @@ Adresse (id_adresse, numero_adresse, voierie, #id_ville)
 
 Equipement (id_equipement, revision_periodique_equip, duree_vie_equip, equip_origine, q_equip_rechange, quantite_equip, #id_type_equipement)  
 
-Permis (id_permis, nom_permis)  Fournisseur (id_fourni, nom_fourni, tel_fourni, mail_fourni)  
+Permis (id_permis, nom_permis)  
 
-Etat (id_etat, desc_etat)  Modele (id_modele, nom_modele)  Marque (id_marque, nom_marque)  Type_piece (id_type_piece, nom_type_piece)  
+Fournisseur (id_fourni, nom_fourni, tel_fourni, mail_fourni)  
+
+Etat (id_etat, desc_etat)  
+
+Modele (id_modele, nom_modele)  
+
+Marque (id_marque, nom_marque)  
+
+Type_piece (id_type_piece, nom_type_piece)  
 
 Type_Equipement (id_type_equipement, nom_type_equipement)  
 
