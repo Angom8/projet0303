@@ -4,8 +4,18 @@ Création d'un site web avec les techno PHP/Laravel/SQL
 
 BDD obtenue via INFO0304
 
+TO-DO :
+Implémenter BDD en Laravel
+Faire les requêtes et la gestion dynamique
+Faire la partie historique des entretiens
+Améliorer maquettes
+Commencer le rapport
+
+Sebas-tien => Faire les requêtes et la normalisation !!!!
+
+
 Contrib :
-- BOISSIER Sebastien
+- BOISSIER Sebastien (pas les droits, il faisait des bétises >:|)
 - THEBAULT Antoine
 
 Requêtes à faire (FORMAT LARAVEL + Algèbre);
