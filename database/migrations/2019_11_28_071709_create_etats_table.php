@@ -13,9 +13,12 @@ class CreateEtatsTable extends Migration
      */
     public function up()
     {
-        Schema::create('etats', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+        Schema::create('Etat', function (Blueprint $table) {
+ 	    $table->engine = 'InnoDB';
+	    $table->charset = 'utf8';
+
+            $table->bigIncrements('id_etat');
+	    $table->string('desc_etat');
         });
     }
 
@@ -26,6 +29,6 @@ class CreateEtatsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('etats');
+        Schema::dropIfExists('Etat');
     }
 }

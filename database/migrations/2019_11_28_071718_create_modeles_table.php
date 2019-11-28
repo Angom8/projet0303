@@ -13,9 +13,12 @@ class CreateModelesTable extends Migration
      */
     public function up()
     {
-        Schema::create('modeles', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+        Schema::create('Modele', function (Blueprint $table) {
+ 	    $table->engine = 'InnoDB';
+	    $table->charset = 'utf8';
+
+            $table->bigIncrements('id_modele');
+	    $table->string('nom_modele');
         });
     }
 
@@ -26,6 +29,6 @@ class CreateModelesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('modeles');
+        Schema::dropIfExists('Modele');
     }
 }

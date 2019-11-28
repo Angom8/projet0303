@@ -13,9 +13,12 @@ class CreateMarquesTable extends Migration
      */
     public function up()
     {
-        Schema::create('marques', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+        Schema::create('Marque', function (Blueprint $table) {
+ 	    $table->engine = 'InnoDB';
+	    $table->charset = 'utf8';
+
+            $table->bigIncrements('id_marque');
+	    $table->string('nom_marque');
         });
     }
 
@@ -26,6 +29,6 @@ class CreateMarquesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('marques');
+        Schema::dropIfExists('Marque');
     }
 }

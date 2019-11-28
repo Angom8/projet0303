@@ -13,9 +13,12 @@ class CreateTypePiecesTable extends Migration
      */
     public function up()
     {
-        Schema::create('type_pieces', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+        Schema::create('Type_piece', function (Blueprint $table) {
+ 	    $table->engine = 'InnoDB';
+	    $table->charset = 'utf8';
+
+            $table->bigIncrements('id_type_piece');
+	    $table->string('nom_type_piece');
         });
     }
 
@@ -26,6 +29,6 @@ class CreateTypePiecesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('type_pieces');
+        Schema::dropIfExists('Type_piece');
     }
 }
