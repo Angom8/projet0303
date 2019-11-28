@@ -13,9 +13,12 @@ class CreateEntretiensTable extends Migration
      */
     public function up()
     {
-        Schema::create('entretiens', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+        Schema::create('Entretien', function (Blueprint $table) {
+	    $table->engine = 'InnoDB';
+	    $table->charset = 'utf8';
+
+            $table->bigIncrements('id_entretien');
+	    $table->time('date_entretien');
         });
     }
 
@@ -26,6 +29,6 @@ class CreateEntretiensTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('entretiens');
+        Schema::dropIfExists('Entretien');
     }
 }

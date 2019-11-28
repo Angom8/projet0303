@@ -13,8 +13,16 @@ class CreateFournisseursTable extends Migration
      */
     public function up()
     {
-        Schema::create('fournisseurs', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('Fournisseur', function (Blueprint $table) {
+ 	    $table->engine = 'InnoDB';
+	    $table->charset = 'utf8';
+
+            $table->bigIncrements('id_fourni');
+
+  	    $table->string('mail_fourni')->unique();
+            $table->string('nom_fourni');
+	    $table->string('tel_fourni');
+
             $table->timestamps();
         });
     }
@@ -26,6 +34,6 @@ class CreateFournisseursTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fournisseurs');
+        Schema::dropIfExists('Fournisseur');
     }
 }

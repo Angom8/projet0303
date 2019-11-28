@@ -13,9 +13,21 @@ class CreateEquipementsTable extends Migration
      */
     public function up()
     {
-        Schema::create('equipements', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('Equipement', function (Blueprint $table) {
+ 	    $table->engine = 'InnoDB';
+	    $table->charset = 'utf8';
+
+            $table->bigIncrements('id_equipement');
             $table->timestamps();
+
+	    $table->time('revision_periodique_equip')->nullable();
+	    $table->time('duree_vie_equip')->nullable();
+
+	    $table->integer('quantite_equip');
+	    $table->boolean('equip_origine');
+	    $table->integer('q_equip_rechange')->nullable();
+		
+	    //foreign id_type_equip 1_1
         });
     }
 
@@ -26,6 +38,6 @@ class CreateEquipementsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('equipements');
+        Schema::dropIfExists('Equipement');
     }
 }

@@ -6,39 +6,21 @@ Requêtes à faire (FORMAT LARAVEL + Algèbre);
 8- Obtenir tous les entretiens ayant concernes la voile d'un bateau de l'utilisateur de login 'abc'
 9- Déterminer la date de prochain entretien d'un bateau de l'utilisateur de login 'abc'
 
-1-
-	Fournisseur
-	SELECT * FROM Fournisseur
-	
-2-
-	Utilisateurs
-	SELECT * FROM Utilisateur
 
-3-
-	Bateau
-	SELECT * FROM Bateau
-	
-4-
-	car = caracteristique = "nb_mat, surface_voilure, dimension_x_bateau, dimension_y_bateau, distance_eloignement, volume_coque, force_vent_max, hauteur_max_vagues, dimension_z_bateau, consommation, niveau_reserve, nb_places, date_construction, auto_videur, niveau_carburant_max, niveau_performance, url_photo_Bateau, jauge_brut, masse_navire, hors_bord, francise, niveau_huile, niveau_liquide_refroidissement"
-
-	s=sigma
-	p=pi
-	r=ro
-	
-
-	p{car}( (p{id_user}(s{login='abc'}(USER))) |><|{Id_User} (POSSEDE) |><|{ID_BOAT} ((bateau)) )
-
-	SELECT car  FROM Bateau 
-	SELECT Id_User FROM USER WHERE USER.LOGIN LIKE 'abc'
 
 5-
 	(p{id_port}(s{id='my_port'}(PORT))) |><|{id_port} (BATEAU)
 6-																									
 	p{desc_etat}(  (p{id_user}(s{login='abc'}(USERS))) |><|{id_user} (POSSEDE) |><|{id_boat} (p{id_boat, id_moteur}(BATEAU)) |><|{id_moteur} (p{id_moteur, id_equipement}(MOTEUR)) |><|{id_equipement} (p{id_equipement, id_etat}(EQUIPEMENT)) |><|{id_etat} (ETAT)   )
-7-																													
-	p{revision_periodique_equip}(  (p{id_user}(s{login='abc'}(USERS))) |><|{id_user} (POSSEDE) |><|{id_boat} (p{id_boat, id_moteur}(BATEAU)) |><|{id_moteur} (p{id_moteur, id_equipement}(MOTEUR)) |><|{id_equipement} (p{id_equipement, revision_periodique_equip}(EQUIPEMENT))
-	p{date_entretien}(  (p{id_user}(s{login='abc'}(USERS))) |><|{id_user} (POSSEDE) |><|{id_boat} (p{id_boat, id_moteur}(BATEAU)) |><|{id_moteur} (p{id_moteur, id_equipement}(MOTEUR)) |><|{id_equipement} (p{id_equipement}(EQUIPEMENT)) |><|{id_equipement}(CONCERNE) |><|{id_entretient} (ENTRETIENT)   )
+7-						
+																							
+	p{revision_periodique_equip}(  (p{id_user}(s{login='abc'}(USERS))) |><|{id_user} (POSSEDE) |><|{id_boat} (p{id_boat, id_moteur}(BATEAU)) |><|{id_moteur}
+	(p{id_moteur, id_equipement}(MOTEUR)) |><|{id_equipement} (p{id_equipement, revision_periodique_equip}(EQUIPEMENT))
+	
+	p{date_entretien}(  (p{id_user}(s{login='abc'}(USERS))) |><|{id_user} (POSSEDE) |><|{id_boat} (p{id_boat, id_moteur}(BATEAU)) |><|{id_moteur} (p{id_moteur, id_equipement}(MOTEUR)) 
+	|><|{id_equipement} (p{id_equipement}(EQUIPEMENT)) |><|{id_equipement}(CONCERNE) |><|{id_entretient} (ENTRETIENT)   )
 8-																																
-	(  (p{id_user}(s{login='abc'}(USERS))) |><|{id_user} (POSSEDE) |><|{id_boat} (p{id_boat, id_moteur}(BATEAU)) |><|{id_bateau} (COMPORTE) |><|{id_equipement} (p{id_equipement, id_etat}((EQUIPEMENT))   |><|{id_type_equipement} s{nom_type_equipement=voile}(TYPE_EQUIPEMENT) ) |><|{id_equipement}(CONCERNE) |><|{id_entretient} (ENTRETIENT)   )
+	(  (p{id_user}(s{login='abc'}(USERS))) |><|{id_user} (POSSEDE) |><|{id_boat} (p{id_boat, id_moteur}(BATEAU)) |><|{id_bateau} (COMPORTE) |><|{id_equipement} (p{id_equipement, id_etat}((EQUIPEMENT))   |><|{id_type_equipement} 
+	s{nom_type_equipement=voile}(TYPE_EQUIPEMENT) ) |><|{id_equipement}(CONCERNE) |><|{id_entretient} (ENTRETIENT)   )
 9-																																				
 	p{id_user}(s{login='abc'}(USER)))

@@ -13,9 +13,12 @@ class CreatePermisTable extends Migration
      */
     public function up()
     {
-        Schema::create('permis', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+        Schema::create('Permis', function (Blueprint $table) {
+ 	    $table->engine = 'InnoDB';
+	    $table->charset = 'utf8';
+
+            $table->bigIncrements('id_permis');
+	    $table->string('nom_permis');
         });
     }
 
@@ -26,6 +29,6 @@ class CreatePermisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('permis');
+        Schema::dropIfExists('Permis');
     }
 }

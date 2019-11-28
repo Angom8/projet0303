@@ -13,9 +13,16 @@ class CreateAdressesTable extends Migration
      */
     public function up()
     {
-        Schema::create('adresses', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+        Schema::create('Adresse', function (Blueprint $table) {
+ 	    $table->engine = 'InnoDB';
+	    $table->charset = 'utf8';
+
+            $table->bigIncrements('id_adresse');
+
+	    $table->string('numero_adresse');//en cas de bis/ter
+	    $table->string('voierie');
+
+	    //foreign : id_ville 1-1
         });
     }
 
@@ -26,6 +33,6 @@ class CreateAdressesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('adresses');
+        Schema::dropIfExists('Adresse');
     }
 }
