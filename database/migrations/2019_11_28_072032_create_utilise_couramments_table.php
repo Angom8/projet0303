@@ -13,9 +13,7 @@ class CreateUtiliseCourammentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('utilise_couramments', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+        Schema::create('Utilise_couramment', function (Blueprint $table) {
         });
     }
 
@@ -26,6 +24,6 @@ class CreateUtiliseCourammentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('utilise_couramments');
+        Schema::dropIfExists('Utilise_couramment');
     }
 }

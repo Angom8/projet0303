@@ -13,9 +13,8 @@ class CreateAPassésTable extends Migration
      */
     public function up()
     {
-        Schema::create('a_passés', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+        Schema::create('A_passé', function (Blueprint $table) {
+//
         });
     }
 
@@ -26,6 +25,6 @@ class CreateAPassésTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('a_passés');
+        Schema::dropIfExists('A_passé');
     }
 }

@@ -13,9 +13,18 @@ class CreateVillesTable extends Migration
      */
     public function up()
     {
-        Schema::create('villes', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+        Schema::create('Ville', function (Blueprint $table) {
+ 	    $table->engine = 'InnoDB';
+	    $table->charset = 'utf8';
+
+            $table->bigIncrements('id_ville');
+
+	    $table->string('nom_ville');
+
+	    $table->integer('code_postal');
+
+		//foreign : pays 1-1
+
         });
     }
 
@@ -26,6 +35,6 @@ class CreateVillesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('villes');
+        Schema::dropIfExists('Ville');
     }
 }

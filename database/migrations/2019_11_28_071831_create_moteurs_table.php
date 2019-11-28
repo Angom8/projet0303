@@ -13,9 +13,17 @@ class CreateMoteursTable extends Migration
      */
     public function up()
     {
-        Schema::create('moteurs', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+        Schema::create('Moteur', function (Blueprint $table) {
+ 	    $table->engine = 'InnoDB';
+	    $table->charset = 'utf8';
+
+            $table->bigIncrements('id_moteur');
+
+            $table->float('puissance_moteur', 8, 2);
+            $table->float('kilometrage', 8, 2);
+            $table->float('horametre_compte', 8, 2);
+
+	    //foreign : equipment 1-1
         });
     }
 
@@ -26,6 +34,6 @@ class CreateMoteursTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('moteurs');
+        Schema::dropIfExists('Moteur);
     }
 }

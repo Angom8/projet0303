@@ -13,9 +13,15 @@ class CreateAccidentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('accidents', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+        Schema::create('Accident', function (Blueprint $table) {
+ 	    $table->engine = 'InnoDB';
+	    $table->charset = 'utf8';
+
+            $table->bigIncrements('id_accident');
+	    $table->time('date_accident');
+	    $table->integer('nb_mort')->nullable();
+	    $table->integer('nb_bless')->nullable();
+
         });
     }
 
@@ -26,6 +32,6 @@ class CreateAccidentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('accidents');
+        Schema::dropIfExists('Accident');
     }
 }

@@ -13,9 +13,7 @@ class CreateEstImpliquésTable extends Migration
      */
     public function up()
     {
-        Schema::create('est_impliqués', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+        Schema::create('Est_impliqué', function (Blueprint $table) {
         });
     }
 
@@ -26,6 +24,6 @@ class CreateEstImpliquésTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('est_impliqués');
+        Schema::dropIfExists('Est_impliqué');
     }
 }

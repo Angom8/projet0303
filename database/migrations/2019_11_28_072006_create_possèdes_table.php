@@ -13,9 +13,8 @@ class CreatePossèdesTable extends Migration
      */
     public function up()
     {
-        Schema::create('possèdes', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+        Schema::create('Possède', function (Blueprint $table) {
+            //
         });
     }
 
@@ -26,6 +25,6 @@ class CreatePossèdesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('possèdes');
+        Schema::dropIfExists('Possède');
     }
 }

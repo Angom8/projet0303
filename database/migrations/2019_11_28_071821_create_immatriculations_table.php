@@ -13,9 +13,16 @@ class CreateImmatriculationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('immatriculations', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+        Schema::create('Immatriculation', function (Blueprint $table) {
+ 	    $table->engine = 'InnoDB';
+	    $table->charset = 'utf8';
+
+            $table->string('id_immatr');
+	    $table->primary('id_immatr');
+
+	    $table->time('date_immatr');
+
+	    //foreign : bateau 1-1
         });
     }
 
@@ -26,6 +33,6 @@ class CreateImmatriculationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('immatriculations');
+        Schema::dropIfExists('Immatriculation');
     }
 }

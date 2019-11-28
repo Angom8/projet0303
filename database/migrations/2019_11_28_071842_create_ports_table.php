@@ -13,9 +13,16 @@ class CreatePortsTable extends Migration
      */
     public function up()
     {
-        Schema::create('ports', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+        Schema::create('Port', function (Blueprint $table) {
+ 	    $table->engine = 'InnoDB';
+	    $table->charset = 'utf8';
+
+            $table->bigIncrements('id_port');
+
+            $table->float('latt_port', 8, 2);
+            $table->float('long_port', 8, 2);
+
+	    //foreign : adresse
         });
     }
 
@@ -26,6 +33,6 @@ class CreatePortsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ports');
+        Schema::dropIfExists('Port');
     }
 }

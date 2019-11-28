@@ -13,9 +13,7 @@ class CreateNecessitesTable extends Migration
      */
     public function up()
     {
-        Schema::create('necessites', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+        Schema::create('Necessite', function (Blueprint $table) {
         });
     }
 
@@ -26,6 +24,6 @@ class CreateNecessitesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('necessites');
+        Schema::dropIfExists('Necessite');
     }
 }
