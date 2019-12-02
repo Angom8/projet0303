@@ -21,7 +21,7 @@ class CreateUtilisateursTable extends Migration
 
             $table->string('login')->unique();
             $table->string('password')->unique();
-	    $table->int('type_utilisateur');
+	    $table->integer('type_utilisateur');
   	    $table->string('mail_utilisateur')->unique();
 
             $table->string('nom_utilisateur');

@@ -13,9 +13,9 @@ class CreateEstLocalisésTable extends Migration
      */
     public function up()
     {
-        Schema::create('est_localisés', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+        Schema::create('Est_localisé', function (Blueprint $table) {
+		$table->engine = 'InnoDB';
+            	$table->increments('id_est_localise');
         });
     }
 
@@ -26,6 +26,6 @@ class CreateEstLocalisésTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('est_localisés');
+        Schema::dropIfExists('Est_localisé');
     }
 }

@@ -13,9 +13,9 @@ class CreateProduitParsTable extends Migration
      */
     public function up()
     {
-        Schema::create('produit_pars', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+        Schema::create('Produit_par', function (Blueprint $table) {
+		$table->engine = 'InnoDB';
+            	$table->increments('id_produit_par');
         });
     }
 
@@ -26,6 +26,6 @@ class CreateProduitParsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('produit_pars');
+        Schema::dropIfExists('Produit_par');
     }
 }

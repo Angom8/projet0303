@@ -13,9 +13,9 @@ class CreateEstDansTable extends Migration
      */
     public function up()
     {
-        Schema::create('est_dans', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+        Schema::create('Est_dans', function (Blueprint $table) {
+		$table->engine = 'InnoDB';
+            	$table->increments('id_est_dans');
         });
     }
 
@@ -26,6 +26,6 @@ class CreateEstDansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('est_dans');
+        Schema::dropIfExists('Est_dans');
     }
 }

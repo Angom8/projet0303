@@ -13,8 +13,10 @@ class CreatePossèdesTable extends Migration
      */
     public function up()
     {
-        Schema::create('Possède', function (Blueprint $table) {
-            //
+        Schema::create('Possede', function (Blueprint $table) {
+		$table->engine = 'InnoDB';
+            	$table->increments('id_possede');
+
         });
     }
 
@@ -25,6 +27,6 @@ class CreatePossèdesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Possède');
+        Schema::dropIfExists('Possede');
     }
 }

@@ -13,9 +13,9 @@ class CreateContientsTable extends Migration
      */
     public function up()
     {
-        Schema::create('contients', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+        Schema::create('Contient', function (Blueprint $table) {
+		$table->engine = 'InnoDB';
+            	$table->increments('id_contient');
         });
     }
 
@@ -26,6 +26,6 @@ class CreateContientsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contients');
+        Schema::dropIfExists('Contient');
     }
 }

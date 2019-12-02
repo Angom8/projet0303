@@ -13,9 +13,9 @@ class CreateFournitsTable extends Migration
      */
     public function up()
     {
-        Schema::create('fournits', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+        Schema::create('Fournit', function (Blueprint $table) {
+		$table->engine = 'InnoDB';
+            	$table->increments('id_fournit');
         });
     }
 
@@ -26,6 +26,6 @@ class CreateFournitsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fournits');
+        Schema::dropIfExists('Fournit');
     }
 }

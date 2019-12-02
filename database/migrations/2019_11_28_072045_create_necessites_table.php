@@ -14,6 +14,8 @@ class CreateNecessitesTable extends Migration
     public function up()
     {
         Schema::create('Necessite', function (Blueprint $table) {
+		$table->engine = 'InnoDB';
+            	$table->increments('id_necessite');
         });
     }
 

@@ -13,9 +13,9 @@ class CreateReçoitsTable extends Migration
      */
     public function up()
     {
-        Schema::create('reçoits', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+        Schema::create('Reçoit', function (Blueprint $table) {
+		$table->engine = 'InnoDB';
+            	$table->increments('id_recoit');
         });
     }
 
@@ -26,6 +26,6 @@ class CreateReçoitsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reçoits');
+        Schema::dropIfExists('Reçoit');
     }
 }

@@ -13,9 +13,9 @@ class CreateEstComposésTable extends Migration
      */
     public function up()
     {
-        Schema::create('est_composés', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+        Schema::create('Est_composé', function (Blueprint $table) {
+		$table->engine = 'InnoDB';
+            	$table->increments('id_est_compose');
         });
     }
 
@@ -26,6 +26,6 @@ class CreateEstComposésTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('est_composés');
+        Schema::dropIfExists('Est_composé');
     }
 }

@@ -13,9 +13,9 @@ class CreateEstRenseignéSousesTable extends Migration
      */
     public function up()
     {
-        Schema::create('est_renseigné_souses', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+        Schema::create('Est_renseigné_sous', function (Blueprint $table) {
+		$table->engine = 'InnoDB';
+            	$table->increments('id_est_renseigne_sous');
         });
     }
 
@@ -26,6 +26,6 @@ class CreateEstRenseignéSousesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('est_renseigné_souses');
+        Schema::dropIfExists('Est_renseigné_sous');
     }
 }

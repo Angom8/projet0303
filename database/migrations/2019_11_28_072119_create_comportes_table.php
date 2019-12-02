@@ -13,9 +13,9 @@ class CreateComportesTable extends Migration
      */
     public function up()
     {
-        Schema::create('comportes', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+        Schema::create('Comporte', function (Blueprint $table) {
+		$table->engine = 'InnoDB';
+            	$table->increments('id_comporte');
         });
     }
 
@@ -26,6 +26,6 @@ class CreateComportesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comportes');
+        Schema::dropIfExists('Comporte');
     }
 }

@@ -13,9 +13,9 @@ class CreateConcernesTable extends Migration
      */
     public function up()
     {
-        Schema::create('concernes', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+        Schema::create('Concerne', function (Blueprint $table) {
+		$table->engine = 'InnoDB';
+            	$table->increments('id_concerne');
         });
     }
 
@@ -26,6 +26,6 @@ class CreateConcernesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('concernes');
+        Schema::dropIfExists('Concerne');
     }
 }
