@@ -8,8 +8,17 @@
 
 
 /*Non logged pages*/
+Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');
+/*Route::get('profile', function () {
+     Only authenticated users may enter...
+})->middleware('auth');*/
 
 Route::get('/', function () {//init
+    return view('home');
+});
+Route::get('/home', function () {//init
     return view('home');
 });
 
@@ -17,9 +26,6 @@ Route::get('contact', function () {//init
     return view('contact');
 });
 
-Route::get('login', function () {//gen auto
-    return view('login');
-});
 
 Route::get('signin', function () {//gen auto
     return view('signin');
