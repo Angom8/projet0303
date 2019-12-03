@@ -28,11 +28,12 @@
 
   <div class="collapse navbar-collapse" id="navbarsExample04">
     <ul class="navbar-nav  ml-auto">
-<li class="nav-item {{ (strpos(Route::currentRouteName(), 'hhome') == 1) ? 'active' : '' }}">
+<li class="nav-item {{ url()->current() === url('/') ? 'active' : '' }}">
         <a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Accueil" href="{{ url('/') }}">Accueil</a>
       </li>
-      <li class="nav-item {{ (strpos(Route::currentRouteName(), 'hcontact') == 1) ? 'active' : '' }} ">
+      <li class="nav-item {{ (stripos(url()->current(), 'contact') != FALSE) ? 'active' : '' }} ">
         <a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Contact" href="{{ url('/contact') }}">Contact</a>
+</li>
 
                         @guest
                             <li class="nav-item">
@@ -57,7 +58,7 @@
                                 </div>
                             </li>
 			<li class="nav-item">
-				<a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Accéder à mon panel" href="{{ url('/mypanel') }}">Panel de gestion</a>
+				<a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Accéder à mon panel" href="{{ url('/mypanel') }}">Panel de gestion </a>
 			      </li>
 			
                         	@endguest

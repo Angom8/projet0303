@@ -22,6 +22,8 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
+	protected $table = 'Utilisateur';
+
 
     /**
      * Where to redirect users after registration.
