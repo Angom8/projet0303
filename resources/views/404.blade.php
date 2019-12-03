@@ -1,12 +1,12 @@
-<?php
-getHTMLHead("Erreur 404");
-
-getNavBar("Erreur 404");
-?>
+@extends('layouts.app')
+@section('title')
+Erreur 404
+@endsection
+@section('content')
 
 <main>
 
-	<?php getLogoSection(); ?>
+	{{ getLogoSection() }}
 
 		<section id="jumbotron">
 			<div class="jumbotron">
@@ -18,10 +18,4 @@ getNavBar("Erreur 404");
 
 </main>
 
-<?php
-
-getFooter('external');
-
-getHTMLFooter();
-
-?>
+@endsection

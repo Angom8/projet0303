@@ -1,13 +1,13 @@
-<?php
-getHTMLHead("Accueil");
-
-getNavBar("Accueil");
-?>
+@extends('layouts.app')
+@section('title')
+Accueil
+@endsection
+@section('content')
 
 <main>
 
-	<?php getLogoSection(); ?>
-	<?php getExtButtons(); ?>
+	{{ getLogoSection() }}
+	{{ getExtButtons() }}
 
 		<section id="jumbotron">
 			<div class="jumbotron">
@@ -19,10 +19,4 @@ getNavBar("Accueil");
 
 </main>
 
-<?php
-
-getFooter('external');
-
-getHTMLFooter();
-
-?>
+@endsection

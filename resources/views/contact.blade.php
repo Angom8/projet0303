@@ -1,8 +1,8 @@
-<?php
-getHTMLHead("Contact");
-
-getNavBar("Contact");
-?>
+@extends('layouts.app')
+@section('title')
+Contact
+@endsection
+@section('content')
 
 <main>
 
@@ -53,12 +53,6 @@ getNavBar("Contact");
 		</div>
 	</div>
 
-</main>
+</main>		
 
-<?php
-
-getFooter('external');
-
-getHTMLFooter();
-
-?>					  
+@endsection		  
