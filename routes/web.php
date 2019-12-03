@@ -39,8 +39,8 @@ Route::get('logout', function () {//gen auto
 /*do an auto redirection to match user-type and panel*/
 
 Route::get('mypanel', function () {//
-    return view('redirect-login');
-});
+    return view('user-global');
+})->middleware('auth');
 
 /*Type Admin user pages*/
 

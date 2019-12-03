@@ -17,7 +17,7 @@ class CreateUtilisateursTable extends Migration
  	    $table->engine = 'InnoDB';
 	    $table->charset = 'utf8';
 
-            $table->bigIncrements('id_utilisateur');
+            $table->bigIncrements('id');
 
             $table->string('login')->unique();
             $table->string('password')->unique();
@@ -27,7 +27,6 @@ class CreateUtilisateursTable extends Migration
             $table->string('nom_utilisateur');
             $table->string('prenom_utilisateur');
 	    $table->string('tel_utilisateur');
-	    $table->time('email_verified_at');
 
 	    //foreign : id_adresse 1-1
             $table->rememberToken();
