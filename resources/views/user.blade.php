@@ -1,8 +1,8 @@
-<?php
-getHTMLHead("Utilisateur");
-
-getAdmNavBar("Utilisateur", "admin");
-?>
+@extends('layouts.admin')
+@section('title')
+Adhérent
+@endsection
+@section('content')
 
 <main>
 	<div class ="content">
@@ -12,10 +12,4 @@ getAdmNavBar("Utilisateur", "admin");
 		</div>
 	 </div>
  </main>
-<?php
-
-getFooter('external');
-
-getHTMLFooter();
-
-?>
+@endsection

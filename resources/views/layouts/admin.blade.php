@@ -37,8 +37,13 @@
 			<li class="nav-item  {{ url()->current() === url('/mypanel') ? 'active' : '' }}">
 				<a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Accéder à mon panel" href="{{ url('/mypanel') }}">Mon panel</a>
 			      </li>
+			@if(Auth::user()->type_utilisateur==2)
+					<li class="nav-item">
+					<a class="nav-link {{ url()->current() === url('/admin/messages') ? 'active' : '' }}" data-toggle="tooltip" data-placement="bottom" title="Mes messages" href="{{ url('/admin/messages') }}">Messages</a>
+				      </li>
 
-			@if(Auth::user()->type_utilisateur==1)
+			@endif
+			@if(Auth::user()->type_utilisateur==1 or Auth::user()->type_utilisateur==2 )
 			<li class="nav-item {{ url()->current() === url('/helper/users') ? 'active' : '' }}">
 					<a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Utilisateurs" href="{{ url('/helper/users') }}">Utilisateurs</a>
 				      </li>
@@ -46,7 +51,6 @@
 					<a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Ajouter un Utilisateur" href="{{ url('/helper/add-user') }}">Ajouter un utilisateur</a>
 				     </li>
 
-			@else
 			@endif
 			@guest
                         
@@ -80,10 +84,7 @@
    		 </ul>
   </div>
         </nav>
-
-        <main class="py-4">
             @yield('content')
-        </main>
     </div>
 <footer class="text-center external-footer">
 		<p style="padding-top:10px">2019 - Tous droits réservés - <a href="{{ url('contact') }}">Informations sur vos données et les Autorisations légales</a></p>

@@ -1,9 +1,8 @@
-<?php
-getHTMLHead("Messages");
-
-getAdmNavBar("Messages", "admin");
-?>
-
+@extends('layouts.admin')
+@section('title')
+Mes Messages
+@endsection
+@section('content')
 <main>
 	<div class ="content">
 		<div class="container">
@@ -49,10 +48,4 @@ getAdmNavBar("Messages", "admin");
 		</div>
 	 </div>
  </main>
-<?php
-
-getFooter('external');
-
-getHTMLFooter();
-
-?>
+@endsection
