@@ -21,7 +21,7 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-  <a class="navbar-brand" href=" {{ url()->current() === url('/') ? '#' : url('/') }}">Omonbatôô</a>
+  <a class="navbar-brand" href="{{ url()->current() === url('/mypanel') ? '#' : url('/mypanel') }}">Omonbatôô</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -29,13 +29,27 @@
   <div class="collapse navbar-collapse" id="navbarsExample04">
     <ul class="navbar-nav  ml-auto">
 <li class="nav-item {{ url()->current() === url('/') ? 'active' : '' }}">
-        <a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Accueil" href="{{ url('/') }}">Accueil</a>
+        <a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Accueil" href="{{ url('/') }}">Accueil du site</a>
       </li>
       <li class="nav-item {{ (stripos(url()->current(), 'contact') != FALSE) ? 'active' : '' }} ">
         <a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Contact" href="{{ url('/contact') }}">Contact</a>
 </li>
+			<li class="nav-item  {{ url()->current() === url('/mypanel') ? 'active' : '' }}">
+				<a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Accéder à mon panel" href="{{ url('/mypanel') }}">Mon panel</a>
+			      </li>
 
-                        @guest
+			@if(Auth::user()->type_utilisateur==1)
+			<li class="nav-item {{ url()->current() === url('/helper/users') ? 'active' : '' }}">
+					<a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Utilisateurs" href="{{ url('/helper/users') }}">Utilisateurs</a>
+				      </li>
+				<li class="nav-item {{ url()->current() === url('/helper/add-user') ? 'active' : '' }}">
+					<a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Ajouter un Utilisateur" href="{{ url('/helper/add-user') }}">Ajouter un utilisateur</a>
+				     </li>
+
+			@else
+			@endif
+			@guest
+                        
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Se connecter" href="{{ route('login') }}">{{ __('Se connecter') }}</a>
                             </li>
@@ -46,6 +60,10 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+				<a class="dropdown-item" data-placement="bottom" title="Mes bateaux" href="{{ url('/panel/boats') }}">Mes bateaux</a>
+
+				<a class="dropdown-item" data-placement="bottom" title="Fournisseurs" href="{{ url('/panel/fournisseurs') }}">Les fournisseurs</a>
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -57,9 +75,6 @@
                                     </form>
                                 </div>
                             </li>
-			<li class="nav-item">
-				<a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Accéder à mon panel" href="{{ url('/mypanel') }}">Panel de gestion </a>
-			      </li>
 			
                         	@endguest
    		 </ul>
