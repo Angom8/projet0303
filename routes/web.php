@@ -58,9 +58,9 @@ Route::get('helper/', function () {//init
     return view('user-global');
 })->middleware('auth');
 
-Route::get('helper/users', function () {//init
-    return view('users');
-})->middleware('auth');
+Route::get('helper/users',  ['uses' =>'ListesController@getUtilisateurs', 'as'=>'users'])->middleware('auth');
+
+Route::get('helper/users/{id}',  ['uses' =>'ListesController@getUtilisateurs', 'as'=>'users'])->middleware('auth');
 
 Route::get('helper/user', function () {
     return view('user');

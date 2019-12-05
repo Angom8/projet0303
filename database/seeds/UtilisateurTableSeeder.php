@@ -5,9 +5,9 @@ class UtilisateurTableSeeder extends Seeder {
     public function run()
     {
         $faker = Faker\Factory::create('fr_FR');
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 50; $i++) {
             $user = new Utilisateur;
-	    $user->login = $faker->lastName;
+	    $user->login = $faker->unique()->lastName;
             $user->nom_utilisateur = $faker->lastName;
             $user->prenom_utilisateur = $faker->firstName;
             $user->mail_utilisateur = $faker->unique()->email;

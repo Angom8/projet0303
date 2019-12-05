@@ -44,7 +44,7 @@
 
 			@endif
 			@if(Auth::user()->type_utilisateur==1 or Auth::user()->type_utilisateur==2 )
-			<li class="nav-item {{ url()->current() === url('/helper/users') ? 'active' : '' }}">
+			<li class="nav-item {{ (stripos(url()->current(), 'users') != FALSE) ? 'active' : '' }}">
 					<a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Utilisateurs" href="{{ url('/helper/users') }}">Utilisateurs</a>
 				      </li>
 				<li class="nav-item {{ url()->current() === url('/helper/add-user') ? 'active' : '' }}">
