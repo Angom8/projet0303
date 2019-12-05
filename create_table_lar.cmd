@@ -1,34 +1,34 @@
-php artisan make:model Piece --controller --resource
-php artisan make:model Bateau --controller --resource
-php artisan make:model Utilisateur --controller --resource
-php artisan make:model Entretien --controller --resource
-php artisan make:model Adresse --controller --resource
-php artisan make:model Equipement --controller --resource
-php artisan make:model permis --controller --resource
-php artisan make:model Fournisseur --controller --resource
-php artisan make:model Etat --controller --resource
-php artisan make:model Modele --controller --resource
-php artisan make:model Marque --controller --resource
-php artisan make:model Typiece --controller --resource
-php artisan make:model Typequipement --controller --resource
-php artisan make:model Immatriculation --controller --resource
-php artisan make:model Moteur --controller --resource
-php artisan make:model Port --controller --resource
-php artisan make:model Accident --controller --resource
-php artisan make:model Ville --controller --resource
-php artisan make:model Pays --controller --resource
-php artisan make:model Possède --controller --resource
-php artisan make:model A_passé --controller --resource
-php artisan make:model utilise_couramment --controller --resource
-php artisan make:model Necessite --controller --resource
-php artisan make:model est_impliqué --controller --resource
-php artisan make:model contient --controller --resource
-php artisan make:model comporte --controller --resource
-php artisan make:model reçoit --controller --resource
-php artisan make:model concerne --controller --resource
-php artisan make:model est_composé --controller --resource
-php artisan make:model produit_par --controller --resource
-php artisan make:model est_renseigné_sous --controller --resource
-php artisan make:model fournit --controller --resource
-php artisan make:model est_localisé --controller --resource
-php artisan make:model est_dans --controller --resource
+php artisan make:model Piece -a
+php artisan make:model Bateau -a
+php artisan make:model Utilisateur -a
+php artisan make:model Entretien -a
+php artisan make:model Adresse -a
+php artisan make:model Equipement -a
+php artisan make:model permis -a
+php artisan make:model Fournisseur -a
+php artisan make:model Etat -a
+php artisan make:model Modele -a
+php artisan make:model Marque -a
+php artisan make:model Typiece -a
+php artisan make:model Typequipement -a
+php artisan make:model Immatriculation -a
+php artisan make:model Moteur -a
+php artisan make:model Port -a
+php artisan make:model Accident -a
+php artisan make:model Ville -a
+php artisan make:model Pays -a
+php artisan make:model Possède -a
+php artisan make:model A_passé -a
+php artisan make:model utilise_couramment -a
+php artisan make:model Necessite -a
+php artisan make:model est_impliqué -a
+php artisan make:model contient -a
+php artisan make:model comporte -a
+php artisan make:model reçoit -a
+php artisan make:model concerne -a
+php artisan make:model est_composé -a
+php artisan make:model produit_par -a
+php artisan make:model est_renseigné_sous -a
+php artisan make:model fournit -a
+php artisan make:model est_localisé -a
+php artisan make:model est_dans -a
