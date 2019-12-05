@@ -10,11 +10,6 @@
 /*Non logged pages*/
 Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home');
-/*Route::get('profile', function () {
-     Only authenticated users may enter...
-})->middleware('auth');*/
-
 Route::get('/', function () {//init
     return view('home');
 });
@@ -76,9 +71,15 @@ Route::get('panel/', function () {//init
     return view('user-global');
 })->middleware('auth');
 
-Route::get('panel/fournisseurs', function () {//init
+
+Route::get('panel/fournisseurs',  ['uses' =>'ListesController@getFournisseurs', 'as'=>'fourni'])->middleware('auth');
+
+Route::get('panel/fournisseurs/{id}',  ['uses' =>'ListesController@getFournisseurs', 'as'=>'fourni'])->middleware('auth');
+
+
+/*Route::get('panel/fournisseurs', function () {//init
     return view('fournisseurs');
-})->middleware('auth');
+})->middleware('auth');*/
 
 Route::get('panel/fournisseur', function () {
     return view('fournisseur');
