@@ -22,41 +22,39 @@ Fournisseurs
 		      </tr>
 		    </thead>
 		    <tbody>
+			@foreach($fournisseurs as $fourni)
 		      <tr>
-			<td>Makoulie</td>
-			<td>16/08/2019</td>
-			<td>4</td>
-			<td>0000000</td>
+			<td>{{ $fourni->nom_fourni }}</td>
+			<td>{{ $fourni->created_at }}</td>
+			<td>NaN</td>
+			<td>{{ $fourni->id_fourni }}</td>
 			<td class="text-center">
 				<button type="button" class="btn btn-secondary">Voir</button>
 				<button type="button" class="btn btn-danger">Supprimer</button>
 			</td>
-
-		      </tr>
-		      <tr>
-			<td>TouhWater</td>
-			<td>16/10/2019</td>
-			<td>1</td>
-			<td>0000001</td>
-			<td class="text-center">
-				<button type="button" class="btn btn-secondary">Voir</button>
-				<button type="button" class="btn btn-danger">Supprimer</button>
-			</td>
-
-		      </tr>
-		      <tr>
-			<td>MaryEnterprises</td>
-			<td>16/09/2019</td>
-			<td>1141</td>
-			<td>0000002</td>
-			<td class="text-center">
-				<button type="button" class="btn btn-secondary">Voir</button>
-				<button type="button" class="btn btn-danger">Supprimer</button>
-			</td>
-
-		      </tr>
+			</tr>
+			@endforeach
 		    </tbody>
 		  </table>
+<nav aria-label="page navigation">
+		  <ul class="pagination justify-content-end">
+		    <li class="page-item">
+		      <a class="btn btn-secondary" href="{{ url('/panel/fournisseurs/') }}" tabindex="-2">Premier</a>
+		    </li>
+		    <li class="page-item @if($previous == 0) disabled @endif">
+		      <a class="btn btn-outline-info" href="{{ $previous!=0 ?  url('/panel/fournisseurs/'.($previous)) : '#' }}" tabindex="-1">Précédent</a>
+		    </li>
+		    <li class="page-item"><a class="btn btn-outline-dark" href="{{ url('/panel/fournisseurs/'.($page)) }}">{{ $page }}</a></li>
+		    @if(($page+1)*10<=$max) <li class="page-item"><a class="btn btn-outline-dark" href="{{ url('/panel/fournisseurs/'.($page+1)) }}">{{ ($page+1) }}</a></li>@endif
+		    @if(($page+2)*10<=$max)<li class="page-item"><a class="btn btn-outline-dark" href="{{ url('/panel/fournisseurs/'.($page+2)) }}">{{ ($page+2) }}</a></li>@endif
+		    <li class="page-item @if($next) @else disabled @endif">
+		      <a class="btn btn-outline-info" href="{{ $next ? url('/panel/fournisseurs/'.($next)) : '#' }}">Suivant</a>
+		    </li>
+		    <li class="page-item">
+		      <a class="btn btn-secondary" href="{{ url('/panel/fournisseurs/'.$max) }}">Dernier</a>
+		    </li>
+		  </ul>
+</nav>
 		</div>
 	 </div>
  </main>

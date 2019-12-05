@@ -20,7 +20,7 @@ class CreateUtilisateursTable extends Migration
             $table->bigIncrements('id');
 
             $table->string('login')->unique();
-            $table->string('password')->unique();
+            $table->string('password');
 	    $table->integer('type_utilisateur');
   	    $table->string('mail_utilisateur')->unique();
 

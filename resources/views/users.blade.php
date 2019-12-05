@@ -38,6 +38,26 @@ Utilisateurs
 			@endforeach
 		    </tbody>
 		  </table>
+
+		<nav aria-label="page navigation">
+		  <ul class="pagination justify-content-end">
+		    <li class="page-item">
+		      <a class="btn btn-secondary" href="{{ url('/helper/users/') }}" tabindex="-2">Premier</a>
+		    </li>
+		    <li class="page-item @if($previous == 0) disabled @endif">
+		      <a class="btn btn-outline-info" href="{{ $previous!=0 ?  url('/helper/users/'.($previous)) : '#' }}" tabindex="-1">Précédent</a>
+		    </li>
+		    <li class="page-item"><a class="btn btn-outline-dark" href="{{ url('/helper/users/'.($page)) }}">{{ $page }}</a></li>
+		    @if(($page+1)*10<=$max) <li class="page-item"><a class="btn btn-outline-dark" href="{{ url('/helper/users/'.($page+1)) }}">{{ ($page+1) }}</a></li>@endif
+		    @if(($page+2)*10<=$max)<li class="page-item"><a class="btn btn-outline-dark" href="{{ url('/helper/users/'.($page+2)) }}">{{ ($page+2) }}</a></li>@endif
+		    <li class="page-item @if($next) @else disabled @endif">
+		      <a class="btn btn-outline-info" href="{{ $next ? url('/helper/users/'.($next)) : '#' }}">Suivant</a>
+		    </li>
+		    <li class="page-item">
+		      <a class="btn btn-secondary" href="{{ url('/helper/users/'.$max) }}">Dernier</a>
+		    </li>
+		  </ul>
+</nav>
 		</div>
 	 </div>
  </main>
