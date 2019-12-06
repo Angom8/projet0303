@@ -15,7 +15,7 @@ class CreateAPassésTable extends Migration
     {
         Schema::create('A_passé', function (Blueprint $table) {
 		$table->engine = 'InnoDB';
-            	$table->increments('id_a_passe');
+		$table->increments('id_a_passe');
         });
     }
 

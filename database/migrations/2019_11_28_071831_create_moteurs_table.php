@@ -24,6 +24,9 @@ class CreateMoteursTable extends Migration
             $table->float('horametre_compte', 8, 2);
 
 	    //foreign : equipment 1-1
+		$table->integer('id_equipement')->unsigned();
+		$table->foreign('id_equipement')
+          ->references('id_equipement')->on('Equipement');
         });
     }
 

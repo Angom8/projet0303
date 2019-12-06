@@ -17,7 +17,7 @@ class CreateAccidentsTable extends Migration
  	    $table->engine = 'InnoDB';
 	    $table->charset = 'utf8';
 
-            $table->bigIncrements('id_accident');
+		$table->bigIncrements('id_accident');
 	    $table->time('date_accident');
 	    $table->integer('nb_mort')->nullable();
 	    $table->integer('nb_bless')->nullable();

@@ -23,12 +23,13 @@ class CreatePiecesTable extends Migration
 		$table->integer('quantite_piece');
 		$table->boolean('piece_origine');
 		$table->integer('q_piece_rechange')->nullable();
+		//foreign id_type_piece 1_1
 		$table->integer('id_type_piece')->unsigned();
 		$table->foreign('id_type_piece')
           ->references('id_type_piece')->on('Type_piece');
           //->onDelete('cascade');
 
-	    //foreign id_type_piece 1_1
+	    
         });
     }
 

@@ -15,7 +15,7 @@ class CreateUtiliseCourammentsTable extends Migration
     {
         Schema::create('Utilise_couramment', function (Blueprint $table) {
 		$table->engine = 'InnoDB';
-            	$table->increments('id_utilise_couramment');
+		$table->increments('id_utilise_couramment');
         });
     }
 

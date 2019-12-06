@@ -22,6 +22,9 @@ class CreateImmatriculationsTable extends Migration
 	    $table->time('date_immatr');
 
 	    //foreign : bateau 1-1
+		$table->integer('id_bateau')->unsigned();
+		$table->foreign('id_bateau')
+          ->references('id_bateau')->on('Bateau');
         });
     }
 

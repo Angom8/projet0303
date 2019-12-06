@@ -15,7 +15,7 @@ class CreatePossèdesTable extends Migration
     {
         Schema::create('Possede', function (Blueprint $table) {
 		$table->engine = 'InnoDB';
-            	$table->increments('id_possede');
+		$table->increments('id_possede');
 
         });
     }

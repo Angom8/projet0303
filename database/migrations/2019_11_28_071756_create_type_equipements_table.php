@@ -17,7 +17,7 @@ class CreateTypeEquipementsTable extends Migration
  	    $table->engine = 'InnoDB';
 	    $table->charset = 'utf8';
 
-            $table->bigIncrements('id_type_equipement');
+		$table->bigIncrements('id_type_equipement');
 	    $table->string('nom_type_equipement');
         });
     }

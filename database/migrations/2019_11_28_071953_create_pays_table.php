@@ -17,7 +17,7 @@ class CreatePaysTable extends Migration
  	    $table->engine = 'InnoDB';
 	    $table->charset = 'utf8';
 
-            $table->bigIncrements('id_pays');
+		$table->bigIncrements('id_pays');
 
 	    $table->string('nom_pays');
 	    $table->string('planete');
