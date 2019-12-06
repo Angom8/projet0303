@@ -13,20 +13,21 @@ class CreatePiecesTable extends Migration
      */
     public function up()
     {
-        Schema::create('Piece', function (Blueprint $table) {
- 	    $table->engine = 'InnoDB';
-	    $table->charset = 'utf8';
+		Schema::create('Piece', function (Blueprint $table) {
+		$table->engine = 'InnoDB';
+		$table->charset = 'utf8';
+		$table->bigIncrements('id_pîece');
+		$table->timestamps();
+		$table->time('revision_periodique_piece')->nullable();
+		$table->time('duree_vie_piece')->nullable();
+		$table->integer('quantite_piece');
+		$table->boolean('piece_origine');
+		$table->integer('q_piece_rechange')->nullable();
+		$table->integer('id_type_piece')->unsigned();
+		$table->foreign('brand_id')
+          ->references('id_type_piece')->on('Type_piece');
+          //->onDelete('cascade');
 
-            $table->bigIncrements('id_pîece');
-            $table->timestamps();
-
-	    $table->time('revision_periodique_piece')->nullable();
-	    $table->time('duree_vie_piece')->nullable();
-
-	    $table->integer('quantite_piece');
-	    $table->boolean('piece_origine');
-	    $table->integer('q_piece_rechange')->nullable();
-		
 	    //foreign id_type_piece 1_1
         });
     }
