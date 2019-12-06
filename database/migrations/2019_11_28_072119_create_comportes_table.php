@@ -15,7 +15,7 @@ class CreateComportesTable extends Migration
     {
         Schema::create('Comporte', function (Blueprint $table) {
 		$table->engine = 'InnoDB';
-            	$table->increments('id_comporte');
+		$table->increments('id_comporte');
         });
     }
 

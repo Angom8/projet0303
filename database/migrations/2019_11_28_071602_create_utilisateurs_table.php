@@ -14,23 +14,28 @@ class CreateUtilisateursTable extends Migration
     public function up()
     {
         Schema::create('Utilisateur', function (Blueprint $table) {
- 	    $table->engine = 'InnoDB';
-	    $table->charset = 'utf8';
+			$table->engine = 'InnoDB';
+			$table->charset = 'utf8';
 
-            $table->bigIncrements('id');
+			$table->bigIncrements('id');
 
-            $table->string('login')->unique();
-            $table->string('password');
-	    $table->integer('type_utilisateur');
-  	    $table->string('mail_utilisateur')->unique();
+			$table->string('login')->unique();
+			$table->string('password');
+			$table->integer('type_utilisateur');
+			$table->string('mail_utilisateur')->unique();
 
-            $table->string('nom_utilisateur');
-            $table->string('prenom_utilisateur');
-	    $table->string('tel_utilisateur');
+			$table->string('nom_utilisateur');
+			$table->string('prenom_utilisateur');
+			$table->string('tel_utilisateur');
 
-	    //foreign : id_adresse 1-1
-            $table->rememberToken();
-            $table->timestamps();
+			//foreign : id_adresse 1-1
+			$table->integer('id_adresse')->unsigned();
+			$table->foreign('id_adresse')
+				->references('id_adresse')->on('Adresse')
+			
+			
+			$table->rememberToken();
+			$table->timestamps();
         });
     }
 

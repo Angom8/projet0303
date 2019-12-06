@@ -24,7 +24,7 @@ class CreatePiecesTable extends Migration
 		$table->boolean('piece_origine');
 		$table->integer('q_piece_rechange')->nullable();
 		$table->integer('id_type_piece')->unsigned();
-		$table->foreign('brand_id')
+		$table->foreign('id_type_piece')
           ->references('id_type_piece')->on('Type_piece');
           //->onDelete('cascade');
 

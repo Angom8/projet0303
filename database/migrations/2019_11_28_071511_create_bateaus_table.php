@@ -15,11 +15,11 @@ class CreateBateausTable extends Migration
     {
         Schema::create('Bateau', function (Blueprint $table) {
 
- 	    $table->engine = 'InnoDB';
-	    $table->charset = 'utf8';
+		$table->engine = 'InnoDB';
+		$table->charset = 'utf8';
 
-            $table->bigIncrements('id_bateau');
-            $table->timestamps();
+		$table->bigIncrements('id_bateau');
+		$table->timestamps();
 
 		//desc
 	    $table->string('nom_bateau');
@@ -57,10 +57,23 @@ class CreateBateausTable extends Migration
 	    $table->float('consommation', 8, 2);
 	    $table->float('masse_navire', 8, 2);
 
-
 		//foreign : immatr 1-1
-		//foreign : moteur 0-1
-		//foreign : port 0-1
+		$table->integer('id_immatr')->unsigned();
+		$table->foreign('id_immatr')
+          ->references('id_immatr')->on('Immatriculation');
+		  
+		//foreign : moteur 0-1  
+		$table->integer('id_moteur')->unsigned();
+		$table->foreign('id_moteur')
+          ->references('id_moteur')->on('Moteur');
+		  
+		//foreign : port 0-1  
+		$table->integer('id_port')->unsigned();
+		$table->foreign('id_port')
+          ->references('id_port')->on('Port');
+		
+		
+		
         });
     }
 

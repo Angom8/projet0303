@@ -17,9 +17,8 @@ class CreateImmatriculationsTable extends Migration
  	    $table->engine = 'InnoDB';
 	    $table->charset = 'utf8';
 
-            $table->string('id_immatr');
+        $table->string('id_immatr');
 	    $table->primary('id_immatr');
-
 	    $table->time('date_immatr');
 
 	    //foreign : bateau 1-1

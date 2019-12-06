@@ -15,7 +15,7 @@ class CreateContientsTable extends Migration
     {
         Schema::create('Contient', function (Blueprint $table) {
 		$table->engine = 'InnoDB';
-            	$table->increments('id_contient');
+		$table->increments('id_contient');
         });
     }
 

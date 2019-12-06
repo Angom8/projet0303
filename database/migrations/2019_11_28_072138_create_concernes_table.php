@@ -15,7 +15,7 @@ class CreateConcernesTable extends Migration
     {
         Schema::create('Concerne', function (Blueprint $table) {
 		$table->engine = 'InnoDB';
-            	$table->increments('id_concerne');
+		$table->increments('id_concerne');
         });
     }
 

@@ -15,7 +15,7 @@ class CreateEstRenseignéSousesTable extends Migration
     {
         Schema::create('Est_renseigné_sous', function (Blueprint $table) {
 		$table->engine = 'InnoDB';
-            	$table->increments('id_est_renseigne_sous');
+		$table->increments('id_est_renseigne_sous');
         });
     }
 

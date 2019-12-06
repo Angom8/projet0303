@@ -15,7 +15,7 @@ class CreateEstImpliquésTable extends Migration
     {
         Schema::create('Est_impliqué', function (Blueprint $table) {
 		$table->engine = 'InnoDB';
-            	$table->increments('id_est_implique');
+		$table->increments('id_est_implique');
         });
     }
 

@@ -17,7 +17,7 @@ class CreateTypePiecesTable extends Migration
  	    $table->engine = 'InnoDB';
 	    $table->charset = 'utf8';
 
-            $table->bigIncrements('id_type_piece');
+        $table->bigIncrements('id_type_piece');
 	    $table->string('nom_type_piece');
         });
     }

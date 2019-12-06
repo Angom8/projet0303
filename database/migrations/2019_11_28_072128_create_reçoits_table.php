@@ -15,7 +15,7 @@ class CreateReçoitsTable extends Migration
     {
         Schema::create('Reçoit', function (Blueprint $table) {
 		$table->engine = 'InnoDB';
-            	$table->increments('id_recoit');
+		$table->increments('id_recoit');
         });
     }
 

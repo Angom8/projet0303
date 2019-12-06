@@ -17,12 +17,15 @@ class CreateAdressesTable extends Migration
  	    $table->engine = 'InnoDB';
 	    $table->charset = 'utf8';
 
-            $table->bigIncrements('id_adresse');
+		$table->bigIncrements('id_adresse');
 
 	    $table->string('numero_adresse');//en cas de bis/ter
 	    $table->string('voierie');
 
 	    //foreign : id_ville 1-1
+		$table->integer('id_ville')->unsigned();
+		$table->foreign('id_ville')
+          ->references('id_ville')->on('Ville');
         });
     }
 

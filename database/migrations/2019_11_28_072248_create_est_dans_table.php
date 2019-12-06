@@ -15,7 +15,7 @@ class CreateEstDansTable extends Migration
     {
         Schema::create('Est_dans', function (Blueprint $table) {
 		$table->engine = 'InnoDB';
-            	$table->increments('id_est_dans');
+		$table->increments('id_est_dans');
         });
     }
 

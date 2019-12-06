@@ -15,7 +15,7 @@ class CreateProduitParsTable extends Migration
     {
         Schema::create('Produit_par', function (Blueprint $table) {
 		$table->engine = 'InnoDB';
-            	$table->increments('id_produit_par');
+		$table->increments('id_produit_par');
         });
     }
 

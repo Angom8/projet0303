@@ -17,7 +17,7 @@ class CreateEntretiensTable extends Migration
 	    $table->engine = 'InnoDB';
 	    $table->charset = 'utf8';
 
-            $table->bigIncrements('id_entretien');
+        $table->bigIncrements('id_entretien');
 	    $table->time('date_entretien');
         });
     }

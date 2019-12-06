@@ -17,7 +17,7 @@ class CreateVillesTable extends Migration
  	    $table->engine = 'InnoDB';
 	    $table->charset = 'utf8';
 
-            $table->bigIncrements('id_ville');
+		$table->bigIncrements('id_ville');
 
 	    $table->string('nom_ville');
 

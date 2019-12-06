@@ -17,8 +17,8 @@ class CreateEquipementsTable extends Migration
  	    $table->engine = 'InnoDB';
 	    $table->charset = 'utf8';
 
-            $table->bigIncrements('id_equipement');
-            $table->timestamps();
+		$table->bigIncrements('id_equipement');
+		$table->timestamps();
 
 	    $table->time('revision_periodique_equip')->nullable();
 	    $table->time('duree_vie_equip')->nullable();
@@ -28,6 +28,9 @@ class CreateEquipementsTable extends Migration
 	    $table->integer('q_equip_rechange')->nullable();
 		
 	    //foreign id_type_equip 1_1
+		$table->integer('id_type_equipement')->unsigned();
+		$table->foreign('id_type_equipement')
+          ->references('id_type_equipement')->on('Type_equipement');
         });
     }
 

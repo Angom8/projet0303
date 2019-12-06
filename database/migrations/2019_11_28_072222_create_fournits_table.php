@@ -15,7 +15,7 @@ class CreateFournitsTable extends Migration
     {
         Schema::create('Fournit', function (Blueprint $table) {
 		$table->engine = 'InnoDB';
-            	$table->increments('id_fournit');
+		$table->increments('id_fournit');
         });
     }
 
