@@ -17,4 +17,9 @@ class Fournisseur extends Model
        'mail_fourni','nom_fourni', 'tel_fourni'
     ];
 
+	public function adresses() {
+        return $this->belongsToMany('App\Adresse', 'est_localisé', 'id_fourni', 'id_adresse');
+    }
+	
+	
 }
