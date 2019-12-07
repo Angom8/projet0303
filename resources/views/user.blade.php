@@ -53,6 +53,10 @@ Adhérent
 								</div>
 							</div>
 						 </form>	
+						<p><strong>Bateaux </strong>: </p>
+						<ul>
+							<li>Bateaux + lien vers page bateau</li>
+						</ul>
 					</div>
 				</div>
 			</div>

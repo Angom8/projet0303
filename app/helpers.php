@@ -177,7 +177,7 @@ if (! function_exists('getCreateUser')) {
 	function getCreateUser(){
 
 		  echo '<div class="text-right bato-row">
-		 	 <button type="button" class="btn btn-warning">Ajouter un utilisateur</button>
+			<a class="btn btn-warning" href="'.url('helper/add-user').'">Ajouter un Utilisateur</a>
 		  </div>';
 	}
 	

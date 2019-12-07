@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Utilisateur;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 
 use  App\Rules\MatchOldPassword;
@@ -26,9 +27,36 @@ class UtilisateurController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+	$data = $request->all();
+	$validator = Validator::make($data, [
+            'login' => ['required', 'string', 'max:255', 'unique:Utilisateur'],
+            'mail_utilisateur' => ['required', 'string', 'email', 'max:255', 'unique:Utilisateur'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+		'nom_utilisateur' => ['required', 'string', 'max:255'],
+		'prenom_utilisateur' => ['required', 'string', 'max:255'],
+		'tel_utilisateur' => ['required', 'string', 'max:50'],
+        ]);
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+ 	else{
+
+		Utilisateur::create([
+		    'login' => $data['login'],
+		    'mail_utilisateur' => $data['mail_utilisateur'],
+		    'password' => Hash::make($data['password']),
+			'nom_utilisateur' => $data['nom_utilisateur'],
+			'prenom_utilisateur' => $data['prenom_utilisateur'],
+			'tel_utilisateur' => $data['tel_utilisateur'],
+			'type_utilisateur' => 0,
+		]);
+		return route('users');
+
+	}
+
+        
     }
 
     /**
@@ -51,6 +79,7 @@ class UtilisateurController extends Controller
     public function show($id)
     {
       	$user= Utilisateur::whereId($id)->get();
+
     	return view('user', ['user' => $user[0]]);
     }
 

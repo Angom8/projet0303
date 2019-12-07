@@ -67,6 +67,8 @@ Route::get('helper/add-user', function () {
     return view('add-user');
 })->middleware('auth');
 
+Route::post('helper/add-user/register', ['uses' => 'UtilisateurController@create', 'as' => 'user.register'])->middleware('auth');
+
 /*Type Adhérent user pages*/
 
 Route::get('panel/', function () {//init
