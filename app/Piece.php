@@ -20,4 +20,12 @@ class Piece extends Model
     public function type_piece(){
 		return $this->belongsTo(Type_piece::class);
 	}
+	
+	public function bateaus() {
+		return $this->belongsToMany('App\Bateau', 'contient', 'id_piece', 'id_bateau');
+	}
+	
+	public function entretiens() {
+		return $this->belongsToMany('App\Entretien', 'entretien_piece' 'id_piece', 'id_entretien',);
+	}
 }

@@ -10,4 +10,8 @@ class Permis extends Model
     {
         return $this->belongsToMany('App\Utilisateur', 'a_passé', 'id_permis', 'id_utilisateur');
     }
+	
+	public function bateau() {
+        return $this->belongsToMany('App\Bateau', 'necessite', 'id_permis', 'id_bateau');
+    }
 }
