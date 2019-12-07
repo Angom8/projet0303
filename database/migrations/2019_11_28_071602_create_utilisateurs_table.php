@@ -29,7 +29,7 @@ class CreateUtilisateursTable extends Migration
 			$table->string('tel_utilisateur');
 
 			//foreign : id_adresse 1-1
-			$table->integer('id_adresse')->unsigned();
+			$table->biginteger('id_adresse')->unsigned();
 			$table->foreign('id_adresse')
 				->references('id_adresse')->on('Adresse');
 			

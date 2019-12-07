@@ -16,7 +16,7 @@ class CreatePiecesTable extends Migration
 		Schema::create('Piece', function (Blueprint $table) {
 		$table->engine = 'InnoDB';
 		$table->charset = 'utf8';
-		$table->bigIncrements('id_pîece');
+		$table->bigIncrements('id_piece');
 		$table->timestamps();
 		$table->time('revision_periodique_piece')->nullable();
 		$table->time('duree_vie_piece')->nullable();
@@ -24,7 +24,7 @@ class CreatePiecesTable extends Migration
 		$table->boolean('piece_origine');
 		$table->integer('q_piece_rechange')->nullable();
 		//foreign id_type_piece 1_1
-		$table->integer('id_type_piece')->unsigned();
+		$table->biginteger('id_type_piece')->unsigned();
 		$table->foreign('id_type_piece')
           ->references('id_type_piece')->on('Type_piece');
           //->onDelete('cascade');

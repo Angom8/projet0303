@@ -23,7 +23,7 @@ class CreateAdressesTable extends Migration
 	    $table->string('voierie');
 
 	    //foreign : id_ville 1-1
-		$table->integer('id_ville')->unsigned();
+		$table->biginteger('id_ville')->unsigned();
 		$table->foreign('id_ville')
           ->references('id_ville')->on('Ville');
         });

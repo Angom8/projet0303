@@ -24,7 +24,7 @@ class CreateVillesTable extends Migration
 	    $table->integer('code_postal');
 
 		//foreign : pays 1-1
-		$table->integer('id_pays')->unsigned();
+		$table->biginteger('id_pays')->unsigned();
 		$table->foreign('id_pays')
 			->references('id_pays')->on('Pays');
 
