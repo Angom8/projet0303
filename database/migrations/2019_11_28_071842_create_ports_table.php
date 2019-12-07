@@ -25,7 +25,7 @@ class CreatePortsTable extends Migration
 	    //foreign : adresse
 		$table->integer('id_adresse')->unsigned();
 		$table->foreign('id_adresse')
-			->references('id_adresse')->on('Adresse')
+			->references('id_adresse')->on('Adresse');
         });
     }
 

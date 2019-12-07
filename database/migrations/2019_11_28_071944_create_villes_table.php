@@ -26,7 +26,7 @@ class CreateVillesTable extends Migration
 		//foreign : pays 1-1
 		$table->integer('id_pays')->unsigned();
 		$table->foreign('id_pays')
-			->references('id_pays')->on('Pays')
+			->references('id_pays')->on('Pays');
 
         });
     }
