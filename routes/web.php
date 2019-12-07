@@ -47,6 +47,11 @@ Route::get('admin/add-boat', function () {
     return view('add-boat');
 })->middleware('auth');
 
+Route::get('helper/add-fourni', function () {
+    return view('add-fourni');
+})->middleware('auth');
+
+Route::post('helper/add-fourni/register', ['uses' => 'FournisseurController@create', 'as' => 'fourni.register'])->middleware('auth');
 
 /*Type Secretaire user pages*/
 Route::get('helper/', function () {//init
