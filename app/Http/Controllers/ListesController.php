@@ -19,9 +19,9 @@ class ListesController extends Controller
     }
 
 	public function getUtilisateurs($page = 1){
-			$users = DB::table('Utilisateur')->where('id', '>', ($page-1)*10)->where('id', '<',($page-1)*10+11)->orderBy('id');
+			$users = DB::table('Utilisateur')->skip($page*10)->take(10)->orderBy('nom_utilisateur');
 			$users = $users->get();
-			$max = (ceil(DB::table('Utilisateur')->count()/10)*10);
+			$max = ceil(DB::table('Utilisateur')->count()/10);
 
 			if(($page+1)*10>(ceil(DB::table('Utilisateur')->count()/10)*10)){
 				$next = 0;
@@ -42,9 +42,9 @@ class ListesController extends Controller
 	
 	}
 	public function getFournisseurs($page = 1){
-			$fourni = DB::table('Fournisseur')->where('id_fourni', '>', ($page-1)*10)->where('id_fourni', '<',($page-1)*10+11)->orderBy('id_fourni');
+			$fourni = DB::table('Fournisseur')->skip($page*10)->take(10)->orderBy('nom_fourni');
 			$fourni = $fourni->get();
-			$max = (ceil(DB::table('Fournisseur')->count()/10)*10);
+			$max = ceil(DB::table('Fournisseur')->count()/10);
 
 			if(($page+1)*10>(ceil(DB::table('Fournisseur')->count()/10)*10)){
 				$next = 0;

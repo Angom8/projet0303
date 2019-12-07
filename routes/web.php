@@ -57,9 +57,9 @@ Route::get('helper/users',  ['uses' =>'ListesController@getUtilisateurs', 'as'=>
 
 Route::get('helper/users/{id}',  ['uses' =>'ListesController@getUtilisateurs', 'as'=>'users'])->middleware('auth');
 
-Route::get('helper/user', function () {
-    return view('user');
-})->middleware('auth');
+Route::delete('helper/user/del/{id}', ['uses' => 'UtilisateurController@destroy', 'as' => 'user.delete'])->middleware('auth');
+
+Route::get('helper/user/{id}', ['uses' => 'UtilisateurController@see', 'as' => 'user.see'])->middleware('auth');
 
 Route::get('helper/add-user', function () {
     return view('add-user');
@@ -71,15 +71,9 @@ Route::get('panel/', function () {//init
     return view('user-global');
 })->middleware('auth');
 
-
 Route::get('panel/fournisseurs',  ['uses' =>'ListesController@getFournisseurs', 'as'=>'fourni'])->middleware('auth');
 
 Route::get('panel/fournisseurs/{id}',  ['uses' =>'ListesController@getFournisseurs', 'as'=>'fourni'])->middleware('auth');
-
-
-/*Route::get('panel/fournisseurs', function () {//init
-    return view('fournisseurs');
-})->middleware('auth');*/
 
 Route::get('panel/fournisseur', function () {
     return view('fournisseur');

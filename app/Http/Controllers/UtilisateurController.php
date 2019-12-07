@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Utilisateur;
+
 class UtilisateurController extends Controller
 {
     /**
@@ -79,6 +81,8 @@ class UtilisateurController extends Controller
      */
     public function destroy($id)
     {
-        //
+            	$user= Utilisateur::whereId($id);
+    		$user->delete();
+    		return back();
     }
 }
