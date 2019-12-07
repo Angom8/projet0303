@@ -39,20 +39,17 @@ class Utilisateur extends Authenticatable
     ];
 	
 	public function permis() {
-        return $this->belongsToMany('App\Permis', 'a_passé', 'id_utilisateur', 'id_permis');
+        return $this->belongsToMany('App\Permis', 'a_passé', 'id', 'id_permis');
     }
 	
 	public function adresse(){
 		return $this->belongsTo(Adresse::class);
 	}
 	
-	public function bateaus() {
-        return $this->belongsToMany('App\Bateau', 'possède', 'id_utilisateur', 'id_bateau');
+	public function bateau() {
+        return $this->belongsToMany('App\Bateau', 'possède', 'id', 'id_bateau');
     }
 	
-	public function bateaus() {
-        return $this->belongsToMany('App\Bateau', 'utilise_couramment', 'id_utilisateur', 'id_bateau');
-    }
 }
 
 

@@ -6,6 +6,6 @@ use App\Utilisateur;
 class UtilisateurTableSeeder extends Seeder {
     public function run()
     {
-		$user = factory(App\Pilote::class, 50)->create();
+		$user = factory(App\Utilisateur::class, 50)->create();
     }
 }
