@@ -15,7 +15,9 @@ class CreateEstComposésTable extends Migration
     {
         Schema::create('Est_composé', function (Blueprint $table) {
 		$table->engine = 'InnoDB';
-            	$table->increments('id_est_compose');
+		$table->unsignedInteger('id_equipement');
+		$table->unsignedInteger('id_piece');
+		
         });
     }
 

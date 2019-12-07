@@ -15,7 +15,9 @@ class CreateFournitsTable extends Migration
     {
         Schema::create('Fournit', function (Blueprint $table) {
 		$table->engine = 'InnoDB';
-		$table->increments('id_fournit');
+		$table->unsignedInteger('id_fourni');
+		$table->unsignedInteger('id_equipement');
+		$table->unsignedInteger('id_piece');
         });
     }
 

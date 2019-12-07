@@ -15,7 +15,8 @@ class CreateEstLocalisésTable extends Migration
     {
         Schema::create('Est_localisé', function (Blueprint $table) {
 		$table->engine = 'InnoDB';
-		$table->increments('id_est_localise');
+		$table->unsignedInteger('id_fourni');
+		$table->unsignedInteger('id_adresse');
         });
     }
 
