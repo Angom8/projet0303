@@ -29,4 +29,15 @@ class Equipement extends Model
 		return $this->belongsToMany('App\Bateau', 'comporte', 'id_equipement', 'id_bateau');
 	}
 	
+	public function entretiens() {
+		return $this->belongsToMany('App\Entretien', 'concerne' 'id_equipement', 'id_entretien',);
+	}
+	
+	public function etat() {
+		return $this->belongsTo('App\Etat', 'est_dans', 'id_equipement', 'id_etat');
+	}
+	
+	public function pieces() {
+		return $this->belongsToMany('App\Piece', 'est_composé', 'id_equipement', 'id_piece');
+	}
 }

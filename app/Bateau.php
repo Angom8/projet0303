@@ -19,17 +19,8 @@ class Bateau extends Model {
 		return $this->hasOne(Immatriculation::class);
 	}
 	
-	public function accidents()
-    {
-        return $this->belongsToMany('App\Accident', 'est_impliqué', 'id_bateau', 'id_accident');
-    }
-	
 	public function utilisateurs() {
         return $this->belongsToMany('App\Utilisateur', 'possède', 'id_bateau', 'id_utilisateur');
-    }
-	
-	public function permis() {
-        return $this->belongsToMany('App\Permis', 'necessite', 'id_bateau', 'id_permis');
     }
 	
 	public function moteur() {

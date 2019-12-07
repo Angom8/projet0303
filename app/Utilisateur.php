@@ -38,10 +38,6 @@ class Utilisateur extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 	
-	public function permis() {
-        return $this->belongsToMany('App\Permis', 'a_passé', 'id', 'id_permis');
-    }
-	
 	public function adresse(){
 		return $this->belongsTo(Adresse::class);
 	}
@@ -49,6 +45,10 @@ class Utilisateur extends Authenticatable
 	public function bateau() {
         return $this->belongsToMany('App\Bateau', 'possède', 'id', 'id_bateau');
     }
+	
+	// public function bateau() {
+        // return $this->belongsToMany('App\Bateau', 'utilise_couramment', 'id', 'id_bateau');
+    // }
 	
 }
 

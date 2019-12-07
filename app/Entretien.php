@@ -10,11 +10,11 @@ class Entretien extends Model
 		return $this->belongsToMany('App\Entretien', 'reçoit', 'id_entretien', 'id_bateau');
 	}
 	
-	public function bateaus() {
-		return $this->belongsToMany('App\Entretien', 'reçoit', 'id_entretien', 'id_bateau');
+	public function pieces() {
+		return $this->belongsToMany('App\Piece', 'concerne', 'id_entretien', 'id_piece');
 	}
 	
-	public function pieces() {
-		return $this->belongsToMany('App\Piece', 'entretien_piece', 'id_entretien', 'id_piece');
+	public function equipements() {
+		return $this->belongsToMany('App\Piece', 'concerne', 'id_entretien', 'id_equipement');
 	}
 }

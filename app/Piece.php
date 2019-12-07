@@ -26,6 +26,14 @@ class Piece extends Model
 	}
 	
 	public function entretiens() {
-		return $this->belongsToMany('App\Entretien', 'entretien_piece' 'id_piece', 'id_entretien',);
+		return $this->belongsToMany('App\Entretien', 'concerne', 'id_piece', 'id_entretien');
+	}
+	
+	public function etat() {
+		return $this->belongsTo('App\Etat', 'est_dans', 'id_piece', 'id_etat');
+	}
+	
+	public function equipements() {
+		return $this->belongsToMany('App\Equipement', 'est_composé', 'id_piece', 'id_equipement');
 	}
 }

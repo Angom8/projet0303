@@ -21,5 +21,12 @@ class Fournisseur extends Model
         return $this->belongsToMany('App\Adresse', 'est_localisé', 'id_fourni', 'id_adresse');
     }
 	
+	public function pieces() {
+		return $this->belongsToMany('App\Piece', 'fournit', 'id_fourni', 'id_piece');
+	}
+	
+	public function equipements() {
+		return $this->belongsToMany('App\Equipement', 'fournit', 'id_fourni', 'id_equipement');
+	}
 	
 }
