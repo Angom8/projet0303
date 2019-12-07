@@ -172,6 +172,18 @@ if (! function_exists('getAdmButtons')) {
 	}
 }
 
+if (! function_exists('getCreateUser')) {
+
+	function getCreateUser(){
+
+		  echo '<div class="text-right bato-row">
+		 	 <button type="button" class="btn btn-warning">Ajouter un utilisateur</button>
+		  </div>';
+	}
+	
+}
+
+
 if (! function_exists('getAdmNavBar')) {
 
 	function getAdmNavBar($title, $type_util){

@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Utilisateur;
+use Illuminate\Support\Facades\Hash;
+
+use  App\Rules\MatchOldPassword;
 
 class UtilisateurController extends Controller
 {
@@ -47,7 +50,8 @@ class UtilisateurController extends Controller
      */
     public function show($id)
     {
-        //
+      	$user= Utilisateur::whereId($id)->get();
+    	return view('user', ['user' => $user[0]]);
     }
 
     /**
@@ -84,5 +88,25 @@ class UtilisateurController extends Controller
             	$user= Utilisateur::whereId($id);
     		$user->delete();
     		return back();
+    }
+
+    public function changePW(Request $request)
+
+    {
+
+        $request->validate([
+
+            'current_password' => ['required', new MatchOldPassword],
+
+            'new_password' => ['required'],
+
+            'new_confirm_password' => ['same:new_password'],
+
+        ]);
+
+        Utilisateur::find(auth()->user()->id)->update(['password'=> Hash::make($request->new_password)]);
+   
+        return back();
+
     }
 }

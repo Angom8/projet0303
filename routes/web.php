@@ -59,7 +59,9 @@ Route::get('helper/users/{id}',  ['uses' =>'ListesController@getUtilisateurs', '
 
 Route::delete('helper/user/del/{id}', ['uses' => 'UtilisateurController@destroy', 'as' => 'user.delete'])->middleware('auth');
 
-Route::get('helper/user/{id}', ['uses' => 'UtilisateurController@see', 'as' => 'user.see'])->middleware('auth');
+Route::get('helper/user/{id}', ['uses' => 'UtilisateurController@show', 'as' => 'user.show'])->middleware('auth');
+
+Route::post('helper/user/changePW', ['uses' => 'UtilisateurController@changePW', 'as' => 'user.changepw'])->middleware('auth');
 
 Route::get('helper/add-user', function () {
     return view('add-user');

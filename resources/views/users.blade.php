@@ -8,9 +8,7 @@ Utilisateurs
 	<div class ="content">
 		<div class="container">
 		  <h1>Utilisateurs</h1>
-		  <div class="text-right bato-row">
-		 	 <button type="button" class="btn btn-warning">Ajouter un utilisateur</button>
-		  </div>
+		 	{{ getCreateUser() }}
 		  <table class="table">
 		    <thead class="thead-dark">
 		      <tr>
@@ -31,9 +29,9 @@ Utilisateurs
 			<td>NaN</td>
 			<td>{{ $user->id }}</td>
 			<td class="text-center">
-				<form method="post" action={{ route('user.see' , ['id' => $user->id]) }}>
-				{!! csrf_field() !!}
-				<button type="button" class="btn btn-secondary">Voir</button>
+				<form method="get" action={{ route('user.show' , ['id' => $user->id]) }}>
+			
+				<button type="submit" class="btn btn-secondary">Voir</button>
 				</form>
 
 				<form method="post" action={{ route('user.delete' , ['id' => $user->id]) }}>
