@@ -12,13 +12,13 @@ Ordre de génération :
 
 	php artisan db:seed --class=TypePieceTableSeeder;
 
-	php artisan make:migration create_utilisateur_table;
+	php artisan db:seed --class=UtilisateurTableSeeder;
+		
+	php artisan db:seed --class=TypeEquipementTableSeeder;
 
-php artisan make:migration create_type_equipement_table;
+	php artisan db:seed --class=PieceTableSeeder;
 
-php artisan make:migration create_piece_table;
-
-php artisan make:migration create_marque_table;
+	php artisan make:migration create_marque_table;
 
 php artisan make:migration create_modele_table;
 

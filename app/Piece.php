@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Piece extends Model
 {
-	
+	public $timestamps = false;
+	protected $table = 'Piece';
+
 	protected $fillable = [
 		'id_piece',
 		'revisions_periodiques_piece',

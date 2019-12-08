@@ -18,8 +18,8 @@ class CreatePiecesTable extends Migration
 		$table->charset = 'utf8';
 		$table->bigIncrements('id_piece');
 		$table->timestamps();
-		$table->time('revision_periodique_piece')->nullable();
-		$table->time('duree_vie_piece')->nullable();
+		$table->float('revision_periodique_piece')->nullable()->unsigned();
+		$table->float('duree_vie_piece')->nullable()->unsigned();
 		$table->integer('quantite_piece');
 		$table->boolean('piece_origine');
 		$table->integer('q_piece_rechange')->nullable();

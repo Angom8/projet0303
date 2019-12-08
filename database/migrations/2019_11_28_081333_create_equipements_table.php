@@ -20,8 +20,8 @@ class CreateEquipementsTable extends Migration
 		$table->bigIncrements('id_equipement');
 		$table->timestamps();
 
-	    $table->time('revision_periodique_equip')->nullable();
-	    $table->time('duree_vie_equip')->nullable();
+	    $table->float('duree_vie_equip')->nullable()->unsigned();
+	    $table->float('revision_periodique_piece')->nullable()->unsigned();
 
 	    $table->integer('quantite_equip');
 	    $table->boolean('equip_origine');

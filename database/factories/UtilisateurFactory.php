@@ -6,6 +6,8 @@ use App\Utilisateur;
 use Faker\Generator as Faker;
 
 $factory->define(Utilisateur::class, function (Faker $faker) {
+
+	$idadresse = DB::table('Adresse')->pluck('id_adresse');
     return [
 		'login' => $faker->unique()->lastName,
 		'nom_utilisateur' => $faker->lastName,
@@ -16,5 +18,6 @@ $factory->define(Utilisateur::class, function (Faker $faker) {
 		'type_utilisateur' => 0,
 		'created_at' => $faker->dateTime(),
 		'updated_at' => $faker->dateTime(),
+		'id_adresse'=> $faker->randomElement($idadresse),
     ];
 });

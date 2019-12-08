@@ -17,5 +17,10 @@ class DatabaseSeeder extends Seeder
         $this->call(EtatTableSeeder::class);
 	$this->call(FournisseurTableSeeder::class);
 	$this->call(TypePieceTableSeeder::class);
+	$this->call(TypeEquipementTableSeeder::class);
+	$this->call(UtilisateurTableSeeder::class);
+	$this->call(PieceTableSeeder::class);
+	$this->call(MarqueTableSeeder::class);
+	$this->call(ModeleTableSeeder::class);
     }
 }
