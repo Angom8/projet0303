@@ -21,7 +21,7 @@ class CreateEquipementsTable extends Migration
 		$table->timestamps();
 
 	    $table->float('duree_vie_equip')->nullable()->unsigned();
-	    $table->float('revision_periodique_piece')->nullable()->unsigned();
+	    $table->float('revision_periodique_equip')->nullable()->unsigned();
 
 	    $table->integer('quantite_equip');
 	    $table->boolean('equip_origine');
@@ -31,6 +31,9 @@ class CreateEquipementsTable extends Migration
 		$table->biginteger('id_type_equipement')->unsigned();
 		$table->foreign('id_type_equipement')
           ->references('id_type_equipement')->on('Type_equipement');
+		$table->biginteger('id_modele')->unsigned();
+		$table->foreign('id_modele')
+          ->references('id_modele')->on('Modele');
         });
     }
 

@@ -7,6 +7,6 @@ use Faker\Generator as Faker;
 
 $factory->define(Modele::class, function (Faker $faker) {
     return [
-        'nom_modele' => $faker->ean(length=13),
+        'nom_modele' => $faker->ean13,
     ];
 });

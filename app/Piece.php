@@ -6,17 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Piece extends Model
 {
-	public $timestamps = false;
 	protected $table = 'Piece';
 
 	protected $fillable = [
 		'id_piece',
-		'revisions_periodiques_piece',
+		'revision_periodique_piece',
 		'duree_vie_piece',
 		'quantite_piece',
 		'piece_origine',
 		'q_piece_rechange',
-		'id_type_piece'
+		'id_type_piece',
+		'id_modele'
 	];
 	
     public function type_piece(){

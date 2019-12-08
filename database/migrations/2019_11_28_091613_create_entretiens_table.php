@@ -19,7 +19,22 @@ class CreateEntretiensTable extends Migration
 
         $table->bigIncrements('id_entretien');
 	    $table->time('date_entretien');
-        });
+        
+		//foreign : Equipement 0-1  
+		$table->biginteger('id_equipement')->unsigned()->nullable();
+		$table->foreign('id_equipement')
+          ->references('id_equipement')->on('Equipement');
+		
+		//foreign : Piece 0-1  
+		$table->biginteger('id_piece')->unsigned()->nullable();
+		$table->foreign('id_piece')
+          ->references('id_piece')->on('Piece');
+		
+		//foreign : Bateau 0-1  
+		$table->biginteger('id_bateau')->unsigned()->nullable();
+		$table->foreign('id_bateau')
+          ->references('id_bateau')->on('Bateau');
+		});
     }
 
     /**

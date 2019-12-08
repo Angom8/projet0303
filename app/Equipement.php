@@ -6,15 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Equipement extends Model
 {
-	
+	protected $table = 'Equipement';
+
 	protected $fillable = [
 		'id_equipement',
-		'revisions_periodiques_equip',
+		'revision_periodique_equip',
 		'duree_vie_equip',
 		'equip_origine',
 		'q_piece_rechange',
 		'quantite_equip',
-		'id_type_equipement'
+		'id_type_equipement',
+		'id_modele'
 	];
 	
     public function type_equipement(){
@@ -30,7 +32,7 @@ class Equipement extends Model
 	}
 	
 	public function entretiens() {
-		return $this->belongsToMany('App\Entretien', 'concerne' 'id_equipement', 'id_entretien',);
+		return $this->belongsToMany('App\Entretien', 'concerne', 'id_equipement', 'id_entretien');
 	}
 	
 	public function etat() {
