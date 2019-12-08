@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Etat extends Model
 {
+public $timestamps = false;
+protected $table = 'Etat';
+
 	protected $fillable = [
         'id_etat', 'desc_etat'
 	];

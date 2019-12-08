@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Adresse extends Model
 {
+public $timestamps = false;
+protected $table = 'Adresse';
 	protected $fillable = [
         'id_adresse', 'numero_adresse', 'voierie', 'id_ville'
 	];

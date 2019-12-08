@@ -7,6 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Pays::class, function (Faker $faker) {
     return [
-        //
+		'nom_pays' => $faker->unique()->country,
+		'planete' => 'Terre',
     ];
 });
