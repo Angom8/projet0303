@@ -27,6 +27,10 @@ class Bateau extends Model {
 		return $this->hasOne(Moteur::class);
 	}
 	
+	public function modele(){
+		return $this->belongsTo('App/Modele', 'est_renseigné_sous', 'id_bateau', 'id_modele');
+	}
+	
 	public function utilisateurs() {
         return $this->belongsToMany('App\Utilisateur', 'utilise_couramment', 'id_bateau', 'id_utilisateur');
     }

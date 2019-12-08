@@ -36,4 +36,8 @@ class Piece extends Model
 	public function equipements() {
 		return $this->belongsToMany('App\Equipement', 'est_composé', 'id_piece', 'id_equipement');
 	}
+	
+	public function modele(){
+		return $this->belongsTo('App/Modele', 'est_renseigné_sous', 'id_piece', 'id_modele');
+	}
 }

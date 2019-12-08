@@ -37,6 +37,10 @@ class Equipement extends Model
 		return $this->belongsTo('App\Etat', 'est_dans', 'id_equipement', 'id_etat');
 	}
 	
+	public function modele(){
+		return $this->belongsTo('App/Modele', 'est_renseigné_sous', 'id_equipement', 'id_modele');
+	}
+	
 	public function pieces() {
 		return $this->belongsToMany('App\Piece', 'est_composé', 'id_equipement', 'id_piece');
 	}
