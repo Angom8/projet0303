@@ -17,7 +17,7 @@ class CreateMarquesTable extends Migration
  	    $table->engine = 'InnoDB';
 	    $table->charset = 'utf8';
 
-            $table->bigIncrements('id_marque');
+        $table->bigIncrements('id_marque');
 	    $table->string('nom_marque');
         });
     }

@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Entretien extends Model
 {
+	protected $fillable = [
+       'id_entretien', 'date_entretien'
+    ];
+	
     public function bateaus() {
 		return $this->belongsToMany('App\Entretien', 'reçoit', 'id_entretien', 'id_bateau');
 	}

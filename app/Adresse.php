@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Adresse extends Model
 {
+	protected $fillable = [
+        'id_adresse', 'numero_adresse', 'voierie', 'id_ville'
+	];
+	
     public function ville(){
 		return $this->belongsTo(Ville::class);
 	}
@@ -18,7 +22,4 @@ class Adresse extends Model
         return $this->belongsToMany('App\Fournisseur', 'est_localisé', 'id_adresse', 'id_fourni');
     }
 	
-	public function ports(){
-		return $this->hasMany(Port::class);
-	}
 }

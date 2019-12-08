@@ -17,13 +17,13 @@ class CreateFournisseursTable extends Migration
  	    $table->engine = 'InnoDB';
 	    $table->charset = 'utf8';
 
-            $table->bigIncrements('id_fourni');
+		$table->bigIncrements('id_fourni');
 
   	    $table->string('mail_fourni')->unique();
-            $table->string('nom_fourni');
+		$table->string('nom_fourni');
 	    $table->string('tel_fourni');
 
-            $table->timestamps();
+		$table->timestamps();
         });
     }
 

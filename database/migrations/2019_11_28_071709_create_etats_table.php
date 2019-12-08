@@ -17,7 +17,7 @@ class CreateEtatsTable extends Migration
  	    $table->engine = 'InnoDB';
 	    $table->charset = 'utf8';
 
-            $table->bigIncrements('id_etat');
+        $table->bigIncrements('id_etat');
 	    $table->string('desc_etat');
         });
     }

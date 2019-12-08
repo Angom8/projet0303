@@ -17,7 +17,7 @@ class CreateModelesTable extends Migration
  	    $table->engine = 'InnoDB';
 	    $table->charset = 'utf8';
 
-            $table->bigIncrements('id_modele');
+        $table->bigIncrements('id_modele');
 	    $table->string('nom_modele');
         });
     }

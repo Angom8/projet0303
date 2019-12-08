@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Etat extends Model
 {
+	protected $fillable = [
+        'id_etat', 'desc_etat'
+	];
+	
     public function piece(){
 		return $this->hasMany('App\Piece', 'est_dans', 'id_etat', 'id_piece');
 	}

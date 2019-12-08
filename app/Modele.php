@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Modele extends Model
 {
+	protected $fillable = [
+		'id_modele',
+		'nom_modele'
+	];
+	
     public function marques(){
 		return $this->belongsToMany(Marque::class, 'produit_par', 'id_modele', 'id_marque');
 	}
