@@ -15,7 +15,6 @@ Utilisateurs
 			<th>NOM</th>
 			<th>PRENOM</th>
 			<th>DATE D'INSCRIPTION</th>
-			<th>NB BATEAUX</th>
 			<th>ID ADHERENT</th>
 			<th class="text-center">ACTION</th>
 		      </tr>
@@ -26,7 +25,6 @@ Utilisateurs
 			<td>{{ $user->prenom_utilisateur }}</td>
 			<td>{{ $user->nom_utilisateur }}</td>
 			<td>{{ $user->created_at }}</td>
-			<td>NaN</td>
 			<td>{{ $user->id }}</td>
 			<td class="text-center">
 				<form method="get" action={{ route('user.show' , ['id' => $user->id]) }}>

@@ -10,36 +10,36 @@
 /*Non logged pages*/
 Auth::routes();
 
-Route::get('/', function () {//init
+Route::get('/', function () {//REMPLACER LOREM
     return view('home');
 });
-Route::get('/home', function () {//init
+Route::get('/home', function () {//design improvment
     return view('home');
 });
 
-Route::get('contact', function () {//init
+Route::get('contact', function () {//REMPLACER LOREM
     return view('contact');
 });
 
 
-Route::get('signin', function () {//gen auto
+Route::get('signin', function () {//done
     return view('signin');
 });
 
 
 /*do an auto redirection to match user-type and panel*/
 
-Route::get('mypanel', function () {//
+Route::get('mypanel', function () {//design improvment
     return view('user-global');
 })->middleware('auth');
 
 /*Type Admin user pages*/
 
-Route::get('admin/', function () {//init
+Route::get('admin/', function () {//design improvment
     return view('user-global');
 })->middleware('auth');
 
-Route::get('admin/messages', function () {//init
+Route::get('admin/messages', function () {
     return view('messages');
 })->middleware('auth');
 
@@ -54,47 +54,43 @@ Route::get('helper/add-fourni', function () {
 Route::post('helper/add-fourni/register', ['uses' => 'FournisseurController@create', 'as' => 'fourni.register'])->middleware('auth');
 
 /*Type Secretaire user pages*/
-Route::get('helper/', function () {//init
+Route::get('helper/', function () {//design improvment
     return view('user-global');
 })->middleware('auth');
 
-Route::get('helper/users',  ['uses' =>'ListesController@getUtilisateurs', 'as'=>'users'])->middleware('auth');
+Route::get('helper/users',  ['uses' =>'ListesController@getUtilisateurs', 'as'=>'users'])->middleware('auth');//done
 
-Route::get('helper/users/{id}',  ['uses' =>'ListesController@getUtilisateurs', 'as'=>'users'])->middleware('auth');
+Route::get('helper/users/{id}',  ['uses' =>'ListesController@getUtilisateurs', 'as'=>'users'])->middleware('auth');//done
 
-Route::delete('helper/user/del/{id}', ['uses' => 'UtilisateurController@destroy', 'as' => 'user.delete'])->middleware('auth');
+Route::delete('helper/user/del/{id}', ['uses' => 'UtilisateurController@destroy', 'as' => 'user.delete'])->middleware('auth');//done
 
-Route::get('helper/user/{id}', ['uses' => 'UtilisateurController@show', 'as' => 'user.show'])->middleware('auth');
+Route::get('helper/user/{id}', ['uses' => 'UtilisateurController@show', 'as' => 'user.show'])->middleware('auth');//done
 
-Route::post('helper/user/changePW', ['uses' => 'UtilisateurController@changePW', 'as' => 'user.changepw'])->middleware('auth');
+Route::post('helper/user/changePW', ['uses' => 'UtilisateurController@changePW', 'as' => 'user.changepw'])->middleware('auth');//done
 
-Route::get('helper/add-user', function () {
+Route::get('helper/add-user', function () {//ajouter champ adresse
     return view('add-user');
 })->middleware('auth');
 
-Route::post('helper/add-user/register', ['uses' => 'UtilisateurController@create', 'as' => 'user.register'])->middleware('auth');
+Route::post('helper/add-user/register', ['uses' => 'UtilisateurController@create', 'as' => 'user.register'])->middleware('auth');//ajouter champ adresse
 
 /*Type Adhérent user pages*/
 
-Route::get('panel/', function () {//init
+Route::get('panel/', function () {//done
     return view('user-global');
 })->middleware('auth');
 
-Route::get('panel/fournisseurs',  ['uses' =>'ListesController@getFournisseurs', 'as'=>'fourni'])->middleware('auth');
+Route::get('panel/fournisseurs',  ['uses' =>'ListesController@getFournisseurs', 'as'=>'fournisseurs'])->middleware('auth');//done
 
-Route::get('panel/fournisseurs/{id}',  ['uses' =>'ListesController@getFournisseurs', 'as'=>'fourni'])->middleware('auth');
+Route::get('panel/fournisseurs/{id}',  ['uses' =>'ListesController@getFournisseurs', 'as'=>'fournisseurspagex'])->middleware('auth');//done
 
-Route::get('panel/fournisseur', function () {
-    return view('fournisseur');
-})->middleware('auth');
+Route::get('panel/fournisseur/{id}', ['uses' => 'FournisseurController@show', 'as' => 'fourni.show'])->middleware('auth');
 
-Route::get('panel/contact-fournisseur', function () {
-    return view('contact-fournisseur');
-})->middleware('auth');
+Route::get('panel/boats',  ['uses' =>'ListesController@getBateaux', 'as'=>'boats'])->middleware('auth');//done
 
-Route::get('panel/boats', function () {//init
-    return view('boats');
-})->middleware('auth');
+Route::get('panel/boats/{id}',  ['uses' =>'ListesController@getBateaux', 'as'=>'boatspagex'])->middleware('auth');//done
+
+//faire page individuel fourni + redirection sur liste
 
 Route::get('panel/boat', function () {
     return view('boat');

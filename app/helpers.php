@@ -183,6 +183,41 @@ if (! function_exists('getCreateUser')) {
 	
 }
 
+if (! function_exists('getCreateBoat')) {
+
+	function getCreateBoat($type_user){
+
+		  if($type_user!=2){
+		  echo '<div class="text-right bato-row">
+			<a class="btn btn-warning" href="'.url('send-boat').'">Envoyer un Bateau</a>
+		  </div>';
+		}
+		else{
+		  echo '<div class="text-right bato-row">
+			<a class="btn btn-warning" href="'.url('admin/add-boat').'">Ajouter un Bateau</a>
+		  </div>';
+		}
+	}
+	
+}
+
+
+if (! function_exists('getCreateFournisseur')) {
+
+	function getCreateFournisseur($type_user){
+
+		  if($type_user!=2){
+		  echo '';
+		}
+		else{
+		  echo '<div class="text-right bato-row">
+			<a class="btn btn-warning" href="'.url('admin/add-boat').'">Ajouter un Bateau</a>
+		  </div>';
+		}
+	}
+	
+}
+
 
 if (! function_exists('getAdmNavBar')) {
 

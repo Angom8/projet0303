@@ -5,8 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Utilisateur;
+use App\Bateau;
+use App\Adresse;
+use App\Pays;
+use App\Ville;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
+
+use Illuminate\Support\Facades\DB;
 
 use  App\Rules\MatchOldPassword;
 
@@ -79,8 +85,40 @@ class UtilisateurController extends Controller
     public function show($id)
     {
       	$user= Utilisateur::whereId($id)->get();
+	$id_boats = DB::table('Possede')->where('id_utilisateur', $id)->pluck('id_bateau');
 
-    	return view('user', ['user' => $user[0]]);
+	//mesure de sécurité, même si id = unique
+ 	$user = $user[0];
+	
+	//adresse
+	$adresse = Adresse::where('id_adresse', $user->id_adresse)->get()[0];
+	$ville = Ville::where('id_ville', $adresse->id_ville)->get()[0];
+	$pays = Pays::where('id_pays', $ville->id_pays)->get()[0];
+
+	$localisation = ['voierie' => $adresse->voierie, 
+			'numero_adresse' => $adresse->numero_adresse, 
+			'code_postal' => $ville->code_postal, 
+			'ville' => $ville->nom_ville, 
+			'pays' => $pays->nom_pays];
+	
+
+	$return = [];
+
+	//bateau
+	foreach($id_boats as $idb){
+		$boat = Bateau::where('id_bateau', $idb)->value('nom_bateau');
+		array_push($return, ['nom' => $boat, 'id' => $idb]);
+	}
+
+
+	//user
+	if(isset($user)){
+	
+    		return view('user', ['user' => $user, 'boats' => $return, 'localisation' => $localisation]);
+	}
+	else{
+		return view('404');
+	}
     }
 
     /**
@@ -115,6 +153,11 @@ class UtilisateurController extends Controller
     public function destroy($id)
     {
             	$user= Utilisateur::whereId($id);
+		$id_boats = DB::table('Possede')->where('id_utilisateur', $id);
+		foreach($id_boats->get() as $idb){
+			Bateau::where('id_bateau', $idb->id_bateau)->delete();
+		}
+		$id_boats->delete();
     		$user->delete();
     		return back();
     }

@@ -16,7 +16,6 @@ Fournisseurs
 		      <tr>
 			<th>NOM</th>
 			<th>DATE D'INSCRIPTION</th>
-			<th>NB PIECES FOURNIES</th>
 			<th>ID FOURNISSEUR</th>
 			<th class="text-center">ACTION</th>
 		      </tr>
@@ -26,7 +25,6 @@ Fournisseurs
 		      <tr>
 			<td>{{ $fourni->nom_fourni }}</td>
 			<td>{{ $fourni->created_at }}</td>
-			<td>NaN</td>
 			<td>{{ $fourni->id_fourni }}</td>
 			<td class="text-center">
 				<button type="button" class="btn btn-secondary">Voir</button>

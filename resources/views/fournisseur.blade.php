@@ -8,17 +8,17 @@ Adhérent
 
 	<div class ="content">
 		<div class="container">
-		  <h1>{{ $user->nom_utilisateur }} {{ $user->prenom_utilisateur }}</h1>
-			{{ getCreateUser() }}
+		  <h1>{{ $fourni->nom_fourni}}</h1>
+			{{ getCreateFournisseur(Auth::user()->type_utilisateur) }}
 
 		<section id="user">
 			<div>
 				<div class="card container">
 					<div class="card-body">
-						<p class="lead">@if($user->type_utilisateur==2) Administrateur(trice) @else @if($user->type_utilisateur==1) Secrétaire @else Adhérent(e) @endif @endif</p>
-						<p><strong>Dernière mise à jour du profil</strong> : {{ $user->updated_at }}</p>
-						<p><strong>Inscription</strong> : {{ $user->created_at }}</p>
-						<p><strong>Id </strong>: {{ $user->id }}</p>
+						<p class="lead">Fournisseur</p>
+						<p><strong>Dernière mise à jour du profil</strong> : {{ $fourni->updated_at }}</p>
+						<p><strong>Inscription</strong> : {{ $fourni->created_at }}</p>
+						<p><strong>Id </strong>: {{ $fourni->id_fourni }}</p>
 						<p><strong>Identifiant de connexion </strong>: {{ $user->login }}</p>
 						<p><strong>Adresse mail </strong>: {{ $user->mail_utilisateur }}</p>
 						<p><strong>Numéro de téléphone </strong>: {{ $user->tel_utilisateur }}</p>
