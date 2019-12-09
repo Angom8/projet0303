@@ -8,9 +8,7 @@ Fournisseurs
 	<div class ="content">
 		<div class="container">
 		  <h1>Fournisseurs</h1>
-		  <div class="text-right bato-row">
-		 	 <button type="button" class="btn btn-warning">Ajouter un fournisseur</button>
-		  </div>
+		  {{ getCreateFournisseur(Auth::user()->type_utilisateur) }}
 		  <table class="table">
 		    <thead class="thead-dark">
 		      <tr>
@@ -27,7 +25,17 @@ Fournisseurs
 			<td>{{ $fourni->created_at }}</td>
 			<td>{{ $fourni->id_fourni }}</td>
 			<td class="text-center">
-				<button type="button" class="btn btn-secondary">Voir</button>
+				<form method="get" action={{ route('fourni.show' , ['id' => $fourni->id_fourni]) }}>
+					<button type="submit" class="btn btn-secondary">Voir</button>
+				</form>
+
+				@if(Auth::user()->type_utilisateur == 2)
+					<form method="post" action={{ route('fourni.delete' , ['id' => $fourni->id_fourni]) }}>
+						{!! csrf_field() !!}
+					{{ method_field('DELETE') }}
+					<button type="submit" class="btn btn-danger">Supprimer</button>
+					</form>
+				@endif
 			</td>
 			</tr>
 			@endforeach

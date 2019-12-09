@@ -42,6 +42,13 @@ class UtilisateurController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
 		'nom_utilisateur' => ['required', 'string', 'max:255'],
 		'prenom_utilisateur' => ['required', 'string', 'max:255'],
+		'nom_pays' => ['required', 'string', 'max:255'],
+		'nom_ville' => ['required', 'string', 'max:255'],
+		'numero_adresse' => ['required', 'string', 'max:255'],
+		'numero_adresse' => ['required', 'string', 'max:255'],
+		'voierie' => ['required', 'string', 'max:255'],
+		'code_postal' => ['required', 'string', 'max:255'],
+
 		'tel_utilisateur' => ['required', 'string', 'max:50'],
         ]);
         if ($validator->fails()) {
@@ -49,6 +56,7 @@ class UtilisateurController extends Controller
         }
  	else{
 
+		//create liens
 		Utilisateur::create([
 		    'login' => $data['login'],
 		    'mail_utilisateur' => $data['mail_utilisateur'],
@@ -73,7 +81,9 @@ class UtilisateurController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $pays = DB::table('Pays')->orderBy('nom_pays')->pluck('nom_pays');
+
+       return view('add-user', ['listPays' => $pays]);
     }
 
     /**

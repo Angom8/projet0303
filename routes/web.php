@@ -51,7 +51,9 @@ Route::get('helper/add-fourni', function () {
     return view('add-fourni');
 })->middleware('auth');
 
-Route::post('helper/add-fourni/register', ['uses' => 'FournisseurController@create', 'as' => 'fourni.register'])->middleware('auth');
+Route::post('admin/add-fourni/register', ['uses' => 'FournisseurController@create', 'as' => 'fourni.register'])->middleware('auth');
+
+Route::delete('admin/fournisseur/delete/{id}', ['uses' => 'FournisseurController@destroy', 'as' => 'fourni.delete'])->middleware('auth');//done
 
 /*Type Secretaire user pages*/
 Route::get('helper/', function () {//design improvment
@@ -68,9 +70,7 @@ Route::get('helper/user/{id}', ['uses' => 'UtilisateurController@show', 'as' => 
 
 Route::post('helper/user/changePW', ['uses' => 'UtilisateurController@changePW', 'as' => 'user.changepw'])->middleware('auth');//done
 
-Route::get('helper/add-user', function () {//ajouter champ adresse
-    return view('add-user');
-})->middleware('auth');
+Route::get('helper/add-user', ['uses' => 'UtilisateurController@store', 'as' => 'user.store'])->middleware('auth');//done
 
 Route::post('helper/add-user/register', ['uses' => 'UtilisateurController@create', 'as' => 'user.register'])->middleware('auth');//ajouter champ adresse
 

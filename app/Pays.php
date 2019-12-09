@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Http\Controllers\PaysController;
 
 class Pays extends Model
 {
@@ -18,4 +19,5 @@ protected $table = 'Pays';
     public function villes(){
 		return $this->hasMany(Ville::class);
 	}
+
 }

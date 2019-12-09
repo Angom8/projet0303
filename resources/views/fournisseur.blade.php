@@ -19,58 +19,38 @@ Adhérent
 						<p><strong>Dernière mise à jour du profil</strong> : {{ $fourni->updated_at }}</p>
 						<p><strong>Inscription</strong> : {{ $fourni->created_at }}</p>
 						<p><strong>Id </strong>: {{ $fourni->id_fourni }}</p>
-						<p><strong>Identifiant de connexion </strong>: {{ $user->login }}</p>
-						<p><strong>Adresse mail </strong>: {{ $user->mail_utilisateur }}</p>
-						<p><strong>Numéro de téléphone </strong>: {{ $user->tel_utilisateur }}</p>
-						<p><strong>Adresse </strong>:</p>
+						<p><strong>Adresse mail </strong>: {{ $fourni->mail_fourni }}</p>
+						<p><strong>Numéro de téléphone </strong>: {{ $fourni->tel_fourni }}</p>
+						<p><strong>Adresse(s) </strong>:</p>
 						<ul>
-							<li>{{ $localisation['pays'] }}</li>
-							<li>{{ $localisation['ville'] }}</li>
-							<li>{{ $localisation['code_postal'] }}</li>
-							<li>{{ $localisation['numero_adresse'] }} {{ $localisation['voierie'] }}</li>
-						</ul>
-						<form method="POST" action="{{ route('user.changepw') }}">
-							@csrf 
-                         				@foreach ($errors->all() as $error)
-
-                            					<p class="text-danger">{{ $error }}</p>
-
-                         				@endforeach 
-                        				<div class="form-group row">
-								<label for="password" class="col-md-4 col-form-label text-md-right">Mot de passe actuel</label>
-								<div class="col-md-6">
-									<input id="password" type="password" class="form-control" name="current_password" autocomplete="current-password">
-								</div>
-                       					 </div>
-							<div class="form-group row">
-								 <label for="password" class="col-md-4 col-form-label text-md-right">Nouveau mot de passe</label>
-								 <div class="col-md-6">
-									<input id="new_password" type="password" class="form-control" name="new_password" autocomplete="current-password">
-								</div>
-							</div>
-							 <div class="form-group row">
-								<label for="password" class="col-md-4 col-form-label text-md-right">Confirmez le nouveau mot de passe</label>
-								<div class="col-md-6">
-								<input id="new_confirm_password" type="password" class="form-control" name="new_confirm_password" autocomplete="current-password">
-								</div>
-							 </div>
-							 <div class="form-group row mb-0">
-								 <div class=" ml-auto">
-									<button type="submit" class="btn btn-secondary">Mettre à jour</button>
-								</div>
-							</div>
-						 </form>	
-						<p><strong>Bateaux </strong>: </p>
-						<ul>	
-
-				
-
-							@if($boats)
-								@foreach ($boats as $boat)
-									<li><a href="{{ url('panel/boat/'.$boat['id']) }}">{{ $boat['nom'] }}</a></li>
+							@if($franchise)
+								@foreach ($franchise as $localisation)
+									<li>{{ $localisation['ville'] }}</li>
+									<ul>
+										<li>{{ $localisation['pays'] }}</li>
+										<li>{{ $localisation['code_postal'] }}</li>
+										<li>{{ $localisation['numero_adresse'] }} {{ $localisation['voierie'] }}</li>
+									</ul>
 								@endforeach
 							@else
-								<li>L'utilisateur ne possède pas de bateau</li>
+								<li>L'adresse de ce contact n'a encore pas été précisée</li>
+							@endif
+						</ul>	
+						<p><strong>Pièces et Equipements fournis </strong>: </p>
+						<ul>
+							@if($piece)
+								@foreach ($piece as $p)
+									<li>{{ $p }}</a></li>
+								@endforeach
+							@else
+								<li>Les Pièces fournies par ce contact n'ont pas été précisées</li>
+							@endif
+							@if($equipement)
+								@foreach ($equipement as $eq)
+									<li>{{ $eq }}</a></li>
+								@endforeach
+							@else
+								<li>Les Equipements fournis par ce contact n'ont pas été précisés</li>
 							@endif
 
 						</ul>

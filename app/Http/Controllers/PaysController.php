@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Pays;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PaysController extends Controller
 {
@@ -44,9 +45,9 @@ class PaysController extends Controller
      * @param  \App\Pays  $pays
      * @return \Illuminate\Http\Response
      */
-    public function show(Pays $pays)
+    public function show()
     {
-        //
+
     }
 
     /**

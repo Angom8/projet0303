@@ -16,8 +16,8 @@ class CreateFournitsTable extends Migration
         Schema::create('Fournit', function (Blueprint $table) {
 		$table->engine = 'InnoDB';
 		$table->unsignedInteger('id_fourni');
-		$table->unsignedInteger('id_equipement')->nullable();
-		$table->unsignedInteger('id_piece')->nullable();
+		$table->unsignedInteger('id_type_equipement')->nullable();
+		$table->unsignedInteger('id_type_piece')->nullable();
         });
     }
 
