@@ -26,6 +26,8 @@ class DatabaseSeeder extends Seeder
 	$this->call(MoteurTableSeeder::class);
 	$this->call(ImmatriculationTableSeeder::class);
 	$this->call(BateauTableSeeder::class);
-	$this->call(EntretienTableSeeder::class);    
+	$this->call(EntretienTableSeeder::class); 
+	$this->call(FournitTableSeeder::class);
+	$this->call(EstLocaliseTableSeeder::class);    
 	}
 }

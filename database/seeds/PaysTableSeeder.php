@@ -6,6 +6,6 @@ use App\Pays;
 class PaysTableSeeder extends Seeder {
     public function run()
     {
-		$country = factory(App\Pays::class, 50)->create();
+		$country = factory(App\Pays::class, 125)->create();
     }
 }

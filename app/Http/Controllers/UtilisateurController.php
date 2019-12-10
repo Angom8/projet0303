@@ -45,7 +45,6 @@ class UtilisateurController extends Controller
 		'nom_pays' => ['required', 'string', 'max:255'],
 		'nom_ville' => ['required', 'string', 'max:255'],
 		'numero_adresse' => ['required', 'string', 'max:255'],
-		'numero_adresse' => ['required', 'string', 'max:255'],
 		'voierie' => ['required', 'string', 'max:255'],
 		'code_postal' => ['required', 'string', 'max:255'],
 
@@ -56,17 +55,46 @@ class UtilisateurController extends Controller
         }
  	else{
 
-		//create liens
-		Utilisateur::create([
-		    'login' => $data['login'],
-		    'mail_utilisateur' => $data['mail_utilisateur'],
-		    'password' => Hash::make($data['password']),
-			'nom_utilisateur' => $data['nom_utilisateur'],
-			'prenom_utilisateur' => $data['prenom_utilisateur'],
-			'tel_utilisateur' => $data['tel_utilisateur'],
-			'type_utilisateur' => 0,
-		]);
-		return route('users');
+		if($id_pays = DB::table('Pays')->where('nom_pays', $data['nom_pays'])->pluck('id_pays')[0]){
+
+
+			if($id_ville = DB::table('Ville')->where('id_pays', $id_pays->id_pays)->where('nom_ville', $data['nom_ville'])->pluck('id_ville')[0]){
+			}
+
+			else{
+				Ville::create([
+				    	'nom_ville' => $data['nom_ville'],
+				    	'code_postal' => $data['code_postal'],
+				    	'id_pays' => $id_pays,
+				]);
+
+				$id_ville = DB::table('Ville')->where('id_pays', $id_pays->id_pays)->where('nom_ville', $data['nom_ville'])->pluck('id_ville')[0];
+
+				Adresse::create([
+				    	'id_ville' => $id_ville,
+					'numero_adresse' => $data['numero_adresse'],
+					'voierie' => $data['voierie'],
+				]);
+
+			}	
+
+			//create liens
+			Utilisateur::create([
+			    'login' => $data['login'],
+			    'mail_utilisateur' => $data['mail_utilisateur'],
+			    'password' => Hash::make($data['password']),
+				'nom_utilisateur' => $data['nom_utilisateur'],
+				'prenom_utilisateur' => $data['prenom_utilisateur'],
+				'tel_utilisateur' => $data['tel_utilisateur'],
+				'type_utilisateur' => 0,
+			]);
+			return route('users');
+
+		}
+
+		else{
+			return back();
+		}
 
 	}
 
