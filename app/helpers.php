@@ -201,21 +201,7 @@ if (! function_exists('getCreateBoat')) {
 	
 }
 
-if (! function_exists('getCreateFournisseur')) {
 
-	function getCreateFournisseur($type_user){
-
-		  if($type_user!=2){
-		  echo '';
-		}
-		else{
-		  echo '<div class="text-right bato-row">
-			<a class="btn btn-warning" href="'.url('admin/add-boat').'">Ajouter un Fournisseur</a>
-		  </div>';
-		}
-	}
-	
-}
 
 if (! function_exists('getCreateFournisseur')) {
 
@@ -226,7 +212,7 @@ if (! function_exists('getCreateFournisseur')) {
 		}
 		else{
 		  echo '<div class="text-right bato-row">
-			<a class="btn btn-warning" href="'.url('admin/add-boat').'">Ajouter un Fournisseur</a>
+			<a class="btn btn-warning" href="'.url('admin/add-fourni').'">Ajouter un Fournisseur</a>
 		  </div>';
 		}
 	}

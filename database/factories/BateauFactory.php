@@ -14,7 +14,7 @@ $factory->define(Bateau::class, function (Faker $faker) {
 	'surface_voilure'  => rand(0, 50), 
 	'dimension_x_bateau' => rand(2, 50), 
 	'dimension_y_bateau' => rand(2, 50), 
-	'ancienne_cat' => 'A', 
+	'ancienne_cat' => rand(1,6), 
 	'distance_eloignement' => rand(2, 500), 
 	'volume_coque' => rand(2, 5000), 
 	'force_vent_max' => rand(2, 100), 

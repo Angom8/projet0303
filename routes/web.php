@@ -72,7 +72,7 @@ Route::post('helper/user/changePW', ['uses' => 'UtilisateurController@changePW',
 
 Route::get('helper/add-user', ['uses' => 'UtilisateurController@store', 'as' => 'user.store'])->middleware('auth');//done
 
-Route::post('helper/add-user/register', ['uses' => 'UtilisateurController@create', 'as' => 'user.register'])->middleware('auth');//ajouter champ adresse
+Route::post('helper/add-user/register', ['uses' => 'UtilisateurController@create', 'as' => 'user.register'])->middleware('auth');//done
 
 /*Type Adhérent user pages*/
 
@@ -84,13 +84,13 @@ Route::get('panel/fournisseurs',  ['uses' =>'ListesController@getFournisseurs', 
 
 Route::get('panel/fournisseurs/{id}',  ['uses' =>'ListesController@getFournisseurs', 'as'=>'fournisseurspagex'])->middleware('auth');//done
 
-Route::get('panel/fournisseur/{id}', ['uses' => 'FournisseurController@show', 'as' => 'fourni.show'])->middleware('auth');
+Route::get('panel/fournisseur/{id}', ['uses' => 'FournisseurController@show', 'as' => 'fourni.show'])->middleware('auth');//ajout piece if admin
 
 Route::get('panel/boats',  ['uses' =>'ListesController@getBateaux', 'as'=>'boats'])->middleware('auth');//done
 
 Route::get('panel/boats/{id}',  ['uses' =>'ListesController@getBateaux', 'as'=>'boatspagex'])->middleware('auth');//done
 
-//faire page individuel fourni + redirection sur liste
+Route::get('panel/boat/{id}',  ['uses' =>'BateauController@show', 'as'=>'boat.show'])->middleware('auth');//done
 
 Route::get('panel/boat', function () {
     return view('boat');

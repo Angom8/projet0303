@@ -76,7 +76,7 @@ class ListesController extends Controller
 
 			//bateau
 			foreach($id_boats as $idb){
-				$boat = Bateau::where('id_bateau', $idb)->get()->first();
+				$boat = Bateau::where('id_bateau', $idb)->get()[0];
 				array_push($return, ['nom_bateau' => $boat->nom_bateau, 'entretien' => $boat->updated_at, 'created_at' => $boat->created_at, 'id' => $idb]);
 			}
 	

@@ -27,9 +27,8 @@ Mes bateaux
 			<td>{{ $boat['created_at'] }}</td>
 			<td>{{  $boat['id'] }}</td>
 			<td class="text-center">
-				<form method="get">
-			
-				<button type="submit" class="btn btn-secondary">Voir</button>
+				<form method="get" action={{ route('boat.show' , ['id' =>  $boat['id']]) }}>
+					<button type="submit" class="btn btn-secondary">Voir</button>
 				</form>
 
 				<form method="post">

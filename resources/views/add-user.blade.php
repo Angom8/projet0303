@@ -14,6 +14,10 @@ Ajouter un utilisateur
 
 				<div class="card-body">
 					<p>Tous les champs sont obligatoires</p>
+
+					@if(isset($ajout) and $ajout == 1)
+					<p style="color:green">L'utilisateur a bien été ajouté</p>
+					@endif
 				    <form method="POST" action="{{ route('user.register') }}">
 				        @csrf
 
@@ -153,7 +157,7 @@ Ajouter un utilisateur
 				            <label for="tel_utilisateur" class="col-md-4 col-form-label text-md-right">{{ __('Numéro de téléphone') }}</label>
 
 				            <div class="col-md-6">
-				                <input id="tel_utilisateur" type="tel" pattern="[0-9]{2}.[0-9]{2}.[0-9]{2}.[0-9]{2}.[0-9]{2}" class="form-control @error('tel_utilisateur') is-invalid @enderror" name="tel_utilisateur" value="{{ old('mail_utilisateur') }}" required autocomplete="tel_utilisateur">
+				                <input id="tel_utilisateur" type="tel" pattern="[0-9]{2}.[0-9]{2}.[0-9]{2}.[0-9]{2}.[0-9]{2}" class="form-control @error('tel_utilisateur') is-invalid @enderror" name="tel_utilisateur" value="{{ old('tel_utilisateur') }}" required autocomplete="tel_utilisateur">
 
 				                @error('tel_utilisateur')
 				                    <span class="invalid-feedback" role="alert">

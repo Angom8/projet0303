@@ -1,0 +1,26 @@
+reste à faire :
+
+Fournisseur :
+add-fourni
+sur la page fourni : add piece / equipement si admin
+
+Bateau : => if user == admin or possesseur du bateau
+
+Afficher les caracs
+Afficher les pieces, moteur et equip (dont piece les composant) + etat
+Afficher les entretiens + date + piece concernée
+
+Form ajout bateau :
+Carac principale + fichier de détail
+envoie mail admin + message
+
+Form update bateau :
+Fichier de détail + sélection bateau
+
+Restreindre les accès
+
+Lorem ipsum à supprimer;
+
+Dossier
+
+

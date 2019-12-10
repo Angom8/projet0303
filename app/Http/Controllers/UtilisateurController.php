@@ -55,12 +55,27 @@ class UtilisateurController extends Controller
         }
  	else{
 
-		if($id_pays = DB::table('Pays')->where('nom_pays', $data['nom_pays'])->pluck('id_pays')[0]){
+		if($id_pays = DB::table('Pays')->where('nom_pays', $data['nom_pays'])->value('id_pays')){
 
 
-			if($id_ville = DB::table('Ville')->where('id_pays', $id_pays->id_pays)->where('nom_ville', $data['nom_ville'])->pluck('id_ville')[0]){
+			if($id_ville = DB::table('Ville')->where('id_pays', $id_pays)->where('nom_ville', $data['nom_ville'])->value('id_ville')){
+			
+
+				if($id_adresse = DB::table('Adresse')->where('id_ville', $id_ville)->where('numero_adresse',$data['numero_adresse'])->where('voierie',$data['voierie'])->value('id_adresse')){
+
+				}
+				else{
+
+					Adresse::create([
+					    	'id_ville' => $id_ville,
+						'numero_adresse' => $data['numero_adresse'],
+						'voierie' => $data['voierie'],
+					]);
+					$id_adresse = DB::table('Adresse')->where('id_ville', $id_ville)->where('numero_adresse',$data['numero_adresse'])->where('voierie',$data['voierie'])->value('id_adresse');
+
+				}
+
 			}
-
 			else{
 				Ville::create([
 				    	'nom_ville' => $data['nom_ville'],
@@ -68,7 +83,7 @@ class UtilisateurController extends Controller
 				    	'id_pays' => $id_pays,
 				]);
 
-				$id_ville = DB::table('Ville')->where('id_pays', $id_pays->id_pays)->where('nom_ville', $data['nom_ville'])->pluck('id_ville')[0];
+				$id_ville = DB::table('Ville')->where('id_pays', $id_pays)->where('nom_ville', $data['nom_ville'])->value('id_ville');
 
 				Adresse::create([
 				    	'id_ville' => $id_ville,
@@ -76,9 +91,10 @@ class UtilisateurController extends Controller
 					'voierie' => $data['voierie'],
 				]);
 
+				$id_adresse = DB::table('Adresse')->where('id_ville', $id_ville)->where('numero_adresse',$data['numero_adresse'])->where('voierie',$data['voierie'])->value('id_adresse');
+
 			}	
 
-			//create liens
 			Utilisateur::create([
 			    'login' => $data['login'],
 			    'mail_utilisateur' => $data['mail_utilisateur'],
@@ -87,8 +103,9 @@ class UtilisateurController extends Controller
 				'prenom_utilisateur' => $data['prenom_utilisateur'],
 				'tel_utilisateur' => $data['tel_utilisateur'],
 				'type_utilisateur' => 0,
+				'id_adresse' => $id_adresse,
 			]);
-			return route('users');
+			return redirect('panel');
 
 		}
 

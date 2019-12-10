@@ -44,9 +44,17 @@ class BateauController extends Controller
      * @param  \App\Bateau  $bateau
      * @return \Illuminate\Http\Response
      */
-    public function show(Bateau $bateau)
+    public function show($id)
     {
-        //
+        $boat= Bateau::where('id_bateau', $id)->get()[0]->toArray();
+
+	if(isset($boat)){
+	
+    		return view('boat', ['boat' => $boat]);
+	}
+	else{
+		return view('404');
+	}
     }
 
     /**
