@@ -13,14 +13,16 @@ Auth::routes();
 Route::get('/', function () {//done
     return view('home');
 });
+
 Route::get('/home', function () {//done
     return view('home');
 });
 
-Route::get('contact', function () {//REMPLACER LOREM
+Route::get('contact', function () {//done
     return view('contact');
 });
 
+Route::post('contact/send', ['uses' => 'FormController@contact', 'as' => 'contact.form']);//done
 
 Route::get('signin', function () {//done
     return view('signin');

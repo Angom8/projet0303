@@ -139,31 +139,33 @@ if (! function_exists('getAdmButtons')) {
 		<section id="buttons">
 			<div class="container">
 			  <div class="row text-center">';
-		if($type_util === 'admin'){
+		if($type_util === 2){
 	
-			echo '<div class="col align-self-center">
-				<button type="button" class="btn btn-lg btn-block btn-outline-dark main-btn shadow-sm ">Messages</button>';
+			echo '
+
+				<form class="col align-self-center" method="get" action='.url('/admin/messages').'>
+					<button type="submit" class="btn  btn-block btn-outline-dark main-btn shadow-sm ">Messages</button>
+				</form>';
 		}
-		if($type_util === 'secretaire' or $type_util === 'admin'){
+		if($type_util === 1 or $type_util === 2){
 	
 						    
-			echo '</div>
-				<div class="col align-self-center">
-				<button type="button" class="btn btn-lg btn-block btn-outline-dark main-btn shadow-sm ">Utilisateurs</button>
-			    </div>
-				<div class="col align-self-center">
-				<button type="button" class="btn btn-lg btn-block btn-outline-dark main-btn shadow-sm ">Ajouter un utilisateur</button>
-			    </div>';
+			echo '
+				<form class="col align-self-center" method="get" action='.url('/helper/users').'>
+					<button type="submit" class="btn  btn-block btn-outline-dark main-btn shadow-sm ">Utilisateurs</button>
+				</form>
+				<form class="col align-self-center" method="get" action='.url('/helper/add-user').'>
+					<button type="submit" class="btn  btn-block btn-outline-dark main-btn shadow-sm ">Ajouter un utilisateur</button>
+				</form>';
 		}
-		if($type_util !== 'secretaire'){
-			echo ' <div class="col align-self-center">
-				<button type="button" class="btn btn-lg btn-block btn-outline-dark main-btn shadow-sm  ">Bateaux</button>
-			    </div>
-
-			    <div class="col align-self-center">
-				<button type="button" class="btn btn-lg btn-block btn-outline-dark main-btn shadow-sm ">Fournisseurs</button>
-			    </div>';
-		}
+	
+			echo ' 	<form class="col align-self-center" method="get" action='.url('/panel/boats').'>
+					<button type="submit" class="btn  btn-block btn-outline-dark main-btn shadow-sm ">Mes bateaux</button>
+				</form>
+				<form class="col align-self-center" method="get" action='.url('/panel/fournisseurs').'>
+					<button type="submit" class="btn  btn-block btn-outline-dark main-btn shadow-sm ">Fournisseurs</button>
+				</form>';
+		
 		
 		echo '			  </div>
 			</div>

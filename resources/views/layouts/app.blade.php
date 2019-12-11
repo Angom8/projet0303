@@ -40,6 +40,10 @@
                                 <a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Se connecter" href="{{ route('login') }}">{{ __('Se connecter') }}</a>
                             </li>
                         @else
+
+			<li class="nav-item">
+				<a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Accéder à mon panel" href="{{ url('/mypanel') }}">Mon panel </a>
+			      </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->login }} <span class="caret"></span>
@@ -57,9 +61,6 @@
                                     </form>
                                 </div>
                             </li>
-			<li class="nav-item">
-				<a class="nav-link" data-toggle="tooltip" data-placement="bottom" title="Accéder à mon panel" href="{{ url('/mypanel') }}">Panel de gestion </a>
-			      </li>
 			
                         	@endguest
    		 </ul>

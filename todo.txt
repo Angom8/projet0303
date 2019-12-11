@@ -15,8 +15,6 @@ Fichier de détail + sélection bateau
 
 Restreindre les accès
 
-Lorem ipsum à supprimer;
-
 Dossier
 
 

@@ -10,24 +10,25 @@ Contact
   		<div class="left-contact w-75">
 			<div class="container">
 				<h1>Contact</h1>
-					<form>
+					<form method="post" action={{ route('contact.form') }}>
+					{{ csrf_field() }}
 					    <div class="form-group ">
 					      <label for="inputNom">Nom</label>
-					      <input type="text" class="form-control" id="inputNom" placeholder="John">
+					      <input type="text" class="form-control" name="inputNom" id="inputNom" placeholder="John" required>
 					    </div>
 					    <div class="form-group ">
 					      <label for="inputPrenom">Prenom</label>
-					      <input type="text" class="form-control" id="inputPrenom" placeholder="Doe">
+					      <input type="text" class="form-control" name="inputPrenom" id="inputPrenom" placeholder="Doe" required>
 					    </div>
 					  <div class="form-group">
 					    <label for="inputMail">Mail</label>
-					    <input type="email" class="form-control" id="inputMail" placeholder="bateau@outlook.fr">
+					    <input type="email" class="form-control" name="inputMail" id="inputMail" placeholder="bateau@outlook.fr" required>
 					  </div>
 					
 					    <div class="form-group">
 					      <label for="inputProblem">Objet</label>
-					      <select id="inputProblem" class="form-control">
-						<option selected>Je souhaite m'insrcire</option>
+					      <select id="inputProblem" name ="inputProblem" class="form-control">
+						<option selected>Je souhaite m'inscrire</option>
 						<option>J'ai rencontré un bogue</option>
 						<option>Je souhaite contacter l'administrateur du site</option>
 						<option>Je souhaite signaler une infraction</option>
@@ -37,14 +38,26 @@ Contact
 					  <div class="form-group">
 					  <div class="form-group">
 					    <label for="exampleFormControlTextarea1">Message</label>
-					    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+					    <textarea name="inputMsg" class="form-control" id="inputMsg" rows="3"></textarea>
 					  </div>
-										  </div>
+					 </div>
 					<button type="submit" class="btn btn-secondary">Envoyer votre demande</button>
 					</form>
+<?php
+			if(isset($contactmail)){
+				if($contactmail == 1) {
+			    		echo '<p style="color:green">Votre message a bien été envoyé.</p>';
+				}
+				else{
+			   		echo '<p style="color:red">Erreur.</p>';
+				}
+			
+		   	 }	
+        
+    
+?>
 			</div>
 		</div>
-
 
   		<div class="text-center right-contact w-25 my-auto h-100">
 			<div class="container my-auto">

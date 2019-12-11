@@ -1,11 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Accident;
 use Illuminate\Http\Request;
 
-class AccidentController extends Controller
+class FormController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -44,10 +42,35 @@ class AccidentController extends Controller
      * @param  \App\Accident  $accident
      * @return \Illuminate\Http\Response
      */
-    public function show(Accident $accident)
+    public function contact(Request $request)
     {
-        //
-    }
+       		    if(isset($request->inputMsg)
+			&& isset($request->inputNom)
+			&& isset($request->inputPrenom) 
+			&& isset($request->inputProblem)
+			&& isset($request->inputMail)
+			){
+
+			$entete  = 'MIME-Version: 1.0' . "\r\n";
+			$entete .= 'Content-type: text/html; charset=utf-8' . "\r\n";
+			$entete .= 'De: ' . htmlspecialchars($request->inputMail) . "\r\n";
+			$objet = 'Message depuis le site '.htmlspecialchars($request->inputProblem);
+
+			$message = '<h1>'.$objet.'</h1>
+			<p><strong>' . htmlspecialchars($request->inputNom) .' '. htmlspecialchars($request->inputPrenom) .'</strong> a écrit :</p>
+			<p><strong>Message : </strong>' . htmlspecialchars($request->inputMsg) . '</p>';
+
+			$desti = 'ohmonbato@orange.fr';
+
+			$retour = mail($desti,  $objet, $message, $entete);
+
+			return view('contact', ['contactmail' => 1]);
+			}
+			else{
+				return view('contact', ['contactmail' => 0]);
+			}
+
+	}
 
     /**
      * Show the form for editing the specified resource.

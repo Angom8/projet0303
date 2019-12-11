@@ -6,7 +6,7 @@ Mon panel
 <main>
 
 	<?php getLogoSection(); ?>
-	<?php getAdmButtons('admin'); ?>
+	<?php getAdmButtons(Auth::user()->type_utilisateur); ?>
 
 </main>
 @endsection
