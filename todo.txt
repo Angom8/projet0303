@@ -1,19 +1,25 @@
-reste à faire :
-
 Fournisseur :
 add-fourni
 sur la page fourni : add piece / equipement / adresse si admin
 
-Afficher les entretiens + date + piece concernée
+Bateau :
+Click sur l'entretien : Afficher date + pieces concernées + libellé
+si admin : add piece/equipement
 
 Form ajout bateau :
 Carac principale + fichier de détail
 envoie mail admin + message
 
+
+
 Form update bateau :
 Fichier de détail + sélection bateau
+envoie mail + message
 
-Restreindre les accès
+
+Entretien :
+Form add entretien
+
 
 Dossier
 

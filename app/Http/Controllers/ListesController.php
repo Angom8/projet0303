@@ -100,4 +100,29 @@ class ListesController extends Controller
 			return view('boats', ['boats'=> $return, 'previous' => $previous, 'next' => $next, 'page' => $page, 'max' => $max]);
 	
 	}
+
+	public function getMessages($page = 1){
+
+			$msg = DB::table('Message')->skip(($page-1)*10)->take(10)->orderBy('date_msg');
+			$msg = $msg->get();
+			$max = ceil(DB::table('Message')->count()/10);
+
+			if(($page+1)*10>(ceil(DB::table('Message')->count()/10)*10)){
+				$next = 0;
+			}
+			else{
+				$next = $page + 1;
+			}
+
+			if($page == 1){
+
+				$previous = 0;
+			}
+			else{
+				$previous = $page-1;
+			}
+		
+			return view('messages', ['messages'=> $msg, 'previous' => $previous, 'next' => $next, 'page' => $page, 'max' => $max]);
+	
+	}
 }

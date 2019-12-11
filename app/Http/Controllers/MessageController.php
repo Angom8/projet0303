@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Fourniseur;
+use App\Message;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class FourniseurController extends Controller
+class MessageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,21 +42,21 @@ class FourniseurController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Fourniseur  $fourniseur
+     * @param  \App\Fournisseur  $fournisseur
      * @return \Illuminate\Http\Response
      */
-    public function show(Fourniseur $fourniseur)
+    public function show($id)
     {
-        //
+     
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Fourniseur  $fourniseur
+     * @param  \App\Fournisseur  $fournisseur
      * @return \Illuminate\Http\Response
      */
-    public function edit(Fourniseur $fourniseur)
+    public function edit()
     {
         //
     }
@@ -64,10 +65,10 @@ class FourniseurController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Fourniseur  $fourniseur
+     * @param  \App\Fournisseur  $fournisseur
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Fourniseur $fourniseur)
+    public function update()
     {
         //
     }
@@ -75,11 +76,12 @@ class FourniseurController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Fourniseur  $fourniseur
+     * @param  \App\Fournisseur  $fournisseur
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Fourniseur $fourniseur)
+    public function destroy($id)
     {
-        //
+                $msg = Message::where('id_msg', $id)->delete();
+    		return back();
     }
 }

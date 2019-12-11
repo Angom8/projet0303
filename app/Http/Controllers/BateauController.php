@@ -187,9 +187,40 @@ class BateauController extends Controller
      * @param  \App\Bateau  $bateau
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Bateau $bateau)
+    public function update($id)
     {
-        //
+        
+	$idu = Auth::user()->id;
+	
+	if(DB::table('Possede')->where('id_bateau', $id)->value('id_utilisateur')==$idu or Auth::user()->type_utilisateur == 2){
+
+		if(Auth::user()->type_utilisateur == 2){//Ajout de pièces/equip
+
+			if($id_equipements = DB::table('Comporte')->where('id_bateau', $id)->get()){
+
+				$ensequip = [];
+
+				foreach($id_equipements as $id_equip){
+				
+					$equip = Equipement::where('id_equipement', $id_equip->id_equipement)->get()[0]->toArray();
+					$modele = DB::table('Modele')->where('id_modele', $equip['id_modele'])->value('nom_modele');
+					$type = DB::table('Type_equipement')->where('id_type_equipement', $equip['id_type_equipement'])->value('nom_type_equipement');
+					array_push($ensequip, ['equipement' => $equip, 'modele' => $modele, 'nom' => $type]);
+				}
+				
+				return view('update-boat-adm', ['boat' => $id, 'equipements' => $ensequip]);
+			}
+			else{
+				return view('update-boat-adm', ['boat' => $id]);
+			}
+		}
+
+		else{
+
+			return view('update-boat', ['boat' => $id]);
+
+		}
+	}
     }
 
     /**

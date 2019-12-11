@@ -34,17 +34,31 @@ Route::get('admin/', function () {//done
     return view('user-global');
 })->middleware('is_admin');
 
-Route::get('admin/messages', function () {
-    return view('messages');
-})->middleware('is_admin');
+Route::get('admin/messages',  ['uses' =>'ListesController@getMessages', 'as'=>'admin.messages'])->middleware('is_admin');//done
 
-Route::get('admin/add-boat', function () {
-    return view('add-boat');
-})->middleware('is_admin');
+Route::get('admin/messages/{id}',  ['uses' =>'ListesController@getMessages', 'as'=>'admin.messagespagex'])->middleware('is_admin');//done
 
-Route::post('admin/add-fourni/register', ['uses' => 'FournisseurController@create', 'as' => 'fourni.register'])->middleware('is_admin');
+Route::delete('admin/message/traiter/{id}', ['uses' => 'MessageController@destroy', 'as' => 'admin.traiter.message'])->middleware('is_admin');//done
+
+
+
+Route::post('admin/add-entretien', ['uses' => 'EntretienController@create', 'as' => 'admin.add.entretien'])->middleware('is_admin');//TO DO
+
+Route::post('admin/add-boat', ['uses' => 'BateauController@choix', 'as' => 'admin.add.bateau'])->middleware('is_admin');//TO DO
+
+Route::post('admin/add-fourni/register', ['uses' => 'FournisseurController@create', 'as' => 'fourni.register'])->middleware('is_admin');//TO DO
+
+
 
 Route::delete('admin/fournisseur/delete/{id}', ['uses' => 'FournisseurController@destroy', 'as' => 'fourni.delete'])->middleware('is_admin');//done
+
+Route::get('admin/update-boat/{id}',  ['uses' =>'BateauController@update', 'as'=>'boat.admin.update'])->middleware('is_admin');//done
+
+Route::post('admin/update-boat/p',  ['uses' =>'BateauController@update_piece', 'as'=>'boat.admin.updating.piece'])->middleware('is_admin');//n
+
+Route::post('admin/update-boat/pe',  ['uses' =>'EquipementController@add_piece', 'as'=>'boat.admin.updating.pieceequip'])->middleware('is_admin');//n
+
+Route::post('admin/update-boat/e',  ['uses' =>'BateauController@update_equip', 'as'=>'boat.admin.updating.equip'])->middleware('is_admin');//n
 
 /*Type Secretaire or Helper user pages*/
 Route::get('helper/', function () {//design improvment
@@ -87,12 +101,10 @@ Route::get('panel/boats/{id}',  ['uses' =>'ListesController@getBateaux', 'as'=>'
 
 Route::get('panel/boat/{id}',  ['uses' =>'BateauController@show', 'as'=>'boat.show'])->middleware('auth');//ajout piece if admin
 
-Route::get('panel/send-boat', function () {
-    return view('send-boat');
-})->middleware('auth');
+Route::get('panel/update-boat/{id}',  ['uses' =>'BateauController@update', 'as'=>'boat.update'])->middleware('auth');//n	
 
 Route::get('panel/update-boat', function () {
-    return view('update-boat');
+    return view('send-boat');
 })->middleware('auth');
 
 ?>

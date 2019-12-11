@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
 	$this->call(FournitTableSeeder::class);
 	$this->call(EstLocaliseTableSeeder::class);
 	$this->call(PossedeTableSeeder::class);
-	$this->call(ComporteTableSeeder::class);    
+	$this->call(ComporteTableSeeder::class);
+	$this->call(MessageTableSeeder::class);    
 	}
 }

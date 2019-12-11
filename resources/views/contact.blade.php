@@ -62,7 +62,9 @@ Contact
   		<div class="text-center right-contact w-25 my-auto h-100">
 			<div class="container my-auto">
 				<h5>L'association Ohmonbatôô propose à ses adhérents de gérer en ligne leurs bateaux, afin de faciliter leur entretien. </h5>
-				<h5>Si vous êtes adhérent et souhaitez vous inscrire, merci de remplir le formulaire ci-contre en précisant bien le numéro adhérent donné lors du paiement de votre cotisation.</h5>
+				<h5>Si vous êtes adhérent et souhaitez vous inscrire, merci de remplir le formulaire ci-contre en précisant bien le numéro adhérent donné lors du paiement de votre cotisation. </h5>
+				<h6>Le site ne collecte pas vos données si vous n'êtes pas inscrit. Vous acceptez l'utilisation de vos données l'étant. Elles sont accessibles via une demande à l'administration du site (par mail, par téléphone, ou par le formulaire ci-contre). Elles servent uniquement à vous proposer une gestion de vos bateaux et à vous connecter.</h6>
+				
 			</div>
 		</div>
 	</div>

@@ -10,6 +10,11 @@ Bateau
 		<div class="container">
 		  <h1>{{ $boat['nom_bateau'] }}</h1>
 			{{ getCreateBoat(Auth::user()->type_utilisateur) }}
+			@if(Auth::user()->type_utilisateur == 2)
+			<div class="text-right bato-row">
+				<a class="btn btn-warning" href="{{ url('admin/update-boat/'.$boat['id_bateau']) }}">Mettre à jour</a>
+		 	</div>
+			@endif
 
 		<section id="user">
 			<div>
@@ -20,8 +25,8 @@ Bateau
 						<p><strong>Dernier entretien</strong> : {{ $boat['updated_at'] }}</p>
 						<p><strong>Inscription</strong> : {{ $boat['created_at'] }}</p>
 						<p><strong>Id </strong>: {{ $boat['id_bateau'] }}</p>
-						<p><strong>Immatricilation </strong>: {{ $immatr['id_immatr'] }}</p>
-						<p><strong>Date Immatricilation </strong>: {{ $immatr['date_immatr'] }}</p>
+						<p><strong>Immatriculation </strong>: {{ $immatr['id_immatr'] }}</p>
+						<p><strong>Date Immatriculation </strong>: {{ $immatr['date_immatr'] }}</p>
 						<p><strong>Distance d'éloignement </strong>: {{ $boat['distance_eloignement'] }}milles</p>
 				
 						@if($boat['force_vent_max'] < 4 or $boat['hauteur_max_vagues'] < 0.5)
