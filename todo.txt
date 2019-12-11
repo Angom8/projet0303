@@ -2,7 +2,7 @@ reste à faire :
 
 Fournisseur :
 add-fourni
-sur la page fourni : add piece / equipement si admin
+sur la page fourni : add piece / equipement / adresse si admin
 
 Afficher les entretiens + date + piece concernée
 
