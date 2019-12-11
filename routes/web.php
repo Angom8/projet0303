@@ -10,10 +10,10 @@
 /*Non logged pages*/
 Auth::routes();
 
-Route::get('/', function () {//REMPLACER LOREM
+Route::get('/', function () {//done
     return view('home');
 });
-Route::get('/home', function () {//design improvment
+Route::get('/home', function () {//done
     return view('home');
 });
 
@@ -35,7 +35,7 @@ Route::get('mypanel', function () {//design improvment
 
 /*Type Admin user pages*/
 
-Route::get('admin/', function () {//design improvment
+Route::get('admin/', function () {//wip
     return view('user-global');
 })->middleware('auth');
 

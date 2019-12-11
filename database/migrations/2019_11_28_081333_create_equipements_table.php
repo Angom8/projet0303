@@ -26,7 +26,9 @@ class CreateEquipementsTable extends Migration
 	    $table->integer('quantite_equip');
 	    $table->boolean('equip_origine');
 	    $table->integer('q_equip_rechange')->nullable();
-		
+		$table->biginteger('id_etat')->unsigned();
+		$table->foreign('id_etat')
+          ->references('id_etat')->on('Etat');
 	    //foreign id_type_equip 1_1
 		$table->biginteger('id_type_equipement')->unsigned();
 		$table->foreign('id_type_equipement')

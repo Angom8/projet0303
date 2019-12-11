@@ -4,10 +4,6 @@ Fournisseur :
 add-fourni
 sur la page fourni : add piece / equipement si admin
 
-Bateau : => if user == admin or possesseur du bateau
-
-Afficher les caracs
-Afficher les pieces, moteur et equip (dont piece les composant) + etat
 Afficher les entretiens + date + piece concernée
 
 Form ajout bateau :

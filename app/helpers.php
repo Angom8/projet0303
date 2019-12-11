@@ -112,17 +112,16 @@ if (! function_exists('getExtButtons')) {
 		<section id="buttons">
 			<div class="container">
 			  <div class="row text-center">
-			    <div class="col align-self-center">
-				<button type="button" class="btn btn-lg btn-block btn-outline-dark main-btn shadow-sm">Espace Membre</button>
-			    </div>
+				<form class="col align-self-center" method="get" action='.url('/panel').'>
+					<button type="submit"class="btn btn-lg btn-block btn-outline-dark main-btn shadow-sm">Espace Membre</button>
+				</form>
+				<form class="col align-self-center" method="get" action='.url('/contact').'>
+					<button type="submit"class="btn btn-lg btn-block btn-outline-dark main-btn shadow-sm">S\'inscrire</button>
+				</form>
 
-			    <div class="col align-self-center">
-				<button type="button" class="btn btn-lg btn-block btn-outline-dark main-btn shadow-sm  ">S\'inscrire</button>
-			    </div>
-
-			    <div class="col align-self-center">
-				<button type="button" class="btn btn-lg btn-block btn-outline-dark main-btn shadow-sm ">Nous contacter</button>
-			    </div>
+				<form class="col align-self-center" method="get" action='.url('contact').'>
+					<button type="submit"class="btn btn-lg btn-block btn-outline-dark main-btn shadow-sm">Nous contacter</button>
+				</form>
 
 			  </div>
 			</div>

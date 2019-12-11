@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Bateau;
+use App\Immatriculation;	
 use App\Moteur;
 use App\Piece;
 use App\Equipement;
@@ -80,7 +81,8 @@ class BateauController extends Controller
 				$equip = Equipement::where('id_equipement', $id_equip->id_equipement)->get()[0]->toArray();
 				$modele = DB::table('Modele')->where('id_modele', $equip['id_modele'])->value('nom_modele');
 				$type = DB::table('Type_equipement')->where('id_type_equipement', $equip['id_type_equipement'])->value('nom_type_equipement');
-				array_push($ensequip, ['equipement' => $equip, 'modele' => $modele, 'nom' => $type]);
+				$etat = DB::table('Etat')->where('id_etat', $equip['id_etat'])->value('desc_etat');
+				array_push($ensequip, ['equipement' => $equip, 'modele' => $modele, 'nom' => $type, 'etat' => $etat]);
 
 			}
 		}
@@ -88,7 +90,8 @@ class BateauController extends Controller
 
 				$modele = DB::table('Modele')->where('id_modele', $equipmoteur['id_modele'])->value('nom_modele');
 				$type = DB::table('Type_equipement')->where('id_type_equipement', $equipmoteur['id_type_equipement'])->value('nom_type_equipement');
-				$equipmoteur = ['equipement' => $equipmoteur, 'modele' => $modele, 'nom' => $type];
+				$etat = DB::table('Etat')->where('id_etat', $equipmoteur['id_etat'])->value('desc_etat');
+				$equipmoteur = ['equipement' => $equipmoteur, 'modele' => $modele, 'nom' => $type, 'etat' => $etat];
 
 		}
 		
@@ -107,7 +110,8 @@ class BateauController extends Controller
 				$piece = Piece::where('id_equipement', $id_piece['id_piece'])->get()[0]->toArray();
 				$modele = DB::table('Modele')->where('id_modele', $piece['id_modele'])->value('nom_modele');
 				$type = DB::table('Type_piece')->where('id_type_piece', $equip['id_type_piece'])->value('nom_type_piece');
-				array_push($enspiece, ['piece' => $piece, 'modele' => $modele, 'nom' => $type]);
+				$etat = DB::table('Etat')->where('id_etat', $piece['id_etat'])->value('desc_etat');
+				array_push($enspiece, ['piece' => $piece, 'modele' => $modele, 'nom' => $type, 'etat' => $etat]);
 
 			}
 		}
@@ -122,7 +126,8 @@ class BateauController extends Controller
 						$piece_de_equip =Piece::where('id_piece', $piece_equip->id_piece)->get()[0]->toArray();
 						$modele = DB::table('Modele')->where('id_modele',  $piece_equip['id_modele'])->value('nom_modele');
 						$type = DB::table('Type_piece')->where('id_type_piece',  $piece_equip['id_type_piece'])->value('nom_type_piece');
-						array_push($enspiece, ['piece' =>  $piece_equip, 'modele' => $modele, 'nom' => $type]);
+						$etat = DB::table('Etat')->where('id_etat', $piece_equip['id_etat'])->value('desc_etat');
+						array_push($enspiece, ['piece' =>  $piece_equip, 'modele' => $modele, 'nom' => $type, 'etat' => $etat]);
 
 					}
 
@@ -139,19 +144,21 @@ class BateauController extends Controller
 						$piece_equip =Piece::where('id_piece', $piece_equip->id_piece)->get()[0]->toArray();
 						$modele = DB::table('Modele')->where('id_modele',  $piece_equip['id_modele'])->value('nom_modele');
 						$type = DB::table('Type_piece')->where('id_type_piece',  $piece_equip['id_type_piece'])->value('nom_type_piece');
-						array_push($enspiece, ['piece' =>  $piece_equip, 'modele' => $modele, 'nom' => $type]);
+						$etat = DB::table('Etat')->where('id_etat', $piece_equip['id_etat'])->value('desc_etat');
+						array_push($enspiece, ['piece' =>  $piece_equip, 'modele' => $modele, 'nom' => $type, 'etat' => $etat]);
 
 					}
 
 
 		}
 
-		$entretiens = Entretien::where('id_bateau', $id)->get()[0]->toArray();
+		$entretiens = Entretien::where('id_bateau', $id)->get()->toArray();
+		$immatr = Immatriculation::where('id_immatr', $boat['id_immatr'])->get()[0]->toArray();
 		
 
 		if(isset($boat)){
 			
-	    		return view('boat', ['boat' => $boat, 'equipements' => $ensequip , 'pieces' => $enspiece, 'moteur' => $moteur, 'equipmoteur' => $equipmoteur, 'entretiens' => $entretiens]);
+	    		return view('boat', ['boat' => $boat, 'equipements' => $ensequip , 'pieces' => $enspiece, 'moteur' => $moteur, 'equipmoteur' => $equipmoteur, 'entretiens' => $entretiens, 'immatr' => $immatr]);
 		}
 		else{
 			return view('404');

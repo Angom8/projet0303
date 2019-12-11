@@ -27,6 +27,9 @@ class CreatePiecesTable extends Migration
 		$table->biginteger('id_type_piece')->unsigned();
 		$table->foreign('id_type_piece')
           ->references('id_type_piece')->on('Type_piece');
+		$table->biginteger('id_etat')->unsigned();
+		$table->foreign('id_etat')
+          ->references('id_etat')->on('Etat');
 		$table->biginteger('id_modele')->unsigned();
 		$table->foreign('id_modele')
           ->references('id_modele')->on('Modele');

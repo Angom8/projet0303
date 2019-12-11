@@ -25,9 +25,9 @@ Contact
 					  </div>
 					
 					    <div class="form-group">
-					      <label for="inputProblem">Problem</label>
+					      <label for="inputProblem">Objet</label>
 					      <select id="inputProblem" class="form-control">
-						<option selected>Objet</option>
+						<option selected>Je souhaite m'insrcire</option>
 						<option>J'ai rencontré un bogue</option>
 						<option>Je souhaite contacter l'administrateur du site</option>
 						<option>Je souhaite signaler une infraction</option>
@@ -40,15 +40,16 @@ Contact
 					    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
 					  </div>
 										  </div>
-					<button type="submit" class="btn btn-primary">Envoyer votre demande</button>
+					<button type="submit" class="btn btn-secondary">Envoyer votre demande</button>
 					</form>
 			</div>
 		</div>
 
 
-  		<div class="text-center right-contact w-25">
-			<div class="container">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  		<div class="text-center right-contact w-25 my-auto h-100">
+			<div class="container my-auto">
+				<h5>L'association Ohmonbatôô propose à ses adhérents de gérer en ligne leurs bateaux, afin de faciliter leur entretien. </h5>
+				<h5>Si vous êtes adhérent et souhaitez vous inscrire, merci de remplir le formulaire ci-contre en précisant bien le numéro adhérent donné lors du paiement de votre cotisation.</h5>
 			</div>
 		</div>
 	</div>

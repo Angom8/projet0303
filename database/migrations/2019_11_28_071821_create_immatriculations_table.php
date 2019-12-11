@@ -19,7 +19,7 @@ class CreateImmatriculationsTable extends Migration
 
         $table->string('id_immatr');
 	    $table->primary('id_immatr');
-	    $table->time('date_immatr');
+	    $table->timestamp('date_immatr');
 
         });
     }
