@@ -14,6 +14,7 @@ $factory->define(Entretien::class, function (Faker $faker) {
     return [
 	'date_entretien' => $faker->datetime(), 
 	'id_bateau' => (($s == 1 or $s == 6 or $s == 5) ? $faker->randomElement($idbat) : null), 
+	'libellé' => "Routine : Vidance + dérouillage + vérification du tableau de bord et des pièces administratives",
 	'id_equipement'=> (($s == 2 or $s == 6 or $s == 4) ? $faker->randomElement($idequip) : null), 
 	'id_piece' => (($s == 3 or $s == 6  or $s == 5  or $s == 4) ? $faker->randomElement($idpi) : null),
     ];

@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
 	$this->call(EntretienTableSeeder::class); 
 	$this->call(FournitTableSeeder::class);
 	$this->call(EstLocaliseTableSeeder::class);
-	$this->call(PossedeTableSeeder::class);    
+	$this->call(PossedeTableSeeder::class);
+	$this->call(ComporteTableSeeder::class);    
 	}
 }

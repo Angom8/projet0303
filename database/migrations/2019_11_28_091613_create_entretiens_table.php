@@ -18,7 +18,9 @@ class CreateEntretiensTable extends Migration
 	    $table->charset = 'utf8';
 
         $table->bigIncrements('id_entretien');
-	    $table->time('date_entretien');
+	    $table->timestamp('date_entretien');
+			
+		 $table->string('libellé');
         
 		//foreign : Equipement 0-1  
 		$table->biginteger('id_equipement')->unsigned()->nullable();
