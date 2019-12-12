@@ -66,11 +66,12 @@ Bateau
 						</p>
 						<p><strong>Niveau de carburant max </strong>: {{ $boat['niveau_carburant_max'] }}L</p>
 						<p><strong>Jauge brute </strong>: {{ $boat['jauge_brut'] }}L</p>
-						<p><strong>Niveau du liquide de refroidissement </strong>: {{ $boat['jauge_liquide_refroidissement'] }}L</p>
+						<p><strong>Niveau du liquide de refroidissement </strong>: {{ $boat['jauge_liquide_refroidissement'] }}L
 						@if($boat['jauge_liquide_refroidissement']<5)
 							<span class="boat-warning">Niveau bas</span>
 							<?php $unvalid = 1?>
 						@endif
+						</p>
 						<p><strong>Consommation </strong>: {{ $boat['consommation'] }}l/km</p>
 						<h2>Caractéristiques techniques</h2>
 						<p><strong>Niveau de Performance </strong>: {{ $boat['niveau_performance'] }}%
@@ -95,7 +96,7 @@ Bateau
 						<p><strong>Modèle</strong>: {{ $equipmoteur['nom'] }} {{ $equipmoteur['modele'] }}</p>
 						<p><strong>Date de construction </strong>: {{ $equipmoteur['equipement']['created_at'] }}</p>
 						<p><strong>Dernier entretien </strong>: {{ $equipmoteur['equipement']['updated_at'] }}</p>
-						@if($equipmoteur['equipement']['duree_vie_equip'] != 0)<p><strong>Durée de vie </strong>: {{ $equipmoteur['equipement']['duree_vie_equip'] }} ans</p>
+						@if($equipmoteur['equipement']['duree_vie_equip'] != 0)<p><strong>Durée de vie </strong>: {{ $equipmoteur['equipement']['duree_vie_equip'] }} ans
 <?php
 	$findevie = strtotime($equipmoteur['equipement']['created_at'].' +'.$equipmoteur['equipement']['duree_vie_equip'].' year');
 
@@ -103,8 +104,8 @@ Bateau
 	
 ?>
 
-@endif
-						@if($equipmoteur['equipement']['revision_periodique_equip'] != 0)<p><strong>Prochain entretien obligatoire </strong>: {{ $equipmoteur['equipement']['updated_at'] }} + {{ $equipmoteur['equipement']['revision_periodique_equip'] }} mois </p>
+@endif</p>
+						@if($equipmoteur['equipement']['revision_periodique_equip'] != 0)<p><strong>Prochain entretien obligatoire </strong>: {{ date('Y-m-d', strtotime($equipmoteur['equipement']['updated_at'].' +'.$equipmoteur['equipement']['revision_periodique_equip'].' month')) }}
 
 <?php
 	$ent = strtotime($equipmoteur['equipement']['updated_at'].' +'.$equipmoteur['equipement']['revision_periodique_equip'].' month');
@@ -114,7 +115,7 @@ Bateau
 ?>
 
 
-@endif
+@endif</p>
 
 
 						@if($equipmoteur['equipement']['equip_origine'] != 0)<p><strong>D'Origine</strong></p>@endif

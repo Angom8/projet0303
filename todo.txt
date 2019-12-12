@@ -3,10 +3,17 @@ add-fourni
 sur la page fourni : add piece / equipement / adresse si admin
 
 Bateau :
+add => immatr, 
+
+
 si admin : add piece/equipement
-valid ou pas (dates !)
+
 destroy
+
+
 destroy piece/equip
+
+
 modif etat, quantité, rechange, origie piece / equip
 
 

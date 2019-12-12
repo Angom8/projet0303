@@ -4,8 +4,6 @@ Contact
 @endsection
 @section('content')
 
-<main>
-
 	<div class="row">
   		<div class="left-contact w-75">
 			<div class="container">
@@ -67,8 +65,6 @@ Contact
 				
 			</div>
 		</div>
-	</div>
-
-</main>		
+	</div>	
 
 @endsection		  

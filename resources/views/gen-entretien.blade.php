@@ -96,7 +96,7 @@ Envoyer un bateau
 					<div class="form-group row mb-0">
 				            <div class="col-md-6 offset-md-4">
 				                <button type="submit" class="btn btn-secondary">
-				                   Demander une mise en ligne du bateau
+				                 Générer l'entretien
 				                </button>
 						 </div>
 				        </div>
