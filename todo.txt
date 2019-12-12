@@ -4,23 +4,11 @@ sur la page fourni : add piece / equipement / adresse si admin
 
 Bateau :
 si admin : add piece/equipement
-
-
-Form ajout bateau :
-Carac principale + fichier de détail
-envoie mail admin + message
-
-
-
-Form update bateau :
-Fichier de détail
-envoie mail + message
+valid ou pas (dates !)
 destroy
+destroy piece/equip
+modif etat, quantité, rechange, origie piece / equip
 
-
-Entretien :
-Form add entretien
-=> crea entretien, modif etat, quantité, rechange, origie piece / equip
 
 
 Dossier

@@ -9,7 +9,7 @@ class Entretien extends Model
 	public $timestamps = false;
 	protected $table = 'Entretien';
 	protected $fillable = [
-       'id_entretien', 'date_entretien', 'id_bateau', 'id_equipement', 'id_piece'
+       'id_entretien', 'date_entretien', 'id_bateau', 'id_equipement', 'id_piece', 'libellé'
     ];
 	
     public function bateaus() {

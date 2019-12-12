@@ -201,7 +201,7 @@ if (! function_exists('getCreateBoat')) {
 
 		  if($type_user!=2){
 		  echo '<div class="text-right bato-row">
-			<a class="btn btn-warning" href="'.url('send-boat').'">Envoyer un Bateau</a>
+			<a class="btn btn-warning" href="'.url('panel/send-boat').'">Envoyer un Bateau</a>
 		  </div>';
 		}
 		else{

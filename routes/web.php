@@ -42,8 +42,6 @@ Route::delete('admin/message/traiter/{id}', ['uses' => 'MessageController@destro
 
 
 
-Route::get('admin/add-entretien', ['uses' => 'EntretienController@create', 'as' => 'admin.add.entretien'])->middleware('is_admin');//TO DO
-
 Route::post('admin/add-boat', ['uses' => 'BateauController@choix', 'as' => 'admin.add.bateau'])->middleware('is_admin');//TO DO
 
 Route::post('admin/add-fourni/register', ['uses' => 'FournisseurController@create', 'as' => 'fourni.register'])->middleware('is_admin');//TO DO
@@ -53,6 +51,13 @@ Route::post('admin/add-fourni/register', ['uses' => 'FournisseurController@creat
 Route::delete('admin/fournisseur/delete/{id}', ['uses' => 'FournisseurController@destroy', 'as' => 'fourni.delete'])->middleware('is_admin');//done
 
 Route::get('admin/update-boat/{id}',  ['uses' =>'BateauController@update', 'as'=>'boat.admin.update'])->middleware('is_admin');//done
+
+Route::get('admin/add-entretien/',  ['uses' =>'EntretienController@create', 'as'=>'admin.add.entretien'])->middleware('is_admin');//done
+
+
+
+Route::post('admin/add-entretien/send',  ['uses' =>'FormController@genEntretien', 'as'=>'entretien.create.send'])->middleware('is_admin');//TO DO
+
 
 
 
@@ -110,13 +115,14 @@ Route::get('panel/boats/{id}',  ['uses' =>'ListesController@getBateaux', 'as'=>'
 
 Route::get('panel/boat/{id}',  ['uses' =>'BateauController@show', 'as'=>'boat.show'])->middleware('auth');//done
 
+Route::get('panel/update-boat/{id}',  ['uses' =>'BateauController@update', 'as'=>'boat.update'])->middleware('auth');//done	
 
-Route::get('panel/update-boat/{id}',  ['uses' =>'BateauController@update', 'as'=>'boat.update'])->middleware('auth');//TO DO	
+Route::post('panel/update-boat/send',  ['uses' =>'FormController@updateboat', 'as'=>'boat.update.send'])->middleware('auth');//done
 
-Route::post('panel/update-boat/send',  ['uses' =>'FormController@updateboat', 'as'=>'boat.update.send'])->middleware('auth');//TO DO
+Route::get('panel/send-boat',  ['uses' =>'BateauController@send', 'as'=>'boat.send'])->middleware('auth');//done	
 
-Route::get('panel/update-boat', function () {
-    return view('send-boat');
-})->middleware('auth');
 
+
+
+Route::post('panel/send-boat/send',  ['uses' =>'FormController@sendboat', 'as'=>'boat.send.send'])->middleware('auth');//TO DO
 ?>

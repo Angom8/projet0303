@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Message;
+use App\Entretien;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
@@ -84,7 +85,174 @@ class FormController extends Controller
 
 	}
 
+    public function sendboat(Request $request)
+    {
+       		   	 if(isset($request->id_utilisateur)
+				&& $request->hasFile('joint'))
+				{
+					$data = [
+					    	'id_utilisateur' => $request->id_utilisateur,
+					   	];
+	
+					$validator = Validator::make($data, [
+					    	'id_utilisateur' => ['required', 'int'],
+					]);
+						
+					 if ($validator->fails()) {
+            					return back()->withErrors($validator)->withInput();
+       					 }
+ 					else{
+						$message = htmlentities($request->id_utilisateur).' create bateau';					
+						$i = 1;
+						
+						foreach ($request->file('joint') as $file) {
+							
 
+							if ($file->isValid()) {
+							    if($file->extension() == 'png'
+								||$file->extension() == 'PNG'
+								||$file->extension() == 'JPEG'
+								||$file->extension() == 'jpeg'
+								||$file->extension() == 'jpg'
+								||$file->extension() == 'JPG'
+								||$file->extension() == 'pdf'
+								||$file->extension() == 'PDF'){
+
+								$file->storeAs('user_upload', 'user'.htmlentities($request->id_bateau).'_'.htmlentities($request->id_utilisateur).'create'.$i.'.'.$file->extension(), 'user_upload');
+								$message .= 'join:'.htmlentities($request->id_bateau).htmlentities($request->id_utilisateur).'create'.$i.'.'.$file->extension();
+								$i += 1;
+
+							    }
+							    else{
+								$message .= "echectype".$i;
+								}
+							}	
+							else{
+								$message .= "echecvalid".$i;
+							}
+
+
+						}
+						
+							$timestamp = time();
+							$date = new \DateTime();
+							$date->setTimestamp($timestamp);
+
+							try{
+							Message::create([
+								   'date_msg' => $date,
+								    'libellé' => $message,
+								    'id_utilisateur' => htmlentities($request->id_utilisateur),
+								    'id_bateau' => null,
+							]);
+							}
+							catch(Exception $e){return view('send-boat', ['contactmail' => 0]);
+							}
+							return view('send-boat', ['contactmail' => 1]);
+
+					}
+				}
+
+			else{
+				return view('user-global');
+			}
+
+	}
+    public function genEntretien(Request $request)
+    {
+
+ 		if(isset($request->id_bateau)
+				&& isset($request->date_entretien) 
+				&& isset($request->libelle)){
+		
+				if(isset($request->id_piece)){
+					if(isset($request->id_equip)){
+						$data = ['id_bateau' => $request->id_bateau,
+						    	'id_equipement' => $request->id_equip,
+						   	'libellé' => $request->libelle,
+							'id_piece' => $request->id_piece,
+							'date_entretien' => $request->date_entretien];
+	
+						$validator = Validator::make($data, [
+						    	'id_bateau' => ['required', 'int'],
+						    	'id_equipement' => ['required', 'int'],
+						   	'libellé' => ['required', 'string', 'min:8', 'max:200'],
+							'id_piece' => ['required', 'int'],
+							'date_entretien' => ['required', 'date'],
+						]);
+						 if ($validator->fails()) {
+            						return back()->withErrors($validator)->withInput();
+						}
+       					}
+ 					else{
+						$data = ['id_bateau' => $request->id_bateau,
+						    	'id_equipement' => null,
+						   	'libellé' => $request->libelle,
+							'id_piece' => $request->id_piece,
+							'date_entretien' => $request->date_entretien];
+	
+						$validator = Validator::make($data, [
+						    	'id_bateau' => ['required', 'int'],
+						   	'libellé' => ['required', 'string', 'min:8', 'max:120'],
+							'id_piece' => ['required', 'int'],
+							'date_entretien' => ['required', 'date'],
+						]);
+						 if ($validator->fails()) {
+            						return back()->withErrors($validator)->withInput();
+						}
+					}	
+				}
+				else{
+					if(isset($request->id_equip)){
+						$data = ['id_bateau' => $request->id_bateau,
+						    	'id_equipement' => $request->id_equip,
+						   	'libellé' => $request->libelle,
+							'id_piece' => null,
+							'date_entretien' => $request->date_entretien];
+	
+						$validator = Validator::make($data, [
+						    	'id_bateau' => ['required', 'int'],
+						    	'id_equipement' => ['required', 'int'],
+						   	'libellé' => ['required', 'string', 'min:8', 'max:120'],
+							'date_entretien' => ['required', 'date'],
+						]);
+						 if ($validator->fails()) {
+            						return back()->withErrors($validator)->withInput();
+						}
+					}	
+					else{
+							$data = ['id_bateau' => $request->id_bateau,
+						    	'id_equipement' => null,
+						   	'libellé' => $request->libelle,
+							'id_piece' => null,
+							'date_entretien' => $request->date_entretien];
+	
+						$validator = Validator::make($data, [
+						    	'id_bateau' => ['required', 'int'],
+						   	'libellé' => ['required', 'string', 'min:8', 'max:120'],
+							'date_entretien' => ['required', 'date'],
+						]);
+						if ($validator->fails()) {
+            						return back()->withErrors($validator)->withInput();
+						}
+					}
+				}
+				try{
+					Entretien::create($data);
+					return redirect()->route('admin.messages');
+				}
+				catch(Exception $e){return back();}
+		
+		}
+		else{
+			return view('user-global');
+		}
+
+
+
+
+
+    }
     public function updateboat(Request $request)
     {
        		   	 if(isset($request->id_bateau)

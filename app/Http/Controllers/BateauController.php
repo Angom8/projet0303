@@ -40,9 +40,9 @@ class BateauController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function send()
     {
-        //
+        return view('send-boat');
     }
 
     /**
@@ -57,112 +57,120 @@ class BateauController extends Controller
 	$idu = Auth::user()->id;
 	
 	if(DB::table('Possede')->where('id_bateau', $id)->value('id_utilisateur')==$idu or Auth::user()->type_utilisateur == 2){
-		$boat = Bateau::where('id_bateau', $id)->get()[0]->toArray();
 
-		$moteur = $boat['id_moteur'];
+		$boat = Bateau::where('id_bateau', $id)->first();
 
-		if($moteur != null){
-			$moteur = Moteur::where('id_moteur', $moteur)->get()[0]->toArray();
-			$equipmoteur = Equipement::where('id_equipement', $moteur['id_equipement'])->get()[0]->toArray();
-		}
-		else{$equipmoteur = null;}
+		if($boat){
+			$boat = $boat->toArray();
+			$moteur = $boat['id_moteur'];
 
-		//modele : $equip = [l'equip, le modele, type_equip]*x
+			if($moteur != null){
+				$moteur = Moteur::where('id_moteur', $moteur)->get()[0]->toArray();
+				$equipmoteur = Equipement::where('id_equipement', $moteur['id_equipement'])->get()[0]->toArray();
+			}
+			else{$equipmoteur = null;}
 
-		$id_equipements = DB::table('Comporte')->where('id_bateau', $id)->get()->toArray();
+			//modele : $equip = [l'equip, le modele, type_equip]*x
 
-		$ensequip = null;
+			$id_equipements = DB::table('Comporte')->where('id_bateau', $id)->get()->toArray();
 
-		if($id_equipements){
-			$ensequip = [];
+			$ensequip = null;
 
-			foreach($id_equipements as $id_equip){
+			if($id_equipements){
+				$ensequip = [];
+
+				foreach($id_equipements as $id_equip){
+				
+					$equip = Equipement::where('id_equipement', $id_equip->id_equipement)->get()[0]->toArray();
+					$modele = DB::table('Modele')->where('id_modele', $equip['id_modele'])->value('nom_modele');
+					$type = DB::table('Type_equipement')->where('id_type_equipement', $equip['id_type_equipement'])->value('nom_type_equipement');
+					$etat = DB::table('Etat')->where('id_etat', $equip['id_etat'])->value('desc_etat');
+					array_push($ensequip, ['equipement' => $equip, 'modele' => $modele, 'nom' => $type, 'etat' => $etat]);
+
+				}
+			}
+			if($equipmoteur){
+
+					$modele = DB::table('Modele')->where('id_modele', $equipmoteur['id_modele'])->value('nom_modele');
+					$type = DB::table('Type_equipement')->where('id_type_equipement', $equipmoteur['id_type_equipement'])->value('nom_type_equipement');
+					$etat = DB::table('Etat')->where('id_etat', $equipmoteur['id_etat'])->value('desc_etat');
+					$equipmoteur = ['equipement' => $equipmoteur, 'modele' => $modele, 'nom' => $type, 'etat' => $etat];
+
+			}
 			
-				$equip = Equipement::where('id_equipement', $id_equip->id_equipement)->get()[0]->toArray();
-				$modele = DB::table('Modele')->where('id_modele', $equip['id_modele'])->value('nom_modele');
-				$type = DB::table('Type_equipement')->where('id_type_equipement', $equip['id_type_equipement'])->value('nom_type_equipement');
-				$etat = DB::table('Etat')->where('id_etat', $equip['id_etat'])->value('desc_etat');
-				array_push($ensequip, ['equipement' => $equip, 'modele' => $modele, 'nom' => $type, 'etat' => $etat]);
-
-			}
-		}
-		if($equipmoteur){
-
-				$modele = DB::table('Modele')->where('id_modele', $equipmoteur['id_modele'])->value('nom_modele');
-				$type = DB::table('Type_equipement')->where('id_type_equipement', $equipmoteur['id_type_equipement'])->value('nom_type_equipement');
-				$etat = DB::table('Etat')->where('id_etat', $equipmoteur['id_etat'])->value('desc_etat');
-				$equipmoteur = ['equipement' => $equipmoteur, 'modele' => $modele, 'nom' => $type, 'etat' => $etat];
-
-		}
 		
-	
-		//modele : $piece = [la piece en tableau, le modele, type_piece]*x
+			//modele : $piece = [la piece en tableau, le modele, type_piece]*x
 
-		$piece = DB::table('Contient')->where('id_bateau', $id)->get()->toArray();
+			$piece = DB::table('Contient')->where('id_bateau', $id)->get()->toArray();
 
-		$enspiece = null;
+			$enspiece = null;
 
-		if($piece){
-			$enspiece = [];
+			if($piece){
+				$enspiece = [];
 
-			foreach($enspiece as $id_piece){
+				foreach($enspiece as $id_piece){
 
-				$piece = Piece::where('id_equipement', $id_piece['id_piece'])->get()[0]->toArray();
-				$modele = DB::table('Modele')->where('id_modele', $piece['id_modele'])->value('nom_modele');
-				$type = DB::table('Type_piece')->where('id_type_piece', $equip['id_type_piece'])->value('nom_type_piece');
-				$etat = DB::table('Etat')->where('id_etat', $piece['id_etat'])->value('desc_etat');
-				array_push($enspiece, ['piece' => $piece, 'modele' => $modele, 'nom' => $type, 'etat' => $etat]);
+					$piece = Piece::where('id_equipement', $id_piece['id_piece'])->get()[0]->toArray();
+					$modele = DB::table('Modele')->where('id_modele', $piece['id_modele'])->value('nom_modele');
+					$type = DB::table('Type_piece')->where('id_type_piece', $equip['id_type_piece'])->value('nom_type_piece');
+					$etat = DB::table('Etat')->where('id_etat', $piece['id_etat'])->value('desc_etat');
+					array_push($enspiece, ['piece' => $piece, 'modele' => $modele, 'nom' => $type, 'etat' => $etat]);
 
+				}
 			}
-		}
-		if($id_equipements){
+			if($id_equipements){
 
-			if($enspiece == null){$enspiece = [];}
-			foreach($id_equipements as $id_equip){
+				if($enspiece == null){$enspiece = [];}
+				foreach($id_equipements as $id_equip){
 
-				$pieces_de_equip = DB::table('Est_composé')->where('id_equipement', $equip['id_equipement'])->get()->toArray();
-	
-					foreach($pieces_de_equip as $piece_equip){
-						$piece_de_equip =Piece::where('id_piece', $piece_equip->id_piece)->get()[0]->toArray();
-						$modele = DB::table('Modele')->where('id_modele',  $piece_equip['id_modele'])->value('nom_modele');
-						$type = DB::table('Type_piece')->where('id_type_piece',  $piece_equip['id_type_piece'])->value('nom_type_piece');
-						$etat = DB::table('Etat')->where('id_etat', $piece_equip['id_etat'])->value('desc_etat');
-						array_push($enspiece, ['piece' =>  $piece_equip, 'modele' => $modele, 'nom' => $type, 'etat' => $etat]);
-
-					}
-
-
-			}
-		}
-		if($equipmoteur){
-			if($enspiece == null){$enspiece = [];}
-
-				$pieces_de_equip = DB::table('Est_composé')->where('id_equipement', $equipmoteur['equipement']['id_equipement'])->get()->toArray();
-	
-					foreach($pieces_de_equip as $piece_equip){
-						
-						$piece_equip =Piece::where('id_piece', $piece_equip->id_piece)->get()[0]->toArray();
-						$modele = DB::table('Modele')->where('id_modele',  $piece_equip['id_modele'])->value('nom_modele');
-						$type = DB::table('Type_piece')->where('id_type_piece',  $piece_equip['id_type_piece'])->value('nom_type_piece');
-						$etat = DB::table('Etat')->where('id_etat', $piece_equip['id_etat'])->value('desc_etat');
-						array_push($enspiece, ['piece' =>  $piece_equip, 'modele' => $modele, 'nom' => $type, 'etat' => $etat]);
-
-					}
-
-
-		}
-
-		$entretiens = Entretien::where('id_bateau', $id)->get()->toArray();
-		$immatr = Immatriculation::where('id_immatr', $boat['id_immatr'])->get()[0]->toArray();
+					$pieces_de_equip = DB::table('Est_composé')->where('id_equipement', $equip['id_equipement'])->get()->toArray();
 		
+						foreach($pieces_de_equip as $piece_equip){
+							$piece_equip =Piece::where('id_piece', $piece_equip->id_piece)->get()[0]->toArray();
+							$modele = DB::table('Modele')->where('id_modele',  $piece_equip['id_modele'])->value('nom_modele');
+							$type = DB::table('Type_piece')->where('id_type_piece',  $piece_equip['id_type_piece'])->value('nom_type_piece');
+							$etat = DB::table('Etat')->where('id_etat', $piece_equip['id_etat'])->value('desc_etat');
+							array_push($enspiece, ['piece' =>  $piece_equip, 'modele' => $modele, 'nom' => $type, 'etat' => $etat]);
 
-		if(isset($boat)){
+						}
+
+
+				}
+			}
+			if($equipmoteur){
+				if($enspiece == null){$enspiece = [];}
+
+					$pieces_de_equip = DB::table('Est_composé')->where('id_equipement', $equipmoteur['equipement']['id_equipement'])->get()->toArray();
+		
+						foreach($pieces_de_equip as $piece_equip){
+							
+							$piece_equi = Piece::where('id_piece', $piece_equip->id_piece)->get()[0]->toArray();
+							$modele = DB::table('Modele')->where('id_modele',  $piece_equi['id_modele'])->value('nom_modele');
+							$type = DB::table('Type_piece')->where('id_type_piece',  $piece_equi['id_type_piece'])->value('nom_type_piece');
+							$etat = DB::table('Etat')->where('id_etat', $piece_equi['id_etat'])->value('desc_etat');
+							array_push($enspiece, ['piece' =>  $piece_equi, 'modele' => $modele, 'nom' => $type, 'etat' => $etat]);
+
+						}
+
+
+			}
+
+			$entretiens = Entretien::where('id_bateau', $id)->get()->toArray();
+			$immatr = Immatriculation::where('id_immatr', $boat['id_immatr'])->get()[0]->toArray();
 			
-	    		return view('boat', ['boat' => $boat, 'equipements' => $ensequip , 'pieces' => $enspiece, 'moteur' => $moteur, 'equipmoteur' => $equipmoteur, 'entretiens' => $entretiens, 'immatr' => $immatr]);
-		}
-		else{
-			return view('404');
-		}
+
+			if(isset($boat)){
+				
+		    		return view('boat', ['boat' => $boat, 'equipements' => $ensequip , 'pieces' => $enspiece, 'moteur' => $moteur, 'equipmoteur' => $equipmoteur, 'entretiens' => $entretiens, 'immatr' => $immatr]);
+			}
+			else{
+				return view('404');
+			}
+		
+	}
+	else{
+		return view('404');
+	}
 	}
 	else{
 		return view('404');
