@@ -9,6 +9,6 @@ class Message extends Model
 	public $timestamps = false;
 	protected $table = 'Message';
 	protected $fillable = [
-       'id_utilisateur', 'id_msg', 'id_bateau', 'id_utilisateur',
+       'date_msg', 'libellé', 'id_bateau', 'id_utilisateur',
     ];
 }

@@ -184,6 +184,17 @@ if (! function_exists('getCreateUser')) {
 	
 }
 
+if (! function_exists('getCreateEntretien')) {
+
+	function getCreateEntretien(){
+
+		  echo '<div class="text-right bato-row">
+			<a class="btn btn-warning" href="'.url('admin/add-entretien').'">Générer un entretien</a>
+		  </div>';
+	}
+	
+}
+
 if (! function_exists('getCreateBoat')) {
 
 	function getCreateBoat($type_user){

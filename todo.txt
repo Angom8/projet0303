@@ -3,8 +3,8 @@ add-fourni
 sur la page fourni : add piece / equipement / adresse si admin
 
 Bateau :
-Click sur l'entretien : Afficher date + pieces concernées + libellé
 si admin : add piece/equipement
+
 
 Form ajout bateau :
 Carac principale + fichier de détail
@@ -13,12 +13,14 @@ envoie mail admin + message
 
 
 Form update bateau :
-Fichier de détail + sélection bateau
+Fichier de détail
 envoie mail + message
+destroy
 
 
 Entretien :
 Form add entretien
+=> crea entretien, modif etat, quantité, rechange, origie piece / equip
 
 
 Dossier

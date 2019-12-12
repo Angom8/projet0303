@@ -42,7 +42,7 @@ Route::delete('admin/message/traiter/{id}', ['uses' => 'MessageController@destro
 
 
 
-Route::post('admin/add-entretien', ['uses' => 'EntretienController@create', 'as' => 'admin.add.entretien'])->middleware('is_admin');//TO DO
+Route::get('admin/add-entretien', ['uses' => 'EntretienController@create', 'as' => 'admin.add.entretien'])->middleware('is_admin');//TO DO
 
 Route::post('admin/add-boat', ['uses' => 'BateauController@choix', 'as' => 'admin.add.bateau'])->middleware('is_admin');//TO DO
 
@@ -54,11 +54,16 @@ Route::delete('admin/fournisseur/delete/{id}', ['uses' => 'FournisseurController
 
 Route::get('admin/update-boat/{id}',  ['uses' =>'BateauController@update', 'as'=>'boat.admin.update'])->middleware('is_admin');//done
 
-Route::post('admin/update-boat/p',  ['uses' =>'BateauController@update_piece', 'as'=>'boat.admin.updating.piece'])->middleware('is_admin');//n
 
-Route::post('admin/update-boat/pe',  ['uses' =>'EquipementController@add_piece', 'as'=>'boat.admin.updating.pieceequip'])->middleware('is_admin');//n
 
-Route::post('admin/update-boat/e',  ['uses' =>'BateauController@update_equip', 'as'=>'boat.admin.updating.equip'])->middleware('is_admin');//n
+
+Route::post('admin/update-boat/p',  ['uses' =>'BateauController@update_piece', 'as'=>'boat.admin.updating.piece'])->middleware('is_admin');//TO DO
+
+Route::post('admin/update-boat/pe',  ['uses' =>'EquipementController@add_piece', 'as'=>'boat.admin.updating.pieceequip'])->middleware('is_admin');//TO DO
+
+Route::post('admin/update-boat/e',  ['uses' =>'BateauController@update_equip', 'as'=>'boat.admin.updating.equip'])->middleware('is_admin');//TO DO
+
+
 
 /*Type Secretaire or Helper user pages*/
 Route::get('helper/', function () {//design improvment
@@ -93,15 +98,22 @@ Route::get('panel/fournisseurs',  ['uses' =>'ListesController@getFournisseurs', 
 
 Route::get('panel/fournisseurs/{id}',  ['uses' =>'ListesController@getFournisseurs', 'as'=>'fournisseurspagex'])->middleware('auth');//done
 
+
 Route::get('panel/fournisseur/{id}', ['uses' => 'FournisseurController@show', 'as' => 'fourni.show'])->middleware('auth');//ajout piece if admin
+
+
 
 Route::get('panel/boats',  ['uses' =>'ListesController@getBateaux', 'as'=>'boats'])->middleware('auth');//done
 
 Route::get('panel/boats/{id}',  ['uses' =>'ListesController@getBateaux', 'as'=>'boatspagex'])->middleware('auth');//done
 
-Route::get('panel/boat/{id}',  ['uses' =>'BateauController@show', 'as'=>'boat.show'])->middleware('auth');//ajout piece if admin
 
-Route::get('panel/update-boat/{id}',  ['uses' =>'BateauController@update', 'as'=>'boat.update'])->middleware('auth');//n	
+Route::get('panel/boat/{id}',  ['uses' =>'BateauController@show', 'as'=>'boat.show'])->middleware('auth');//done
+
+
+Route::get('panel/update-boat/{id}',  ['uses' =>'BateauController@update', 'as'=>'boat.update'])->middleware('auth');//TO DO	
+
+Route::post('panel/update-boat/send',  ['uses' =>'FormController@updateboat', 'as'=>'boat.update.send'])->middleware('auth');//TO DO
 
 Route::get('panel/update-boat', function () {
     return view('send-boat');

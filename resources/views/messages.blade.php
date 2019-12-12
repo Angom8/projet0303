@@ -5,8 +5,10 @@ Messages
 @section('content')
 <main>
 	<div class ="content">
+			
 		<div class="container">
-		  <h1 class="bato-row">Mes messages</h1>
+		  <h1>Mes messages</h1>
+			{{ getCreateEntretien() }}
 		  <table class="table">
 		    <thead class="thead-dark">
 		      <tr>

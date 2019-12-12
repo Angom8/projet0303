@@ -14,6 +14,10 @@ Bateau
 			<div class="text-right bato-row">
 				<a class="btn btn-warning" href="{{ url('admin/update-boat/'.$boat['id_bateau']) }}">Mettre à jour</a>
 		 	</div>
+			@else
+			<div class="text-right bato-row">
+				<a class="btn btn-warning" href="{{ url('panel/update-boat/'.$boat['id_bateau']) }}">Demander une mise à jour</a>
+		 	</div>
 			@endif
 
 		<section id="user">
