@@ -3,13 +3,9 @@ add-fourni
 sur la page fourni : add piece / equipement / adresse si admin
 
 Bateau :
-add => immatr, 
-
-
-si admin : add piece/equipement
+si admin : add piece/equipement, ajout utilisateur
 
 destroy
-
 
 destroy piece/equip
 

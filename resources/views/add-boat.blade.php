@@ -15,15 +15,28 @@ Ajouter un bateau
 				<div class="card-body">
 					<p>Tous les champs sont obligatoires</p>
 
+<?php
+			if(isset($contact)){
+				if($contact == 1) {
+			    		echo '<p style="color:green">Le bateau a bien été ajouté</p>';
+				}
+				else{
+			   		echo '<p style="color:red">Erreur.</p>';
+				}
+			
+		   	 }	
 
-				    <form method="POST" action="{{ route('user.register') }}">
+?>
+			
+
+				    <form method="POST" action="{{ route('admin.store.bateau') }}">
 				        @csrf
 
 				        <div class="form-group row">
 				            <label for="id_utilisateur[]" class="col-md-4 col-form-label text-md-right">{{ __('Propriétaire(s)') }}</label>
 
 				            <div class="col-md-6">
-						 <select  id="id_utilisateur[]" class="form-control @error('id_utilisateur[]') is-invalid @enderror" name="id_utilisateur[]" value="{{ old('id_utilisateur[]') }}" required autocomplete="id_bateau" size="3" multiple>
+						 <select  id="id_utilisateur[]" class="form-control @error('id_utilisateur') is-invalid @enderror" name="id_utilisateur[]" value="{{ old('id_utilisateur') }}" required autocomplete="id_utilisateur[]" size="3" multiple>
 							@foreach($users as $user)
 								<option value="{{ $user }}">{{ $user }}</option>
 							@endforeach
@@ -246,6 +259,19 @@ Ajouter un bateau
 				            </div>
 				        </div>
 
+					<div class="form-group row">
+				            <label for="niveau_carburant_max" class="col-md-4 col-form-label text-md-right">Niveau Carburant max (en L)</label>
+
+				            <div class="col-md-6">
+				                <input id="niveau_carburant_max" type="number" min="1" class="form-control @error('niveau_carburant_max') is-invalid @enderror" name="niveau_carburant_max" value="{{ old('niveau_carburant_max') }}" required autocomplete="niveau_carburant_max" autofocus>
+
+				                @error('niveau_carburant_max')
+				                    <span class="invalid-feedback" role="alert">
+				                        <strong>{{ $message }}</strong>
+				                    </span>
+				                @enderror
+				            </div>
+				        </div>
 
 					<div class="form-group row">
 				            <label for="niveau_huile" class="col-md-4 col-form-label text-md-right">Niveau huile (en L)</label>
@@ -254,6 +280,20 @@ Ajouter un bateau
 				                <input id="niveau_huile" type="number" min="1" class="form-control @error('niveau_huile') is-invalid @enderror" name="niveau_huile" value="{{ old('niveau_huile') }}" required autocomplete="niveau_huile" autofocus>
 
 				                @error('niveau_huile')
+				                    <span class="invalid-feedback" role="alert">
+				                        <strong>{{ $message }}</strong>
+				                    </span>
+				                @enderror
+				            </div>
+				        </div>
+
+					<div class="form-group row">
+				            <label for="niveau_reserve" class="col-md-4 col-form-label text-md-right">Niveau de la réserve (en L)</label>
+
+				            <div class="col-md-6">
+				                <input id="niveau_reserve" type="number" min="1" class="form-control @error('niveau_reserve') is-invalid @enderror" name="niveau_reserve" value="{{ old('niveau_reserve') }}" required autocomplete="niveau_reverve" autofocus>
+
+				                @error('niveau_reserve')
 				                    <span class="invalid-feedback" role="alert">
 				                        <strong>{{ $message }}</strong>
 				                    </span>

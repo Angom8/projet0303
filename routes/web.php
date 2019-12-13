@@ -50,7 +50,7 @@ Route::post('admin/add-entretien/send',  ['uses' =>'FormController@genEntretien'
 
 Route::get('admin/add-boat', ['uses' => 'BateauController@add', 'as' => 'admin.add.bateau'])->middleware('is_admin');//done
 
-Route::get('admin/add-boat/send', ['uses' => 'BateauController@store', 'as' => 'admin.store.bateau'])->middleware('is_admin');//TODO
+Route::post('admin/add-boat/send', ['uses' => 'FormController@add_boat', 'as' => 'admin.store.bateau'])->middleware('is_admin');//TODO
 
 
 

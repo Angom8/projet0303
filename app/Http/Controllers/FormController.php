@@ -5,6 +5,11 @@ use Illuminate\Http\Request;
 
 use App\Message;
 use App\Entretien;
+use App\Bateau;
+use App\Immatriculation;	
+use App\Moteur;
+use App\Piece;
+use App\Equipement;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
@@ -158,6 +163,150 @@ class FormController extends Controller
 			}
 
 	}
+
+    public function add_boat(Request $request)
+    {
+
+ 		if(isset($request->nom_bateau)
+				&& isset($request->url_photo) 
+				&& isset($request->ancienne_cat)
+				&& isset($request->auto_videur)
+				&& isset($request->hors_bord)
+				&& isset($request->francise)
+				&& isset($request->distance_eloignement)
+				&& isset($request->nb_places)
+				&& isset($request->force_vent_max)
+				&& isset($request->hauteur_max_vagues)
+				&& isset($request->niveau_reserve)
+				&& isset($request->niveau_carburant_max)
+				&& isset($request->niveau_performance)
+				&& isset($request->jauge_brut)
+				&& isset($request->niveau_huile)
+				&& isset($request->jauge_liquide_refroidissement)
+				&& isset($request->nb_mat)
+				&& isset($request->surface_voilure)
+				&& isset($request->dimension_x_bateau)
+				&& isset($request->dimension_y_bateau)
+				&& isset($request->dimension_z_bateau)
+				&& isset($request->volume_coque)
+				&& isset($request->consommation)
+				&& isset($request->masse_navire)
+				&& isset($request->id_immatr)
+				&& isset($request->date_immatr)
+				&& isset($request->created_at)
+				&& isset($request->id_utilisateur)
+				){
+		
+					$data = ['nom_bateau' => $request->nom_bateau,
+						'url_photo' => $request->url_photo,
+						'ancienne_cat' => $request->ancienne_cat,
+						'auto_videur' => $request->auto_videur,
+						'hors_bord' => $request->hors_bord,
+						'francise' => $request->francise,
+						'distance_eloignement' => $request->distance_eloignement,
+						'nb_places' => $request->nb_places,
+						'force_vent_max' => $request->force_vent_max,
+						'hauteur_max_vagues' => $request->hauteur_max_vagues,
+						'niveau_reserve' => $request->niveau_reserve,
+						'niveau_carburant_max' => $request->niveau_carburant_max,
+						'niveau_performance' => $request->niveau_performance,
+						'jauge_brut' => $request->jauge_brut,
+						'niveau_huile' => $request->niveau_huile,
+						'jauge_liquide_refroidissement' => $request->jauge_liquide_refroidissement,
+						'nb_mat' => $request->nb_mat,
+						'surface_voilure' => $request->surface_voilure,
+						'dimension_x_bateau' => $request->dimension_x_bateau,
+						'dimension_y_bateau' => $request->dimension_y_bateau,
+						'dimension_z_bateau' => $request->dimension_z_bateau,
+						'volume_coque' => $request->volume_coque,
+						'consommation' => $request->consommation,
+						'masse_navire' => $request->masse_navire,
+						'created_at' => $request->created_at,
+						'id_immatr' => $request->id_immatr,
+					];
+
+					
+					$dataim = ['id_immatr' => $request->id_immatr,
+						'date_immatr' => $request->date_immatr];
+
+					$users = $request->id_utilisateur;
+					
+					$validator = Validator::make($data, [
+						'url_photo' => ['required', 'string', 'min:8', 'max:200'],
+						'ancienne_cat' => ['required', 'int', 'min:1', 'max:6'],
+						'auto_videur' => ['required', 'int', 'min:0', 'max:1'],
+						'hors_bord' => ['required', 'int', 'min:0', 'max:1'],
+						'francise' =>['required', 'int', 'min:0', 'max:1'],
+						'distance_eloignement' => ['required', 'int', 'min:0'],
+						'nb_places' => ['required', 'int', 'min:1'],
+						'force_vent_max' => ['required', 'int', 'min:0'],
+						'hauteur_max_vagues' => ['required', 'int', 'min:0'],
+						'niveau_reserve' => ['required', 'int', 'min:0'],
+						'niveau_carburant_max' => ['required', 'int', 'min:0'],
+						'niveau_performance' => ['required', 'int', 'min:0', 'max:100'],
+						'jauge_brut' => ['required', 'int', 'min:0'],
+						'niveau_huile' => ['required', 'int', 'min:0'],
+						'jauge_liquide_refroidissement' => ['required', 'int', 'min:0'],
+						'nb_mat' => ['required', 'int', 'min:0'],
+						'surface_voilure' => ['required', 'int', 'min:0'],
+						'dimension_x_bateau' => ['required', 'int', 'min:0'],
+						'dimension_y_bateau' => ['required', 'int', 'min:0'],
+						'dimension_z_bateau' => ['required', 'int', 'min:0'],
+						'volume_coque' => ['required', 'int', 'min:0'],
+						'consommation' =>['required', 'int', 'min:0'],
+						'masse_navire' => ['required', 'int', 'min:0'],
+						'created_at' =>  ['required', 'date'],
+						'id_immatr' => ['required', 'string'],
+					]);
+
+					$validator2 = Validator::make($dataim, [
+						'date_immatr' =>  ['required', 'date'],
+						'id_immatr' => ['required', 'string'],
+						
+					]);
+
+					if ($validator->fails()) {
+						return back()->withErrors($validator)->withInput();
+					}
+					if ($validator2->fails()) {
+						return back()->withErrors($validator2)->withInput();
+					}
+
+					try{
+						Immatriculation::create($dataim);
+						Bateau::create($data);
+
+						$id_bateau = Bateau::where('id_immatr', $dataim['id_immatr'])->value('id_bateau');
+
+						foreach($users as $user){
+							DB::table('Possede')->insert(['id_bateau' => $id_bateau, 'id_utilisateur' => $user]);
+						}
+						
+						
+					}
+					catch(Exception $e){
+						$timestamp = time();
+							$date = new \DateTime();
+							$date->setTimestamp($timestamp);
+						Message::create([
+							    'date_msg' => $date,
+							    'libellé' => 'Une inscription dans la base de donnée a échouée',
+							    'id_utilisateur' => 1,
+							    'id_bateau' =>null,
+							
+						]);
+						return back();
+					}
+
+					return redirect()->route('boat.show', ['id' => $id_bateau]); 
+		}
+		else{
+			return back()->with(['contact' => 0]);
+		}
+
+
+    }
+
     public function genEntretien(Request $request)
     {
 
