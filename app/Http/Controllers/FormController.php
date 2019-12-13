@@ -592,7 +592,7 @@ class FormController extends Controller
 								$id_etat = DB::table('Etat')->where('desc_etat', $data['desc_etat'])->value('id_etat');
 							}
 
-							$equipement = Equipement::create([
+							$equipement = Equipement::insertGetId([
 								'created_at' => $data['created_at'],
 								'updated_at' => $data['updated_at'],
 								'id_modele' => $id_modele,
@@ -603,7 +603,7 @@ class FormController extends Controller
 								'quantite_equip' => $data['quantite_equip'],
 								'equip_origine' => $data['equip_origine'],
 								'q_equip_rechange' => $data['q_equip_rechange'],
-							]);
+							], 'id_equipement');
 
 							DB::table('Comporte')->insert(['id_bateau' => $data['id_bateau'], 'id_equipement' => $equipement->id_equipement]);
 
@@ -713,7 +713,7 @@ class FormController extends Controller
 								$id_etat = DB::table('Etat')->where('desc_etat', $data['desc_etat'])->value('id_etat');
 							}
 
-							$piece = Piece::create([
+							$piece = Piece::insertGetId([
 								'created_at' => $data['created_at'],
 								'updated_at' => $data['updated_at'],
 								'id_modele' => $id_modele,
@@ -724,9 +724,131 @@ class FormController extends Controller
 								'quantite_piece' => $data['quantite_piece'],
 								'piece_origine' => $data['piece_origine'],
 								'q_piece_rechange' => $data['q_piece_rechange'],
-							]);
+							], 'id_piece');
 
-							DB::table('Contient')->insert(['id_bateau' => $data['id_bateau'], 'id_piece' => $piece->id_piece]);
+							DB::table('Contient')->insert(['id_bateau' => $data['id_bateau'], 'id_piece' => $piece]);
+
+					}
+					catch(Exception $e){
+
+						return redirect()->route('boat.admin.update', ['id' => $data['id_bateau']]);
+					}
+
+					return redirect()->route('boat.admin.update', ['id' => $data['id_bateau']]); 
+		}
+		else{
+			return back();
+		}
+
+
+    }
+    public function add_piece(Request $request)
+    {
+
+ 		if(isset($request->id_bateau)
+				&& isset($request->nom_marque) 
+				&& isset($request->nom_modele)
+				&& isset($request->desc_etat)
+				&& isset($request->duree_vie_piece)
+				&& isset($request->revision_periodique_piece)
+				&& isset($request->quantite_piece)
+				&& isset($request->piece_origine)
+				&& isset($request->q_piece_rechange)
+				&& isset($request->created_at)
+				&& isset($request->updated_at)
+				&& isset($request->nom_type_piece)
+				&& isset($request->equip)
+				){
+		
+					$data = ['nom_marque' => $request->nom_marque,
+						'nom_modele' => $request->nom_modele,
+						'desc_etat' => $request->desc_etat,
+						'duree_vie_piece' => $request->duree_vie_piece,
+						'revision_periodique_piece' => $request->revision_periodique_piece,
+						'quantite_piece' => $request->quantite_piece,
+						'piece_origine' => $request->piece_origine,
+						'q_piece_rechange' => $request->q_piece_rechange,
+						'id_bateau' => $request->id_bateau,
+						'created_at' => $request->created_at,
+						'updated_at' => $request->updated_at,
+						'nom_type_piece' => $request->nom_type_piece,
+						'id_equip' => $request->equip,
+					];
+					
+					$validator = Validator::make($data, [
+						'nom_marque' => ['required', 'string', 'max:125'],
+						'nom_modele' => ['required', 'string', 'max:125'],
+						'desc_etat' => ['required', 'string', 'min:0', 'max:255'],
+						'duree_vie_piece' => ['required', 'min:0'],
+						'revision_periodique_piece' =>  ['required', 'min:0'],
+						'quantite_piece' =>  ['required', 'int', 'min:1'],
+						'piece_origine' => ['required', 'int', 'min:0', 'max:1'],
+						'q_piece_rechange' =>['required', 'int', 'min:0'],
+						'id_bateau' => ['required', 'int', 'min:1'],
+						'created_at' => ['required', 'date'],
+						'updated_at' => ['required', 'date'],
+						'nom_type_piece' => ['required', 'string', 'min:0'],
+						'id_equip' => ['required', 'int', 'min:1'],
+					]);
+
+					if ($validator->fails()) {
+						return back()->withErrors($validator)->withInput();
+					}
+
+					try{
+							if($id_modele = DB::table('Modele')->where('nom_modele', $data['nom_modele'])->value('id_modele')){
+								
+							}
+							else{
+								Modele::create([
+								    'nom_modele' => $data['nom_modele'],
+								]);
+								$id_modele = DB::table('Modele')->where('nom_modele', $data['nom_modele'])->value('id_modele');
+							}
+
+							if($id_marque = DB::table('Marque')->where('nom_marque', $data['nom_marque'])->value('id_marque')){
+								
+							}
+							else{
+								Marque::create([
+								    'nom_marque' => $data['nom_marque'],
+								]);
+								$id_marque = DB::table('Marque')->where('nom_marque', $data['nom_marque'])->value('id_marque');
+							}
+							if($id_type = DB::table('Type_piece')->where('nom_type_piece', $data['nom_type_piece'])->value('id_type_piece')){
+								
+							}
+							else{
+								Type_piece::create([
+								    'nom_type_piece' => $data['nom_type_piece'],
+								]);
+								$id_type = DB::table('Type_piece')->where('nom_type_piece', $data['nom_type_piece'])->value('id_type_piece');
+							}
+
+							if($id_etat = DB::table('Etat')->where('desc_etat', $data['desc_etat'])->value('id_etat')){
+								
+							}
+							else{
+								Etat::create([
+								    'desc_etat' => $data['desc_etat'],
+								]);
+								$id_etat = DB::table('Etat')->where('desc_etat', $data['desc_etat'])->value('id_etat');
+							}
+
+							$piece = Piece::insertGetId([
+								'created_at' => $data['created_at'],
+								'updated_at' => $data['updated_at'],
+								'id_modele' => $id_modele,
+								'id_etat' => $id_etat,
+								'id_type_piece' => $id_type,
+								'duree_vie_piece' => $data['duree_vie_piece'],
+								'revision_periodique_piece' => $data['revision_periodique_piece'],
+								'quantite_piece' => $data['quantite_piece'],
+								'piece_origine' => $data['piece_origine'],
+								'q_piece_rechange' => $data['q_piece_rechange'],
+							], 'id_piece');
+							
+							DB::table('Est_composé')->insert(['id_equipement' => $data['id_equip'], 'id_piece' => $piece]);
 
 					}
 					catch(Exception $e){
