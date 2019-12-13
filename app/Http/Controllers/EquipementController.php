@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Equipement;
 use Illuminate\Http\Request;
 use App\Http\Controllers\PieceController;
+use Illuminate\Support\Facades\DB;
 
 class EquipementController extends Controller
 {
@@ -68,9 +69,11 @@ class EquipementController extends Controller
      * @param  \App\Equipement  $equipement
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Equipement $equipement)
+    public function destroy_from_boat($id)
     {
-        //
+        $this->destroy($id);
+	DB::table('Comporte')->where('id_equipement', $id)->delete();
+	return back(); 
     }
 
     /**
@@ -84,7 +87,10 @@ class EquipementController extends Controller
 		$compose = DB::table('Est_composé')->where('id_equipement', $id)->get();
 		foreach($compose as $piece){
 			$id_piece = DB::table('Piece')->where('id_piece', $piece->id_piece)->value('id_piece');
-			PieceController::destroy($id_piece);
-		}        
+			(new PieceController)->destroy($id_piece);
+		}   
+		 DB::table('Est_composé')->where('id_equipement', $id)->delete();
+		 DB::table('Equipement')->where('id_equipement', $id)->delete();
+
     }
 }

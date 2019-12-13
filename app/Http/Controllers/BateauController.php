@@ -245,17 +245,23 @@ class BateauController extends Controller
 		$comporte = DB::table('Comporte')->where('id_bateau', $id)->get();
 		foreach($comporte as $equip){
 			$id_equip = DB::table('Equipement')->where('id_equipement', $equip->id_equipement)->value('id_equipement');
-			EquipementController::destroy($id_equip);
+			(new EquipementController)->destroy($id_equip);
 		}
+		 DB::table('Comporte')->where('id_bateau', $id)->delete();
 
 		$contient = DB::table('Contient')->where('id_bateau', $id)->get();
 		foreach($contient as $piece){
 			$id_piece = DB::table('Piece')->where('id_piece', $piece->id_piece)->value('id_piece');
-			PieceController::destroy($id_piece);
+			(new PieceController)->destroy($id_piece);
 		}
-
+		DB::table('Contient')->where('id_bateau', $id)->delete();
+		
 		DB::table('Possede')->where('id_bateau', $id)->delete();
-		$immatr = DB::table('Immatriculation')->where('id_immatr', $boat->id_immatr)->delete();
-    		return back();
+		DB::table('Entretien')->where('id_bateau', $boat->id_bateau)->delete();
+		DB::table('Bateau')->where('id_bateau', $boat->id_bateau)->delete();
+		
+
+		DB::table('Immatriculation')->where('id_immatr', $boat->id_immatr)->delete();
+    		return redirect()->route('boats'); 
     }
 }

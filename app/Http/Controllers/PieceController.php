@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Piece;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PieceController extends Controller
 {
@@ -67,9 +68,11 @@ class PieceController extends Controller
      * @param  \App\Piece  $piece
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Piece $piece)
+    public function destroy_from_boat($id)
     {
-        //
+        $this->destroy($id);
+	DB::table('Contient')->where('id_piece', $id)->delete();
+	return back(); 
     }
 
     /**
@@ -80,6 +83,6 @@ class PieceController extends Controller
      */
     public function destroy($id)
     {
-        Piece::where('id_piece', $id)->destroy();
+        Piece::where('id_piece', $id)->delete();
     }
 }

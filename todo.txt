@@ -5,8 +5,6 @@ sur la page fourni : add piece / equipement / adresse si admin
 Bateau :
 si admin : add piece/equipement, ajout utilisateur
 
-destroy
-
 destroy piece/equip
 
 Dossier

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Moteur;
 use App\Http\Controllers\EquipementController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MoteurController extends Controller
 {
@@ -68,9 +69,11 @@ class MoteurController extends Controller
      * @param  \App\Moteur  $moteur
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Moteur $moteur)
+    public function destroy_from_boat($id, $boat)
     {
-        //
+        $this->destroy($id);
+	DB::table('Bateau')->where('id_moteur', $id)->update(['id_moteur' => null]);
+	return back(); 
     }
 
     /**
@@ -82,8 +85,8 @@ class MoteurController extends Controller
     public function destroy($id)
     {
 	id_equip = Moteur::where('id_moteur', $id)->value('id_equipement');
-	EquipementController::destroy($id_equip);
-	Moteur::where('id_moteur', $id)->destroy();
+	(new EquipementController::destroy($id_equip);
+	Moteur::where('id_moteur', $id)->delete();
 
     }
 }
