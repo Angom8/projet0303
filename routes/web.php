@@ -63,16 +63,16 @@ Route::get('admin/add-boat', ['uses' => 'BateauController@add', 'as' => 'admin.a
 
 Route::post('admin/add-boat/send', ['uses' => 'FormController@add_boat', 'as' => 'admin.store.bateau'])->middleware('is_admin');//done
 
-Route::delete('admin/destroy-boat/{id}', ['uses' => 'BateauController@destroy', 'as' => 'admin.destroy.bateau'])->middleware('is_admin');//TODO
+Route::delete('admin/destroy-boat/{id}', ['uses' => 'BateauController@destroy', 'as' => 'admin.destroy.bateau'])->middleware('is_admin');//done
 
 
 
 
-Route::post('admin/destroy-piece/{id}', ['uses' => 'PieceController@destroy', 'as' => 'admin.destroy.piece'])->middleware('is_admin');//TODO
+Route::delete('admin/destroy-piece/{id}', ['uses' => 'PieceController@destroy_from_boat', 'as' => 'admin.destroy.piece'])->middleware('is_admin');//done
 
-Route::post('admin/destroy-equip/{id}', ['uses' => 'EquipementController@destroy', 'as' => 'admin.destroy.equip'])->middleware('is_admin');//TODO
+Route::delete('admin/destroy-equip/{id}', ['uses' => 'EquipementController@destroy_from_boat', 'as' => 'admin.destroy.equip'])->middleware('is_admin');//done
 
-Route::post('admin/destroy-moteur/{id}', ['uses' => 'MoteurController@destroy', 'as' => 'admin.destroy.moteur'])->middleware('is_admin');//TODO
+Route::delete('admin/destroy-moteur/{id}', ['uses' => 'MoteurController@destroy_from_boat', 'as' => 'admin.destroy.moteur'])->middleware('is_admin');//done
 
 Route::post('admin/update-boat/p',  ['uses' =>'FormController@update_piece', 'as'=>'boat.admin.updating.piece'])->middleware('is_admin');//TODO
 

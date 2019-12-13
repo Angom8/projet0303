@@ -5,12 +5,14 @@ Bateau
 @section('content')
 
 <main>
-<?php $time = time();?>
+<?php   $time = time();
+	$type_user = Auth::user()->type_utilisateur;
+?>
 	<div class ="content">
 		<div class="container">
 		  <h1>{{ $boat['nom_bateau'] }}</h1>
-			{{ getCreateBoat(Auth::user()->type_utilisateur) }}
-			@if(Auth::user()->type_utilisateur == 2)
+			{{ getCreateBoat($type_user) }}
+			@if($type_user == 2)
 			<div class="text-right bato-row">
 				<a class="btn btn-warning" href="{{ url('admin/update-boat/'.$boat['id_bateau']) }}">Mettre à jour</a>
 		 	</div>
@@ -131,6 +133,14 @@ Bateau
 						@if($equipmoteur['equipement']['q_equip_rechange'] != 0)<p><strong>En rechange</strong> : {{$equipmoteur['equipement']['q_equip_rechange']}}</p>@endif
 
 						<p><strong>Etat </strong>: {{ $equipmoteur['etat'] }}</p>
+
+						@if($type_user == 2)
+											<form  method="post" action={{ route('admin.destroy.moteur' , ['id' =>   $boat['id_bateau']]) }}>
+												{!! csrf_field() !!}
+												{{ method_field('DELETE') }}
+												<button type="submit" class="btn btn-danger">Supprimer le moteur</button>
+										 	</form>
+						@endif
 						@endif
 
 						<!-- Pieces, equipements, moteur -->
@@ -149,6 +159,7 @@ Bateau
 							<th>D'ORIGINE</th>
 							<th>EN RECHANGE</th>
 							<th>ETAT</th>
+							@if($type_user == 2)<th>ACTION</th>@endif
 						      </tr>
 						    </thead>
 						    <tbody>
@@ -180,6 +191,13 @@ Bateau
 								<td>@if($equip['equipement']['equip_origine'] != 0) Oui @else Non @endif</td>
 								<td>{{ $equip['equipement']['q_equip_rechange'] }}</td>
 								<td>{{ $equip['etat'] }}</td>
+								@if($type_user == 2)<td>
+											<form  method="post" action={{ route('admin.destroy.equip' , ['id' =>  $equip['equipement']['id_equipement']]) }}>
+												{!! csrf_field() !!}
+												{{ method_field('DELETE') }}
+												<button type="submit" class="btn btn-danger">Supprimer</button>
+										 	</form>
+										    </td>@endif
 							</tr>
 						@endforeach
 							</tbody>
@@ -200,6 +218,7 @@ Bateau
 							<th>D'ORIGINE</th>
 							<th>EN RECHANGE</th>
 							<th>ETAT</th>
+							@if($type_user == 2)<th>ACTION</th>@endif
 						      </tr>
 						    </thead>
 						    <tbody>
@@ -231,6 +250,14 @@ Bateau
 								<td>@if($piece['piece']['piece_origine'] != 0) Oui @else Non @endif</td>
 								<td>{{ $piece['piece']['q_piece_rechange'] }}</td>
 								<td>{{ $piece['etat'] }}</td>
+								@if($type_user == 2)<td>
+											<form  method="post" action={{ route('admin.destroy.piece' , ['id' =>  $piece['piece']['id_piece']]) }}>
+												{!! csrf_field() !!}
+												{{ method_field('DELETE') }}
+												<button type="submit" class="btn btn-danger">Supprimer</button>
+										 	</form>
+										    </td>@endif
+							</tr>
 							</tr>
 						@endforeach
 							</tbody>

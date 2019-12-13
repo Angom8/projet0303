@@ -69,10 +69,9 @@ class MoteurController extends Controller
      * @param  \App\Moteur  $moteur
      * @return \Illuminate\Http\Response
      */
-    public function destroy_from_boat($id, $boat)
+    public function destroy_from_boat($id)
     {
-        $this->destroy($id);
-	DB::table('Bateau')->where('id_moteur', $id)->update(['id_moteur' => null]);
+	DB::table('Bateau')->where('id_bateau', $id)->update(['id_moteur' => null]);
 	return back(); 
     }
 
@@ -84,8 +83,8 @@ class MoteurController extends Controller
      */
     public function destroy($id)
     {
-	id_equip = Moteur::where('id_moteur', $id)->value('id_equipement');
-	(new EquipementController::destroy($id_equip);
+	$id_equip = Moteur::where('id_moteur', $id)->value('id_equipement');
+	(new EquipementController)::destroy($id_equip);
 	Moteur::where('id_moteur', $id)->delete();
 
     }

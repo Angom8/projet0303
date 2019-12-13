@@ -70,7 +70,6 @@ class PieceController extends Controller
      */
     public function destroy_from_boat($id)
     {
-        $this->destroy($id);
 	DB::table('Contient')->where('id_piece', $id)->delete();
 	return back(); 
     }

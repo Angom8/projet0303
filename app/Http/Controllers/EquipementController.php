@@ -71,7 +71,6 @@ class EquipementController extends Controller
      */
     public function destroy_from_boat($id)
     {
-        $this->destroy($id);
 	DB::table('Comporte')->where('id_equipement', $id)->delete();
 	return back(); 
     }
