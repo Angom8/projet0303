@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-Adhérent
+Fournisseur
 @endsection
 @section('content')
 

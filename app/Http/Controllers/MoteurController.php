@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Moteur;
+use App\Http\Controllers\EquipementController;
 use Illuminate\Http\Request;
 
 class MoteurController extends Controller
@@ -78,8 +79,11 @@ class MoteurController extends Controller
      * @param  \App\Moteur  $moteur
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Moteur $moteur)
+    public function destroy($id)
     {
-        //
+	id_equip = Moteur::where('id_moteur', $id)->value('id_equipement');
+	EquipementController::destroy($id_equip);
+	Moteur::where('id_moteur', $id)->destroy();
+
     }
 }

@@ -12,6 +12,9 @@ use Auth;
 use Illuminate\Support\Facades\DB;
 use App\Entretien;
 use Illuminate\Http\Request;
+use App\Http\Controllers\EquipementController;
+use App\Http\Controllers\PieceController;
+use App\Http\Controllers\MoteurController;
 
 class BateauController extends Controller
 {
@@ -212,10 +215,11 @@ class BateauController extends Controller
 				return view('update-boat-adm', ['boat' => $id, 'equipements' => $ensequip]);
 			}
 			else{
-				return view('update-boat-adm', ['boat' => $id]);
+				return view('update-boat-adm', ['boat' => $id, 'equipements' => null]);
 			}
 		}
 
+		//moteur => si moteur : liste piece moteur
 		else{
 
 			return view('update-boat', ['boat' => $id]);
@@ -230,8 +234,28 @@ class BateauController extends Controller
      * @param  \App\Bateau  $bateau
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Bateau $bateau)
+    public function destroy($id)
     {
-        //
+            	$boat= Bateau::where('id_bateau', $id)->get()[0];
+
+		if($boat->id_moteur) {
+			(new MoteurController)->destroy($boat->id_moteur);	
+		}
+
+		$comporte = DB::table('Comporte')->where('id_bateau', $id)->get();
+		foreach($comporte as $equip){
+			$id_equip = DB::table('Equipement')->where('id_equipement', $equip->id_equipement)->value('id_equipement');
+			EquipementController::destroy($id_equip);
+		}
+
+		$contient = DB::table('Contient')->where('id_bateau', $id)->get();
+		foreach($contient as $piece){
+			$id_piece = DB::table('Piece')->where('id_piece', $piece->id_piece)->value('id_piece');
+			PieceController::destroy($id_piece);
+		}
+
+		DB::table('Possede')->where('id_bateau', $id)->delete();
+		$immatr = DB::table('Immatriculation')->where('id_immatr', $boat->id_immatr)->delete();
+    		return back();
     }
 }

@@ -31,7 +31,7 @@ Mes bateaux
 					<button type="submit" class="btn btn-secondary">Voir</button>
 				</form>
 
-				<form method="post">
+				<form method="post" action={{ route('admin.destroy.boat' , ['id' =>  $boat['id']]) }}>
 {!! csrf_field() !!}
 				{{ method_field('DELETE') }}
 				<button type="submit" class="btn btn-danger">Supprimer</button>

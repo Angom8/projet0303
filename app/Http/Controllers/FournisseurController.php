@@ -33,7 +33,9 @@ class FournisseurController extends Controller
      */
     public function create()
     {
-        //
+       $pays = DB::table('Pays')->orderBy('nom_pays')->pluck('nom_pays');
+
+       return view('add-fourni', ['listPays' => $pays]);
     }
 
     /**
@@ -44,9 +46,8 @@ class FournisseurController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
 
+    }
     /**
      * Display the specified resource.
      *

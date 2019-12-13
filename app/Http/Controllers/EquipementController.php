@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Equipement;
 use Illuminate\Http\Request;
+use App\Http\Controllers\PieceController;
 
 class EquipementController extends Controller
 {
@@ -78,8 +79,12 @@ class EquipementController extends Controller
      * @param  \App\Equipement  $equipement
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Equipement $equipement)
+    public function destroy($id)
     {
-        //
+		$compose = DB::table('Est_composé')->where('id_equipement', $id)->get();
+		foreach($compose as $piece){
+			$id_piece = DB::table('Piece')->where('id_piece', $piece->id_piece)->value('id_piece');
+			PieceController::destroy($id_piece);
+		}        
     }
 }

@@ -209,9 +209,6 @@ class UtilisateurController extends Controller
     {
             	$user= Utilisateur::whereId($id);
 		$id_boats = DB::table('Possede')->where('id_utilisateur', $id);
-		foreach($id_boats->get() as $idb){
-			Bateau::where('id_bateau', $idb->id_bateau)->delete();
-		}
 		$id_boats->delete();
     		$user->delete();
     		return back();

@@ -78,8 +78,8 @@ class PieceController extends Controller
      * @param  \App\Piece  $piece
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Piece $piece)
+    public function destroy($id)
     {
-        //
+        Piece::where('id_piece', $id)->destroy();
     }
 }

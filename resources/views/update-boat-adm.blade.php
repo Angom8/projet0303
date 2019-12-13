@@ -328,7 +328,7 @@ Mettre à jour le bateau {{ $boat }}
 				        </div>    
 				    </form>
 				
-				@if(isset($equipements) and $equipements[0]!=null)
+				@if(isset($equipements) and $equipements!=null)
 				     <h2>Ajouter une pièce à un équipement</h2>
 
 				    <form method="POST" action="{{ route('boat.admin.updating.pieceequip') }}">

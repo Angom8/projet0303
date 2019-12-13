@@ -14,6 +14,13 @@ Bateau
 			<div class="text-right bato-row">
 				<a class="btn btn-warning" href="{{ url('admin/update-boat/'.$boat['id_bateau']) }}">Mettre à jour</a>
 		 	</div>
+			<div class="text-right bato-row">
+				<form  method="post" action={{ route('admin.destroy.bateau' , ['id' =>  $boat['id_bateau']]) }}>
+					{!! csrf_field() !!}
+					{{ method_field('DELETE') }}
+					<button type="submit" class="btn btn-danger">Supprimer</button>
+			 	</form>
+			</div>
 			@else
 			<div class="text-right bato-row">
 				<a class="btn btn-warning" href="{{ url('panel/update-boat/'.$boat['id_bateau']) }}">Demander une mise à jour</a>

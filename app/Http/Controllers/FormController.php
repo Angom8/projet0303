@@ -8,6 +8,7 @@ use App\Entretien;
 use App\Bateau;
 use App\Immatriculation;	
 use App\Moteur;
+use App\Fournisseur;	
 use App\Piece;
 use App\Equipement;
 use Illuminate\Support\Facades\Validator;
@@ -304,6 +305,29 @@ class FormController extends Controller
 			return back()->with(['contact' => 0]);
 		}
 
+
+    }
+    public function createFournisseur(Request $request)
+    {
+	$data = $request->all();
+	$validator = Validator::make($data, [
+           	 'mail_fourni' => ['required', 'string', 'email', 'max:255', 'unique:Fournisseur'],
+		'nom_fourni' => ['required', 'string', 'max:255'],
+		'tel_fourni' => ['required', 'string', 'max:50'],
+        ]);
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+	try{
+		Fournisseur::create([
+			        'mail_fourni' => $data['mail_fourni'],
+				'nom_fourni' => $data['nom_fourni'],
+				'tel_fourni' => $data['tel_fourni'],
+			]);
+	}
+	catch(Exception $e){return back();}
+	
+	return redirect()->route('fournisseurs'); 
 
     }
 
