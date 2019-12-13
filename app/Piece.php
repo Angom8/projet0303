@@ -16,7 +16,8 @@ class Piece extends Model
 		'piece_origine',
 		'q_piece_rechange',
 		'id_type_piece',
-		'id_modele'
+		'id_modele',
+		'id_etat'
 	];
 	
     public function type_piece(){

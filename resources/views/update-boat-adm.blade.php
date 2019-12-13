@@ -16,18 +16,6 @@ Mettre à jour le bateau {{ $boat }}
 			
 
 				    <h2>Ajouter un équipement</h2>
-<?php
-			if(isset($return_equip)){
-				if($return_equip == 1) {
-			    		echo '<p style="color:green">L\'équipement a bien été ajouté</p>';
-				}
-				else{
-			   		echo '<p style="color:red">Erreur.</p>';
-				}
-			
-		   	 }	
-
-?>
 				    <form method="POST" action="{{ route('boat.admin.updating.equip') }}">
 				        @csrf
 
@@ -212,7 +200,7 @@ Mettre à jour le bateau {{ $boat }}
 
 <!-- ----------------------------------------------------------------  -->
 
-				    <form method="POST" action="{{ route('boat.admin.updating.piece') }}">
+		    <form method="POST" action="{{ route('boat.admin.updating.piece') }}">
 				        @csrf
 
 				        <div class="form-group row">

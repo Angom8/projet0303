@@ -77,14 +77,13 @@ Route::delete('admin/destroy-equip/{id}', ['uses' => 'EquipementController@destr
 
 Route::delete('admin/destroy-moteur/{id}', ['uses' => 'MoteurController@destroy_from_boat', 'as' => 'admin.destroy.moteur'])->middleware('is_admin');//done
 
+Route::post('admin/update-boat/p',  ['uses' =>'FormController@update_piece', 'as'=>'boat.admin.updating.piece'])->middleware('is_admin');//done
+
+Route::post('admin/update-boat/e',  ['uses' =>'FormController@update_equip', 'as'=>'boat.admin.updating.equip'])->middleware('is_admin');//done
 
 
-
-Route::post('admin/update-boat/p',  ['uses' =>'FormController@update_piece', 'as'=>'boat.admin.updating.piece'])->middleware('is_admin');//TODO
 
 Route::post('admin/update-boat/pe',  ['uses' =>'FormController@add_piece', 'as'=>'boat.admin.updating.pieceequip'])->middleware('is_admin');//TODO
-
-Route::post('admin/update-boat/e',  ['uses' =>'FormController@update_equip', 'as'=>'boat.admin.updating.equip'])->middleware('is_admin');//TODO
 
 Route::post('admin/update-boat/m',  ['uses' =>'FormController@update_moteur', 'as'=>'boat.admin.updating.moteur'])->middleware('is_admin');//TODO
 
