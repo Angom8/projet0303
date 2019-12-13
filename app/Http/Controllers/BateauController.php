@@ -206,13 +206,16 @@ class BateauController extends Controller
 
 				foreach($id_equipements as $id_equip){
 				
-					$equip = Equipement::where('id_equipement', $id_equip->id_equipement)->get()[0]->toArray();
-					$modele = DB::table('Modele')->where('id_modele', $equip['id_modele'])->value('nom_modele');
-					$type = DB::table('Type_equipement')->where('id_type_equipement', $equip['id_type_equipement'])->value('nom_type_equipement');
-					array_push($ensequip, ['equipement' => $equip, 'modele' => $modele, 'nom' => $type]);
+					$equip = Equipement::where('id_equipement', $id_equip->id_equipement)->value('id_equipement');
+					array_push($ensequip, ['equipement' => $equip, 'moteur' => 0]);
 				}
-				
-				return view('update-boat-adm', ['boat' => $id, 'equipements' => $ensequip]);
+
+				if($id_moteur = DB::table('Bateau')->where('id_bateau', $id)->value('id_moteur')){
+					$moteur = 1;
+				}
+				else{$moteur = 0;}
+
+				return view('update-boat-adm', ['boat' => $id, 'equipements' => $ensequip, 'moteur' => $moteur]);
 			}
 			else{
 				return view('update-boat-adm', ['boat' => $id, 'equipements' => null]);

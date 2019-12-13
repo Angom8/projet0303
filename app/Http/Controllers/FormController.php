@@ -6,9 +6,13 @@ use Illuminate\Http\Request;
 use App\Message;
 use App\Entretien;
 use App\Bateau;
-use App\Immatriculation;	
+use App\Immatriculation;
+use App\Type_equipement;
+use App\Marque;
+use App\Modele;	
 use App\Moteur;
 use App\Fournisseur;	
+use App\Etat;
 use App\Piece;
 use App\Equipement;
 use Illuminate\Support\Facades\Validator;
@@ -496,37 +500,122 @@ class FormController extends Controller
 			}
 
 	}
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Accident  $accident
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Accident $accident)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Accident  $accident
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Accident $accident)
+    public function update_equip(Request $request)
     {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Accident  $accident
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Accident $accident)
-    {
-        //
+ 		if(isset($request->id_bateau)
+				&& isset($request->nom_marque) 
+				&& isset($request->nom_modele)
+				&& isset($request->desc_etat)
+				&& isset($request->duree_vie_equip)
+				&& isset($request->revision_periodique_equip)
+				&& isset($request->quantite_equip)
+				&& isset($request->equip_origine)
+				&& isset($request->q_equip_rechange)
+				&& isset($request->created_at)
+				&& isset($request->updated_at)
+				&& isset($request->nom_type_equipement)
+				){
+		
+					$data = ['nom_marque' => $request->nom_marque,
+						'nom_modele' => $request->nom_modele,
+						'desc_etat' => $request->desc_etat,
+						'duree_vie_equip' => $request->duree_vie_equip,
+						'revision_periodique_equip' => $request->revision_periodique_equip,
+						'quantite_equip' => $request->quantite_equip,
+						'equip_origine' => $request->equip_origine,
+						'q_equip_rechange' => $request->q_equip_rechange,
+						'id_bateau' => $request->id_bateau,
+						'created_at' => $request->created_at,
+						'updated_at' => $request->updated_at,
+						'nom_type_equipement' => $request->nom_type_equipement,
+					];
+					
+					$validator = Validator::make($data, [
+						'nom_marque' => ['required', 'string', 'max:125'],
+						'nom_modele' => ['required', 'string', 'max:125'],
+						'desc_etat' => ['required', 'string', 'min:0', 'max:255'],
+						'duree_vie_equip' => ['required', 'min:0'],
+						'revision_periodique_equip' =>  ['required', 'min:0'],
+						'quantite_equip' =>  ['required', 'int', 'min:1'],
+						'equip_origine' => ['required', 'int', 'min:0', 'max:1'],
+						'q_equip_rechange' =>['required', 'int', 'min:0'],
+						'id_bateau' => ['required', 'int', 'min:1'],
+						'created_at' => ['required', 'date'],
+						'updated_at' => ['required', 'date'],
+						'nom_type_equipement' => ['required', 'string', 'min:0'],
+					]);
+
+					if ($validator->fails()) {
+						return back()->withErrors($validator)->withInput();
+					}
+
+					try{
+							if($id_modele = DB::table('Modele')->where('nom_modele', $data['nom_modele'])->value('id_modele')){
+								
+							}
+							else{
+								Modele::create([
+								    'nom_modele' => $data['nom_modele'],
+								]);
+								$id_modele = DB::table('Modele')->where('nom_modele', $data['nom_modele'])->value('id_modele');
+							}
+
+							if($id_marque = DB::table('Marque')->where('nom_marque', $data['nom_marque'])->value('id_marque')){
+								
+							}
+							else{
+								Marque::create([
+								    'nom_marque' => $data['nom_marque'],
+								]);
+								$id_marque = DB::table('Marque')->where('nom_marque', $data['nom_marque'])->value('id_marque');
+							}
+							if($id_type = DB::table('Type_equipement')->where('nom_type_equipement', $data['nom_type_equipement'])->value('id_type_equipement')){
+								
+							}
+							else{
+								Type_equipement::create([
+								    'nom_type_equipement' => $data['nom_type_equipement'],
+								]);
+								$id_type = DB::table('Type_equipement')->where('nom_type_equipement', $data['nom_type_equipement'])->value('id_type_equipement');
+							}
+
+							if($id_etat = DB::table('Etat')->where('desc_etat', $data['desc_etat'])->value('id_etat')){
+								
+							}
+							else{
+								Etat::create([
+								    'desc_etat' => $data['desc_etat'],
+								]);
+								$id_etat = DB::table('Etat')->where('desc_etat', $data['desc_etat'])->value('id_etat');
+							}
+
+							Equipement::create([
+								'created_at' => $data['created_at'],
+								'updated_at' => $data['updated_at'],
+								'id_modele' => $id_modele,
+								'id_etat' => $id_etat,
+								'id_type_equipement' => $id_type,
+								'duree_vie_equip' => $data['duree_vie_equip'],
+								'revision_periodique_equip' => $data['revision_periodique_equip'],
+								'quantite_equip' => $data['quantite_equip'],
+								'equip_origine' => $data['equip_origine'],
+								'q_equip_rechange' => $data['q_equip_rechange'],
+							]);
+
+					}
+					catch(Exception $e){
+
+						return redirect()->route('boat.admin.update', ['id' => $data['id_bateau'], 'return_equip' => 0]);
+					}
+
+					return redirect()->route('boat.admin.update', ['id' => $data['id_bateau'], 'return_equip' => 1]); 
+		}
+		else{
+			return back();
+		}
+
+
     }
 }

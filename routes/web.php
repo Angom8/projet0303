@@ -47,11 +47,16 @@ Route::get('admin/add-fourni/', ['uses' => 'FournisseurController@create', 'as' 
 
 Route::post('admin/add-fourni/register', ['uses' => 'FormController@createFournisseur', 'as' => 'fourni.register'])->middleware('is_admin');//done
 
+
+
 Route::post('admin/fournisseur/add-piece/', ['uses' => 'FournisseurController@addpiece', 'as' => 'fourni.add.piece'])->middleware('auth');//TODO
 
 Route::post('admin/fournisseur/add-equip/', ['uses' => 'FournisseurController@addequip', 'as' => 'fourni.add.equip'])->middleware('auth');//TODO
 
-Route::post('admin/fournisseur/add-equip/', ['uses' => 'FournisseurController@addadresse', 'as' => 'fourni.add.equip'])->middleware('auth');//TODO
+Route::post('admin/fournisseur/add-adresse/', ['uses' => 'FournisseurController@addadresse', 'as' => 'fourni.add.equip'])->middleware('auth');//TODO
+
+
+
 
 Route::get('admin/update-boat/{id}',  ['uses' =>'BateauController@update', 'as'=>'boat.admin.update'])->middleware('is_admin');//done
 
@@ -66,13 +71,14 @@ Route::post('admin/add-boat/send', ['uses' => 'FormController@add_boat', 'as' =>
 Route::delete('admin/destroy-boat/{id}', ['uses' => 'BateauController@destroy', 'as' => 'admin.destroy.bateau'])->middleware('is_admin');//done
 
 
-
-
 Route::delete('admin/destroy-piece/{id}', ['uses' => 'PieceController@destroy_from_boat', 'as' => 'admin.destroy.piece'])->middleware('is_admin');//done
 
 Route::delete('admin/destroy-equip/{id}', ['uses' => 'EquipementController@destroy_from_boat', 'as' => 'admin.destroy.equip'])->middleware('is_admin');//done
 
 Route::delete('admin/destroy-moteur/{id}', ['uses' => 'MoteurController@destroy_from_boat', 'as' => 'admin.destroy.moteur'])->middleware('is_admin');//done
+
+
+
 
 Route::post('admin/update-boat/p',  ['uses' =>'FormController@update_piece', 'as'=>'boat.admin.updating.piece'])->middleware('is_admin');//TODO
 
@@ -80,7 +86,7 @@ Route::post('admin/update-boat/pe',  ['uses' =>'FormController@add_piece', 'as'=
 
 Route::post('admin/update-boat/e',  ['uses' =>'FormController@update_equip', 'as'=>'boat.admin.updating.equip'])->middleware('is_admin');//TODO
 
-Route::post('admin/update-boat/m',  ['uses' =>'FormController@update_moteur', 'as'=>'boat.admin.updating.equip'])->middleware('is_admin');//TODO
+Route::post('admin/update-boat/m',  ['uses' =>'FormController@update_moteur', 'as'=>'boat.admin.updating.moteur'])->middleware('is_admin');//TODO
 
 
 

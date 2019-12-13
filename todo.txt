@@ -3,7 +3,7 @@ Fournisseur :
 sur la page fourni : add piece / equipement / adresse si admin
 
 Bateau :
-si admin : add piece/equipement, ajout utilisateur
+si admin : add piece moteur, ajout utilisateur
 
 Dossier
 

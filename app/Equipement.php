@@ -16,7 +16,8 @@ class Equipement extends Model
 		'q_piece_rechange',
 		'quantite_equip',
 		'id_type_equipement',
-		'id_modele'
+		'id_modele',
+		'id_etat'
 	];
 	
     public function type_equipement(){
