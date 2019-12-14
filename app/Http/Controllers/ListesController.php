@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Auth;
 use App\Bateau;
 
+/*Generating list controller*/
 class ListesController extends Controller
 {
 
@@ -20,6 +21,9 @@ class ListesController extends Controller
         $this->middleware('auth');
     }
 
+    /**
+     * Retrieve informations and show the User list (Helper only)
+     */
 	public function getUtilisateurs($page = 1){
 			$users = DB::table('Utilisateur')->skip(($page-1)*10)->take(10)->orderBy('nom_utilisateur');
 			$users = $users->get();
@@ -43,6 +47,10 @@ class ListesController extends Controller
 			return view('users', ['users'=> $users, 'previous' => $previous, 'next' => $next, 'page' => $page, 'max' => $max]);
 	
 	}
+
+    /**
+     * Retrieve informations and show the Fournisseur list (everyone)
+     */
 	public function getFournisseurs($page = 1){
 			$fourni = DB::table('Fournisseur')->skip(($page-1)*10)->take(10)->orderBy('nom_fourni');
 			$fourni = $fourni->get();
@@ -66,7 +74,9 @@ class ListesController extends Controller
 			return view('fournisseurs', ['fournisseurs'=> $fourni, 'previous' => $previous, 'next' => $next, 'page' => $page, 'max' => $max]);
 	
 	}
-
+    /**
+     * Retrieve informations and show the Boat list (Concerned user and admins)
+     */
 	public function getBateaux($page = 1){
 
 			$idu = Auth::user()->id;
@@ -100,7 +110,9 @@ class ListesController extends Controller
 			return view('boats', ['boats'=> $return, 'previous' => $previous, 'next' => $next, 'page' => $page, 'max' => $max]);
 	
 	}
-
+    /**
+     * Retrieve informations and show the Message list (admin)
+     */
 	public function getMessages($page = 1){
 
 			$msg = DB::table('Message')->skip(($page-1)*10)->take(10)->orderBy('date_msg');

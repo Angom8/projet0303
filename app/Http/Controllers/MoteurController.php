@@ -9,65 +9,11 @@ use Illuminate\Support\Facades\DB;
 
 class MoteurController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
 
     /**
-     * Show the form for creating a new resource.
+     * Remove the link between a boat and a moteur (Similar to destroy_from_boat from EquipementController)
      *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Moteur  $moteur
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Moteur $moteur)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Moteur  $moteur
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Moteur $moteur)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Moteur  $moteur
-     * @return \Illuminate\Http\Response
+     * @param  Moteur's ID
      */
     public function destroy_from_boat($id)
     {
@@ -76,10 +22,9 @@ class MoteurController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove completly a moteur from database
      *
-     * @param  \App\Moteur  $moteur
-     * @return \Illuminate\Http\Response
+     * @param  Moteur's ID
      */
     public function destroy($id)
     {

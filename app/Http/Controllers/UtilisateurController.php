@@ -18,20 +18,11 @@ use  App\Rules\MatchOldPassword;
 
 class UtilisateurController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
 
     /**
-     * Show the form for creating a new resource.
+     * The ONLY form-handling method outside FormController
      *
-     * @return \Illuminate\Http\Response
+     * @param Request
      */
     public function create(Request $request)
     {
@@ -119,10 +110,9 @@ class UtilisateurController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Retrieve informations and display the create an user form
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  Request
      */
     public function store(Request $request)
     {
@@ -132,10 +122,9 @@ class UtilisateurController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Retrive informations and display the user's page
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  User's ID
      */
     public function show($id)
     {
@@ -177,33 +166,9 @@ class UtilisateurController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Fully remove an User form the database
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  User's ID
      */
     public function destroy($id)
     {
@@ -214,10 +179,15 @@ class UtilisateurController extends Controller
     		return back();
     }
 
+    /**
+     * Change the User's password (helper only)
+     *
+     * @param Request
+     */
+
     public function changePW(Request $request)
 
     {
-
         $request->validate([
 
             'current_password' => ['required', new MatchOldPassword],

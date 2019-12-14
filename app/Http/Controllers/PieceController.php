@@ -8,65 +8,11 @@ use Illuminate\Support\Facades\DB;
 
 class PieceController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
 
     /**
-     * Show the form for creating a new resource.
+     * Remove the link betweet a piece and a boat
      *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Piece  $piece
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Piece $piece)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Piece  $piece
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Piece $piece)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Piece  $piece
-     * @return \Illuminate\Http\Response
+     * @param  Piece's ID
      */
     public function destroy_from_boat($id)
     {
@@ -75,10 +21,9 @@ class PieceController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove completly the Piece from database
      *
-     * @param  \App\Piece  $piece
-     * @return \Illuminate\Http\Response
+     * @param  Piece's ID
      */
     public function destroy($id)
     {

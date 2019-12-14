@@ -19,7 +19,7 @@ use App\Equipement;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
-
+/*Handling Forms controller*/
 class FormController extends Controller
 {
 
