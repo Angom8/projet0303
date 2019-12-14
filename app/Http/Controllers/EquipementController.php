@@ -9,65 +9,11 @@ use Illuminate\Support\Facades\DB;
 
 class EquipementController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
 
     /**
-     * Show the form for creating a new resource.
+     * Remove the Equipment from its boat. We don't directly delete it to keep it in Entretien.
      *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Equipement  $equipement
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Equipement $equipement)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Equipement  $equipement
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Equipement $equipement)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Equipement  $equipement
-     * @return \Illuminate\Http\Response
+     * @param  Equipment's ID
      */
     public function destroy_from_boat($id)
     {
@@ -76,10 +22,9 @@ class EquipementController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the Equipment from the database (Complete boat deletion). We directly delete it.
      *
-     * @param  \App\Equipement  $equipement
-     * @return \Illuminate\Http\Response
+     * @param  Equipment's ID
      */
     public function destroy($id)
     {

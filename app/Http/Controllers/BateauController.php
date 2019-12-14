@@ -20,9 +20,9 @@ class BateauController extends Controller
 {
 
     /**
-     * Show the form for creating a new resource.
+     * Get all the users to add a first owner, then go to the form
      *
-     * @return \Illuminate\Http\Response
+     * @return Create a boat form
      */
     public function add()
     {
@@ -31,10 +31,7 @@ class BateauController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * Return the send a boat form for Users
      */
     public function send()
     {
@@ -42,10 +39,9 @@ class BateauController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Show the boat
      *
-     * @param  \App\Bateau  $bateau
-     * @return \Illuminate\Http\Response
+     * @param  Boat's ID
      */
     public function show($id)
     {
@@ -174,10 +170,9 @@ class BateauController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Retrieve all ID from User, then show the add/remove owner form for boats/admin
      *
-     * @param  \App\Bateau  $bateau
-     * @return \Illuminate\Http\Response
+     * @param  Boat's ID
      */
     public function owner($id)
     {
@@ -191,11 +186,9 @@ class BateauController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Retrieve all required infos about a boat to show the update form (depending on User's type)
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Bateau  $bateau
-     * @return \Illuminate\Http\Response
+     * @param  Boat's ID
      */
     public function update($id)
     {
@@ -238,10 +231,9 @@ class BateauController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Retire un bateau et toutes ses dépendances
      *
-     * @param  \App\Bateau  $bateau
-     * @return \Illuminate\Http\Response
+     * @param  Boat's ID
      */
     public function destroy($id)
     {

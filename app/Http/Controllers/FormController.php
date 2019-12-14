@@ -24,10 +24,9 @@ class FormController extends Controller
 {
 
     /**
-     * Display the specified resource.
+     * Check and send a mail request
      *
-     * @param  \App\Accident  $accident
-     * @return \Illuminate\Http\Response
+     * @param  Request
      */
     public function contact(Request $request)
     {
@@ -66,6 +65,11 @@ class FormController extends Controller
 
 	}
 
+    /**
+     * Check and send a new boat request from an User
+     *
+     * @param  Request
+     */
     public function sendboat(Request $request)
     {
        		   	 if(isset($request->id_utilisateur)
@@ -140,6 +144,11 @@ class FormController extends Controller
 
 	}
 
+    /**
+     * Check and create a new boat
+     *
+     * @param  Request
+     */
     public function add_boat(Request $request)
     {
 
@@ -282,6 +291,13 @@ class FormController extends Controller
 
 
     }
+
+    /**
+     * Check and create a new Fournisseur
+     *
+     * @param  Request
+     */
+
     public function createFournisseur(Request $request)
     {
 	$data = $request->all();
@@ -306,6 +322,11 @@ class FormController extends Controller
 
     }
 
+    /**
+     * Check and add a Piece Type to Fournit, linked to a Fournisseur
+     *
+     * @param  Request
+     */
     public function addPieceFournisseur(Request $request)
     {
 	$data = $request->all();
@@ -325,6 +346,11 @@ class FormController extends Controller
 
     }
 
+    /**
+     * Check and add an Equipment Type to Fournit, linked to a Fournisseur
+     *
+     * @param  Request
+     */
     public function addEquipFournisseur(Request $request)
     {
 	$data = $request->all();
@@ -344,7 +370,11 @@ class FormController extends Controller
 
     }
 
-
+    /**
+     * Check and add an Owner to a boat, via Possede
+     *
+     * @param  Request
+     */
     public function owner_add(Request $request)
     {
 	$data = $request->all();
@@ -365,6 +395,11 @@ class FormController extends Controller
 
     }
 
+    /**
+     * Check and remove an Owner to a boat, via Possede
+     *
+     * @param  Request
+     */
     public function owner_remove(Request $request)
     {
 	$data = $request->all();
@@ -385,6 +420,11 @@ class FormController extends Controller
 
     }
 
+    /**
+     * Check and create an Entretien
+     *
+     * @param  Request
+     */
     public function genEntretien(Request $request)
     {
 
@@ -474,12 +514,14 @@ class FormController extends Controller
 		else{
 			return view('user-global');
 		}
-
-
-
-
-
     }
+
+    /**
+     * Check and send an update boat request
+     *
+     * @param  Request
+     */
+
     public function updateboat(Request $request)
     {
        		   	 if(isset($request->id_bateau)
@@ -551,6 +593,11 @@ class FormController extends Controller
 
 	}
 
+    /**
+     * Check and add an Equipement to a boat, via Comporte
+     *
+     * @param  Request
+     */
     public function update_equip(Request $request)
     {
 
@@ -672,6 +719,12 @@ class FormController extends Controller
 
 
     }
+
+    /**
+     * Check and add a Piece to a boat, via Comporte
+     *
+     * @param  Request
+     */
     public function update_piece(Request $request)
     {
 
@@ -791,6 +844,12 @@ class FormController extends Controller
 
 
     }
+
+    /**
+     * Check and add a Piece to an Equipement, via Est Composé
+     *
+     * @param  Request
+     */
     public function add_piece(Request $request)
     {
 
@@ -913,6 +972,12 @@ class FormController extends Controller
 
 
     }
+
+    /**
+     * Check and add a Moteur to a boat
+     *
+     * @param  Request
+     */
     public function update_moteur(Request $request)
     {
 
