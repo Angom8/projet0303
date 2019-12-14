@@ -379,7 +379,7 @@ Mettre à jour le bateau {{ $boat }}
 						 </div>
 				        </div>    
 				    </form>
-				@if(isset($moteur) and $moteur!=null)
+				@if(isset($moteur) and $moteur==null)
 				    <h2>Ajouter un moteur</h2>
 				    <form method="POST" action="{{ route('boat.admin.updating.moteur') }}">
 				        @csrf

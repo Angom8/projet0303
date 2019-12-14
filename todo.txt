@@ -2,9 +2,6 @@ Fournisseur :
 
 sur la page fourni : add piece / equipement / adresse si admin
 
-Bateau :
-si admin : add moteur, ajout/sup utilisateur
-
 Dossier
 
 

@@ -18,7 +18,7 @@ class IsHelper
 
     public function handle($request, Closure $next)
     {
-        if(auth()->user()->type_utilisateur == 1 or auth()->user()->type_utilisateur == 2){
+        if(auth()->user() && (auth()->user()->type_utilisateur == 1 or auth()->user()->type_utilisateur == 2)){
 
             return $next($request);
 

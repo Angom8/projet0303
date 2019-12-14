@@ -179,9 +179,15 @@ class BateauController extends Controller
      * @param  \App\Bateau  $bateau
      * @return \Illuminate\Http\Response
      */
-    public function edit(Bateau $bateau)
+    public function owner($id)
     {
-        //
+        $id_users = Utilisateur::value('id');
+
+	if($id_owners = DB::table('Possede')->where('id_bateau', $id)->value('id_utilisateur')){
+	}
+	else{$id_owners = null;}
+	
+	return view('add-boat-user', ['boat' => $id, 'users' => $id_users, 'owners' => $id_owners]);
     }
 
     /**
