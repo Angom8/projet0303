@@ -74,9 +74,10 @@ class FournisseurController extends Controller
 		}
 	}
 
-	if(Auth::user()->type_utilisater == 2){
-		$listePiece = Type_piece::value('id_type_piece', 'nom_type_piece');
-		$listeEquip = Type_equipement::value('id_type_equipement', 'nom_type_equipement');
+	if(Auth::user()->type_utilisateur == 2){
+		$listePiece = Type_piece::get()->toArray();
+		$listeEquip = Type_equipement::get()->toArray();
+		
 	}
 	else{
 		$listePiece = null;
@@ -85,7 +86,7 @@ class FournisseurController extends Controller
 
 	if(isset($fourni)){
 	
-    		return view('fournisseur', ['fourni' => $fourni, 'franchise' => $franchise, 'piece' => $piece, 'equipement' => $equipement, 'listeEquip' => $listeEquip, 'listPiece' => $listePiece]);
+    		return view('fournisseur', ['fourni' => $fourni, 'franchise' => $franchise, 'piece' => $piece, 'equipement' => $equipement, 'listeEquip' => $listeEquip, 'listePiece' => $listePiece]);
 	}
 	else{
 		return view('404');

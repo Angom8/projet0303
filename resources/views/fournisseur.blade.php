@@ -54,7 +54,8 @@ Fournisseur
 							@endif
 
 						</ul>
-					@if(Auth::user()->type_utilisateur == 2 and $listePiece)
+					
+					@if(Auth::user()->type_utilisateur == 2 and $listePiece != null)
 				    <form method="POST" action="{{ route('fourni.add.piece') }}">
 					<h2>{{ __('Ajouter une pièce') }}</h2>
 				        @csrf
@@ -88,7 +89,7 @@ Fournisseur
 				        </div>
 				    </form>
 					@endif
-					@if(Auth::user()->type_utilisateur == 2 and $listeEquip)
+					@if(Auth::user()->type_utilisateur == 2 and $listeEquip  != null)
 				    <form method="POST" action="{{ route('fourni.add.equip') }}">
 					<h2>{{ __('Ajouter un équipement') }}</h2>
 				        @csrf
@@ -99,12 +100,12 @@ Fournisseur
 				            <div class="col-md-6">
 				                 <select  id="id_type_equip" class="form-control @error('id_type_equip') is-invalid @enderror" name="id_type_equip" value="{{ old('id_type_equip') }}" required autocomplete="id_type_equip" size="3">
 							@foreach($listeEquip as $equip)
-								<option value="{{ $equip['id_type_equipement'] }}">{{ $piece['nom_type_equipement'] }}</option>
+								<option value="{{ $equip['id_type_equipement'] }}">{{ $equip['nom_type_equipement'] }}</option>
 								
 							@endforeach
 						 
 						 </select> 
-				                @error('id_type_piece')
+				                @error('id_type_equip')
 				                    <span class="invalid-feedback" role="alert">
 				                        <strong>{{ $message }}</strong>
 				                    </span>

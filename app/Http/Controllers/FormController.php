@@ -338,11 +338,15 @@ class FormController extends Controller
             return back()->withErrors($validator)->withInput();
         }
 	try{
-		DB::table('Fournit')->insert(['id_fourni' => $data['id_fourni'], 'id_type_piece' => $data['id_type_piece'], 'id_type_equipement' => null]);
+		if(DB::table('Fournit')->where([['id_fourni', '=', $data['id_fourni']], ['id_type_piece' , '=', $data['id_type_piece']]])->exists()){
+		}
+		else{
+			DB::table('Fournit')->insert(['id_fourni' => $data['id_fourni'], 'id_type_piece' => $data['id_type_piece'], 'id_type_equipement' => null]);
+		}
 	}
 	catch(Exception $e){return back();}
 	
-	return redirect()->route('fournisseur.show', ['id' => $date['id_fourni']]); 
+	return redirect()->route('fourni.show', ['id' => $data['id_fourni']]); 
 
     }
 
@@ -362,11 +366,16 @@ class FormController extends Controller
             return back()->withErrors($validator)->withInput();
         }
 	try{
-		DB::table('Fournit')->insert(['id_fourni' => $data['id_fourni'], 'id_type_equip' => $data['id_type_equip'], 'id_type_piece' => null]);
+		if(DB::table('Fournit')->where([['id_fourni', '=', $data['id_fourni']], ['id_type_equipement' , '=', $data['id_type_equip']]])->exists()){
+		}
+		else{
+			DB::table('Fournit')->insert(['id_fourni' => $data['id_fourni'], 'id_type_equipement' => $data['id_type_equip'], 'id_type_piece' => null]);
+		}
+		
 	}
 	catch(Exception $e){return back();}
 	
-	return redirect()->route('fournisseur.show', ['id' => $date['id_fourni']]); 
+	return redirect()->route('fourni.show', ['id' => $data['id_fourni']]); 
 
     }
 
@@ -386,12 +395,16 @@ class FormController extends Controller
             return back()->withErrors($validator)->withInput();
         }
 	try{
-		DB::table('Comporte')->insert(['id_bateau' => $data['id_bateau'], 'id_utilisateur' => $data['id_utilisateur']]);
+		if(DB::table('Possede')->where([['id_bateau', '=', $data['id_bateau']], ['id_utilisateur' , '=', $data['id_utilisateur']]])->exists()){
+		}
+		else{
+			DB::table('Possede')->insert(['id_bateau' => $data['id_bateau'], 'id_utilisateur' => $data['id_utilisateur']]);
+		}
 
 	}
 	catch(Exception $e){return back();}
 	
-	return redirect()->route('boat.admin.owner'); 
+	return redirect()->route('boat.admin.owner', ['id' => $data['id_bateau']]); 
 
     }
 
@@ -411,12 +424,12 @@ class FormController extends Controller
             return back()->withErrors($validator)->withInput();
         }
 	try{
-		DB::table('Comporte')->where(['id_bateau' => $data['id_bateau'], 'id_utilisateur' => $data['id_utilisateur']])->delete();
+		DB::table('Possede')->where(['id_bateau' => $data['id_bateau'], 'id_utilisateur' => $data['id_utilisateur']])->delete();
 
 	}
 	catch(Exception $e){return back();}
 	
-	return redirect()->route('boat.admin.owner'); 
+	return redirect()->route('boat.admin.owner', ['id' => $data['id_bateau']]); 
 
     }
 

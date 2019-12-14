@@ -176,9 +176,9 @@ class BateauController extends Controller
      */
     public function owner($id)
     {
-        $id_users = Utilisateur::value('id');
+        $id_users = Utilisateur::orderBy('id')->pluck('id');
 
-	if($id_owners = DB::table('Possede')->where('id_bateau', $id)->value('id_utilisateur')){
+	if($id_owners = DB::table('Possede')->where('id_bateau', $id)->orderBy('id_utilisateur')->pluck('id_utilisateur')){
 	}
 	else{$id_owners = null;}
 	

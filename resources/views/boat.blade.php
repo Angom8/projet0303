@@ -17,6 +17,9 @@ Bateau
 				<a class="btn btn-warning" href="{{ url('admin/update-boat/'.$boat['id_bateau']) }}">Mettre à jour</a>
 		 	</div>
 			<div class="text-right bato-row">
+				<a class="btn btn-warning" href="{{ url('admin/update-boat/owner/'.$boat['id_bateau']) }}">Ajouter un propriétaire</a>
+		 	</div>
+			<div class="text-right bato-row">
 				<form  method="post" action={{ route('admin.destroy.bateau' , ['id' =>  $boat['id_bateau']]) }}>
 					{!! csrf_field() !!}
 					{{ method_field('DELETE') }}
