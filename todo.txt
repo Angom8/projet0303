@@ -1,7 +1,5 @@
-Fournisseur :
 
-sur la page fourni : add piece / equipement / adresse si admin
-
+remove owner : add delete form
 Dossier
 
 

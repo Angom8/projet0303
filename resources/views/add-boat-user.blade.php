@@ -55,6 +55,7 @@ Propriétaires
 				    <form method="POST" action="{{ route('boat.admin.owner.remove') }}">
 					<h2>{{ __('Retirer') }}</h2>
 				        @csrf
+					{{ method_field('DELETE') }}
   					<input id="id_bateau" type="hidden" class="form-control @error('id_bateau') is-invalid @enderror" name="id_bateau" value="{{ $boat }}" required autocomplete="id_bateau" autofocus>
 				        <div class="form-group row">
 				            <label for="id_utilisateur" class="col-md-4 col-form-label text-md-right">{{ __('Choix du propriétaire') }}</label>

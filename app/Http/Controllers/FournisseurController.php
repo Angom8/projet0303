@@ -8,6 +8,7 @@ use App\Adresse;
 use App\Pays;
 use App\Ville;
 use App\Type_piece;
+use Auth;
 use App\Type_equipement;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
@@ -93,9 +94,18 @@ class FournisseurController extends Controller
 		}
 	}
 
+	if(Auth::user()->type_utilisater == 2){
+		$listePiece = Type_piece::value('id_type_piece', 'nom_type_piece');
+		$listeEquip = Type_equipement::value('id_type_equipement', 'nom_type_equipement');
+	}
+	else{
+		$listePiece = null;
+		$listeEquip = null;
+	}
+
 	if(isset($fourni)){
 	
-    		return view('fournisseur', ['fourni' => $fourni, 'franchise' => $franchise, 'piece' => $piece, 'equipement' => $equipement]);
+    		return view('fournisseur', ['fourni' => $fourni, 'franchise' => $franchise, 'piece' => $piece, 'equipement' => $equipement, 'listeEquip' => $listeEquip, 'listPiece' => $listePiece]);
 	}
 	else{
 		return view('404');

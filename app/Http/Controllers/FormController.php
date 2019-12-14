@@ -22,36 +22,6 @@ use Illuminate\Support\Facades\DB;
 
 class FormController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
     /**
      * Display the specified resource.
@@ -335,6 +305,46 @@ class FormController extends Controller
 	return redirect()->route('fournisseurs'); 
 
     }
+
+    public function addPieceFournisseur(Request $request)
+    {
+	$data = $request->all();
+	$validator = Validator::make($data, [
+           	 'id_fourni' => ['required', 'int', 'min:0'],
+		'id_type_piece' => ['required', 'int', 'min:0'],
+        ]);
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+	try{
+		DB::table('Fournit')->insert(['id_fourni' => $data['id_fourni'], 'id_type_piece' => $data['id_type_piece'], 'id_type_equipement' => null]);
+	}
+	catch(Exception $e){return back();}
+	
+	return redirect()->route('fournisseur.show', ['id' => $date['id_fourni']]); 
+
+    }
+
+    public function addEquipFournisseur(Request $request)
+    {
+	$data = $request->all();
+	$validator = Validator::make($data, [
+           	 'id_fourni' => ['required', 'int', 'min:0'],
+		'id_type_equip' => ['required', 'int', 'min:0'],
+        ]);
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+	try{
+		DB::table('Fournit')->insert(['id_fourni' => $data['id_fourni'], 'id_type_equip' => $data['id_type_equip'], 'id_type_piece' => null]);
+	}
+	catch(Exception $e){return back();}
+	
+	return redirect()->route('fournisseur.show', ['id' => $date['id_fourni']]); 
+
+    }
+
+
     public function owner_add(Request $request)
     {
 	$data = $request->all();
